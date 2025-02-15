@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="599.0" prefWidth="998.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gui.AfficherReservation">
+   <children>
+      <TableView fx:id="tableReservations" layoutX="299.0" layoutY="100.0" prefHeight="200.0" prefWidth="242.0">
+        <columns>
+          <TableColumn fx:id="colStatus" prefWidth="75.0" text="Status" />
+          <TableColumn fx:id="colPrix" prefWidth="166.4" text="Prix" />
+        </columns>
+      </TableView>
+      <TableView fx:id="tableTickets" layoutX="540.0" layoutY="100.0" prefHeight="200.0" prefWidth="286.0">
+        <columns>
+          <TableColumn fx:id="colTicketCode" prefWidth="146.4000244140625" text="Code" />
+          <TableColumn fx:id="colSeatNumber" prefWidth="138.39999999999998" text="SeatNumber" />
+        </columns>
+      </TableView>
+   </children>
+</AnchorPane>
