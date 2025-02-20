@@ -47,9 +47,9 @@ public class Ticket {
 
     @Override
     public String toString() {
-        return "Ticket{" +
-                ", ticketCode='" + ticketCode + '\'' +
-                ", seatNumber=" + seatNumber +
-                '}';
+        return
+                "ticketCode='" + ticketCode + '\'' +
+                ", seatNumber=" + seatNumber ;
+
     }
 }

@@ -1,8 +1,7 @@
 package org.example.entities;
 
 import java.util.Date;
-
-
+import java.util.List;
 
 
 public class Reservation {
@@ -10,41 +9,79 @@ public class Reservation {
     private int event_Id;
     private int user_Id;
     private String status;
+    private int NbPlaces;
     private Double prix;
-
-
-
+    private List<Ticket> tickets;
     private Ticket ticket;
+
+
+
+    private int ticket_id;
 
     public Reservation() {}
 
-    public Reservation(int event_Id, int user_Id, String status, Double prix, Ticket ticket) {
+    public Reservation(int event_Id, int user_Id, String status, int NbPlaces,Double prix, int ticket_id) {
         this.event_Id = 01;
         this.user_Id = 01;
         this.status = status;
+        this.NbPlaces = NbPlaces;
+        this.prix = prix;
+        this.ticket_id = ticket_id;
+    }
+
+    public Reservation(int event_Id, int user_Id, String status, int NbPlaces,Double prix, Ticket ticket) {
+        this.event_Id = 01;
+        this.user_Id = 01;
+        this.status = status;
+        this.NbPlaces = NbPlaces;
         this.prix = prix;
         this.ticket = ticket;
     }
 
-    public Reservation(String status, Double prix, Ticket ticket) {
+    public Reservation(String status, int NbPlaces, Double prix, int ticket_id) {
         this.status = status;
+        this.NbPlaces = NbPlaces;
+        this.prix = prix;
+        this.ticket_id = ticket_id;
+    }
+
+    public Reservation(String status, int NbPlaces, Double prix, Ticket ticket) {
+        this.status = status;
+        this.NbPlaces = NbPlaces;
         this.prix = prix;
         this.ticket = ticket;
     }
 
-    public Reservation(String status, Double prix) {
+
+
+    public Reservation(String status, int NbPlaces, Double prix) {
         this.status = status;
+        this.NbPlaces = NbPlaces;
         this.prix = prix;
     }
 
-    public Reservation(int event_Id, int user_Id, String status, Double prix) {
+    public Reservation(int event_Id, int user_Id, String status, int NbPlaces, Double prix) {
         this.event_Id = 01;
         this.user_Id = 01;
         this.status = status;
         this.prix = prix;
     }
 
+    public List<Ticket> getTickets() {
+        return tickets;
+    }
 
+    public void setTickets(List<Ticket> tickets) {
+        this.tickets = tickets;
+    }
+
+    public int getNbPlaces() {
+        return NbPlaces;
+    }
+
+    public void setNbPlaces(int nbPlaces) {
+        NbPlaces = nbPlaces;
+    }
 
     public String getStatus() {
         return status;
@@ -90,20 +127,24 @@ public class Reservation {
         return ticket;
     }
 
-    public void setTicket(Ticket ticket) {
-        this.ticket = ticket;
-        if (ticket != null) {
-            ticket.setReservation(this);
-        }
+    public int getTicket_id() {
+        return ticket_id;
     }
 
+    public void setTicket_id(int ticket_id) {
+        this.ticket_id = ticket_id;
+    }
+
+    public void setTicket(Ticket ticket) {
+        this.ticket = ticket;
+    }
 
     @Override
     public String toString() {
-        return "Reservation{" +
-                ", Etat=" + status +
-                ", prix=" + prix +
-                ", ticket=" + (ticket != null ? ticket.getTicketCode() : "Aucun ticket") +
-                '}';
+        return
+                "Etat=" + status +
+                ", NbPlaces=" + NbPlaces +
+                ", prix=" + prix
+                ;
     }
 }

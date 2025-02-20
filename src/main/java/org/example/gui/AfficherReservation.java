@@ -1,78 +1,70 @@
 package org.example.gui;
 
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
-import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.AnchorPane;
 import org.example.entities.Reservation;
 import org.example.entities.Ticket;
+import org.example.services.Service;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
+import java.util.List;
 
 public class AfficherReservation {
-    @FXML
-    private TableView<Reservation> tableReservations;
-    @FXML
-    private TableView<Ticket> tableTickets;
-    @FXML
-    private TableColumn<Reservation, String> colStatus;
-    @FXML
-    private TableColumn<Reservation, Double> colPrix;
-    @FXML
-    private TableColumn<Ticket, String> colTicketCode;
-    @FXML
-    private TableColumn<Ticket, String> colSeatNumber;
 
-    private Connection connection;
+    @FXML
+    private ListView<Reservation> Reservation;
+
+    @FXML
+    private ListView<Ticket> Ticket;
+
+    @FXML
+    private TextField code;
+
+    @FXML
+    private Button delete;
+
+    private Service service = new Service();
 
     public void initialize() {
-        colStatus.setCellValueFactory(new PropertyValueFactory<>("status"));
-        colPrix.setCellValueFactory(new PropertyValueFactory<>("prix"));
-        colTicketCode.setCellValueFactory(new PropertyValueFactory<>("ticketCode"));
-        colSeatNumber.setCellValueFactory(new PropertyValueFactory<>("seatNumber"));
-
         try {
-            connection = DriverManager.getConnection("jdbc:mysql://localhost:3306/eventuras", "root", "");
             loadReservations();
         } catch (SQLException e) {
-            e.printStackTrace();
+            throw new RuntimeException(e);
         }
     }
 
-    private void loadReservations() {
-        ObservableList<Reservation> reservations = FXCollections.observableArrayList();
-        ObservableList<Ticket> tickets = FXCollections.observableArrayList();
+    private void loadReservations() throws SQLException {
+        List<Reservation> reservations = service.getAllReservations();
+        List<Ticket> tickets = service.getAllTickets();
+        Reservation.getItems().setAll(reservations);
+        Ticket.getItems().setAll(tickets);
+    }
 
-        String sql = "SELECT r.status, r.prix, r.ticket_id, " +
-                "t.ticketCode, t.seatNumber " +
-                "FROM reservation r " +
-                "LEFT JOIN ticket t ON r.ticket_id = t.ticket_id";
-
-
-
-        try (Statement st = connection.createStatement();
-             ResultSet rs = st.executeQuery(sql)) {
-
-            while (rs.next()) {
-                String status = rs.getString("status");
-                Double prix = rs.getDouble("prix");
-                String ticketCode = rs.getString("ticketCode");
-                String seatNumber = rs.getString("seatNumber");
-
-
-                reservations.add(new Reservation(status, prix));
-                tickets.add(new Ticket(ticketCode, seatNumber));
-            }
-            tableReservations.setItems(reservations);
-            tableTickets.setItems(tickets);
-        } catch (SQLException e) {
-            e.printStackTrace();
+    @FXML
+    public void delete(ActionEvent actionEvent) {
+        String codeToDelete = this.code.getText();
+        if (codeToDelete.isEmpty()) {
+            showErrorAlert("Erreur", "Veuillez entrer un code de réservation valide.");
+            return;
         }
+
+        try {
+            service.delete(codeToDelete);
+            loadReservations();
+        } catch (SQLException e) {
+            showErrorAlert("Erreur lors de la suppression", e.getMessage());
+        }
+    }
+
+    private void showErrorAlert(String title, String message) {
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle(title);
+        alert.setContentText(message);
+        alert.showAndWait();
     }
 }

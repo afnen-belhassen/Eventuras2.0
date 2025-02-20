@@ -29,8 +29,9 @@ public class AjouterReservation {
         Reservation reservation = new Reservation();
         String status=this.status.getText();
         Double prix = Double.parseDouble(this.prix.getText());
+        int NbPlaces = Integer.parseInt(this.status.getText());
         try {
-            service.ajouter(new Reservation(status,prix));
+            service.ajouter(new Reservation(status,NbPlaces,prix));
         }
         catch (SQLException e){
             System.out.println(e.getMessage());

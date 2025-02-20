@@ -12,7 +12,7 @@ public class Main {
         MyConnection mc = MyConnection.getInstance();
         System.out.println(mc);
         Ticket ticket = new Ticket("TICKET-" + System.currentTimeMillis(), "A" + (int) (Math.random() * 100));
-        Reservation r = new Reservation("en cours",12.5, ticket);
+        Reservation r = new Reservation("en cours",3,12.5, ticket);
         Service s = new Service();
         try{
             System.out.println(s.afficherAll());

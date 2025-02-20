@@ -10,7 +10,7 @@ import java.util.Map;
 public interface IService<T> {
     void ajouter(T t) throws SQLException;
     void update(T t) throws SQLException;
-    void delete(T t) throws SQLException;
+    void delete(String ticketCode) throws SQLException;
     Map<Reservation, Ticket> afficherAll() throws SQLException;
 
 }

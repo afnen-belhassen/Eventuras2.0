@@ -5,11 +5,8 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-
-import javafx.scene.layout.AnchorPane;
 import java.io.IOException;
 
-import static javafx.application.Application.launch;
 
 
 public class mainGUI extends Application {

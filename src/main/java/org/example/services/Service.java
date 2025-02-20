@@ -5,7 +5,9 @@ import org.example.entities.Reservation;
 import org.example.entities.Ticket;
 
 import java.sql.*;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Service implements IService<Reservation> {
@@ -19,17 +21,21 @@ public class Service implements IService<Reservation> {
 
 
         Ticket ticket = new Ticket("TICKET-" + System.currentTimeMillis(), "A" + (int)(Math.random() * 100));
+        List<Reservation> reservations = new ArrayList<>();
 
         Reservation reservationWithTicket = new Reservation(
                 reservation.getEvent_Id(),
                 reservation.getUser_Id(),
                 reservation.getStatus(),
+                reservation.getNbPlaces(),
                 reservation.getPrix(),
                 ticket
         );
 
+        reservations.add(reservationWithTicket);
+
         String sqlTicket = "INSERT INTO ticket (ticketCode, seatNumber) VALUES (?, ?)";
-        String sqlReservation = "INSERT INTO reservation (event_Id,user_Id,status, prix, ticket_id) VALUES (?,?,?, ?, ?)";
+        String sqlReservation = "INSERT INTO reservation (event_Id,user_Id,status,NbPlaces,prix,ticket_id) VALUES (?,?,?,?, ?,?)";
 
         try (PreparedStatement pstTicket = connection.prepareStatement(sqlTicket, Statement.RETURN_GENERATED_KEYS);
              PreparedStatement pstReservation = connection.prepareStatement(sqlReservation, Statement.RETURN_GENERATED_KEYS)) {
@@ -49,8 +55,9 @@ public class Service implements IService<Reservation> {
             pstReservation.setInt(1,reservationWithTicket.getEvent_Id());
             pstReservation.setInt(2,reservationWithTicket.getUser_Id());
             pstReservation.setString(3, reservationWithTicket.getStatus());
-            pstReservation.setDouble(4, reservationWithTicket.getPrix());
-            pstReservation.setInt(5, reservationWithTicket.getTicket().getTicketId());
+            pstReservation.setInt(4,reservationWithTicket.getNbPlaces());
+            pstReservation.setDouble(5, reservationWithTicket.getPrix());
+            pstReservation.setInt(6, reservationWithTicket.getTicket().getTicketId());
             pstReservation.executeUpdate();
         }
     }
@@ -65,20 +72,18 @@ public class Service implements IService<Reservation> {
         }
     }
 
-    public void delete(Reservation reservation) throws SQLException {
-        String deleteReservationSql = "DELETE FROM reservation WHERE ticket_id = ?";
-        String deleteTicketSql = "DELETE FROM ticket WHERE ticket_id = ?";
+    public void delete(String ticketcode) throws SQLException {
+        String deleteReservationSql = "DELETE FROM reservation WHERE ticket_id = (SELECT ticket_id FROM ticket WHERE ticketCode = ? )";
+        String deleteTicketSql = "DELETE FROM ticket WHERE ticketCode = ?";
 
         try (PreparedStatement pstReservation = connection.prepareStatement(deleteReservationSql);
              PreparedStatement pstTicket = connection.prepareStatement(deleteTicketSql)) {
 
-            int ticketId = reservation.getTicket().getTicketId();
-
-
-            pstReservation.setInt(1, ticketId);
+            pstReservation.setString(1, ticketcode);
             pstReservation.executeUpdate();
 
-            pstTicket.setInt(1, ticketId);
+            // Suppression du ticket lui-même
+            pstTicket.setString(1, ticketcode);
             pstTicket.executeUpdate();
         }
     }
@@ -89,7 +94,7 @@ public class Service implements IService<Reservation> {
 
     public Map<Reservation, Ticket> afficherAll() throws SQLException {
         Map<Reservation, Ticket> reservations = new HashMap<>();
-        String sql ="SELECT r.status, r.prix, r.ticket_id, " +
+        String sql ="SELECT r.status,r.NbPlaces, r.prix, r.ticket_id, " +
                 "t.ticketCode, t.seatNumber " +
                 "FROM reservation r " +
                 "LEFT JOIN ticket t ON r.ticket_id = t.ticket_id";
@@ -99,12 +104,13 @@ public class Service implements IService<Reservation> {
 
             while (rs.next()) {
                 String status = rs.getString("status");
+                int NbPlaces = rs.getInt("NbPlaces");
                 double prix = rs.getDouble("prix");
                 int ticketId = rs.getInt("ticket_id");
                 String ticketCode = rs.getString("ticketCode");
                 String seatNumber = rs.getString("seatNumber");
 
-                Reservation reservation = new Reservation(status, prix);
+                Reservation reservation = new Reservation(status,NbPlaces, prix);
                 Ticket ticket = null;
 
                 if (ticketId > 0) {
@@ -119,7 +125,52 @@ public class Service implements IService<Reservation> {
     }
 
 
+    public List<Reservation> getAllReservations() {
+        List<Reservation> reservations = new ArrayList<>();
+        String query = "SELECT * FROM reservation";
 
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
 
-}
+            while (rs.next()) {
+                Reservation reservation = new Reservation(
+                         rs.getString("status"),
+                 rs.getInt("NbPlaces"),
+                 rs.getDouble("prix"),
+                 rs.getInt("ticket_id")
+
+                );
+                reservations.add(reservation);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des réservations : " + e.getMessage());
+        }
+
+        return reservations;
+    }
+
+    public List<Ticket> getAllTickets() {
+        List<Ticket> tickets = new ArrayList<>();
+        String query = "SELECT * FROM ticket";
+
+        try (PreparedStatement stmt = connection.prepareStatement(query);
+             ResultSet rs = stmt.executeQuery()) {
+
+            while (rs.next()) {
+                Ticket ticket = new Ticket(
+                        rs.getString("ticketCode"),
+                        rs.getString("seatNumber")
+
+                );
+                tickets.add(ticket);
+            }
+
+        } catch (SQLException e) {
+            System.out.println("Erreur lors de la récupération des réservations : " + e.getMessage());
+        }
+
+        return tickets;
+    }
+    }
 
