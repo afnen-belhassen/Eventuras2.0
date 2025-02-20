@@ -20,7 +20,7 @@ public class Service implements IService<Reservation> {
 
 
 
-        Ticket ticket = new Ticket("TICKET-" + System.currentTimeMillis(), "A" + (int)(Math.random() * 100));
+        Ticket ticket = new Ticket(0,"TICKET-" + System.currentTimeMillis(), "A" + (int)(Math.random() * 100));
         List<Reservation> reservations = new ArrayList<>();
 
         Reservation reservationWithTicket = new Reservation(
@@ -172,5 +172,101 @@ public class Service implements IService<Reservation> {
 
         return tickets;
     }
+
+
+    public void update(String ticketCode, String newEtat, int newNbPlaces, double newPrix, String newSeatNumber) throws SQLException {
+
+        String getTicketIdQuery = "SELECT ticket_id FROM ticket WHERE ticketCode = ?";
+
+        int ticketId = -1;
+        try (PreparedStatement getTicketIdStmt = connection.prepareStatement(getTicketIdQuery)) {
+            getTicketIdStmt.setString(1, ticketCode);
+            ResultSet rs = getTicketIdStmt.executeQuery();
+
+            if (rs.next()) {
+                ticketId = rs.getInt("ticket_id");
+            } else {
+                throw new SQLException("Aucun ticket trouvé avec le code : " + ticketCode);
+            }
+        }
+
+
+        String updateReservationQuery = "UPDATE reservation SET status = ?, NbPlaces = ?, prix = ? WHERE ticket_id = ?";
+        String updateTicketQuery = "UPDATE ticket SET seatNumber = ? WHERE ticket_id = ?";
+
+        try {
+            connection.setAutoCommit(false);
+
+            try (PreparedStatement reservationStatement = connection.prepareStatement(updateReservationQuery);
+                 PreparedStatement ticketStatement = connection.prepareStatement(updateTicketQuery)) {
+
+
+                reservationStatement.setString(1, newEtat);
+                reservationStatement.setInt(2, newNbPlaces);
+                reservationStatement.setDouble(3, newPrix);
+                reservationStatement.setInt(4, ticketId);
+                reservationStatement.executeUpdate();
+
+
+                ticketStatement.setString(1, newSeatNumber);
+                ticketStatement.setInt(2, ticketId);
+                ticketStatement.executeUpdate();
+
+                connection.commit();
+            } catch (SQLException e) {
+                connection.rollback();
+                throw e;
+            } finally {
+                connection.setAutoCommit(true);
+            }
+        } catch (SQLException e) {
+            throw new SQLException("Erreur lors de la mise à jour de la réservation et du ticket.", e);
+        }
     }
+
+
+    public Reservation getReservationWithTicketByTicketCode(String ticketCode) throws SQLException {
+        String query = "SELECT r.Id AS reservation_id, r.status, r.prix, r.NbPlaces, r.ticket_id, " +
+                "t.ticketCode, t.seatNumber " +
+                "FROM reservation r " +
+                "JOIN ticket t ON r.ticket_id = t.ticket_id " +
+                "WHERE t.ticketCode = ?";
+
+        try (PreparedStatement stmt = connection.prepareStatement(query)) {
+            stmt.setString(1, ticketCode);
+
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+
+                Reservation reservation = new Reservation();
+                reservation.setId(rs.getInt("reservation_id"));
+                reservation.setStatus(rs.getString("status"));
+                reservation.setPrix(rs.getDouble("prix"));
+                reservation.setNbPlaces(rs.getInt("NbPlaces"));
+
+
+                Ticket ticket = new Ticket();
+                ticket.setTicketCode(rs.getString("ticketCode"));
+                ticket.setSeatNumber(rs.getString("seatNumber"));
+
+
+                reservation.setTicket(ticket);
+
+                return reservation;
+            } else {
+                return null;
+            }
+        } catch (SQLException e) {
+            throw new SQLException("Erreur lors de la récupération de la réservation et du ticket.", e);
+        }
+    }
+
+
+
+
+
+
+}
+
+
 

@@ -16,6 +16,7 @@ import java.sql.SQLException;
 public class AjouterReservation {
     public TextField status;
     public TextField prix;
+    public TextField Nbp;
     public Button ajouter;
     Service service = new Service();
     private Connection cnx;
@@ -29,7 +30,7 @@ public class AjouterReservation {
         Reservation reservation = new Reservation();
         String status=this.status.getText();
         Double prix = Double.parseDouble(this.prix.getText());
-        int NbPlaces = Integer.parseInt(this.status.getText());
+        int NbPlaces = Integer.parseInt(this.Nbp.getText());
         try {
             service.ajouter(new Reservation(status,NbPlaces,prix));
         }

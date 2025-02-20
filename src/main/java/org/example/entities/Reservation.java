@@ -87,6 +87,10 @@ public class Reservation {
         return status;
     }
 
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     public void setDate(String status) {
         this.status = status;
     }
@@ -142,9 +146,9 @@ public class Reservation {
     @Override
     public String toString() {
         return
-                "Etat=" + status +
-                ", NbPlaces=" + NbPlaces +
-                ", prix=" + prix
+                 status +
+                 NbPlaces +
+                 prix
                 ;
     }
 }

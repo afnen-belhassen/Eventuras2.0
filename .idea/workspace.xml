@@ -4,14 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="">
+    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="Reservation 2.0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Reservation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Ticket.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/AfficherReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gui/AfficherReservation.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/AjouterReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gui/AjouterReservation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/main/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/main/mainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/main/mainGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/IService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/Service.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherReservation.fxml" afterDir="false" />
@@ -36,6 +34,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;NBlol&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/afnen-belhassen/Eventuras&quot;,
+    &quot;accountId&quot;: &quot;5a6da14e-9caf-4764-947d-9f0fa8b74f6d&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -128,10 +138,25 @@
       <workItem from="1739617637635" duration="15564000" />
       <workItem from="1739866224949" duration="4802000" />
       <workItem from="1739970922271" duration="6501000" />
+      <workItem from="1740034553971" duration="237000" />
+      <workItem from="1740075045612" duration="19934000" />
     </task>
+    <task id="LOCAL-00001" summary="Reservation 2.0">
+      <option name="closed" value="true" />
+      <created>1740034739651</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1740034739651</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Reservation 2.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reservation 2.0" />
   </component>
 </project>

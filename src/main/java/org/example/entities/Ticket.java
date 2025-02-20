@@ -15,6 +15,12 @@ public class Ticket {
         this.seatNumber = seatNumber;
     }
 
+    public Ticket(int ticketId, String ticketCode,String seatNumber) {
+        this.ticketId = ticketId;
+        this.ticketCode = ticketCode;
+        this.seatNumber = seatNumber;
+    }
+
     public String getSeatNumber() {
         return seatNumber;
     }
@@ -48,8 +54,8 @@ public class Ticket {
     @Override
     public String toString() {
         return
-                "ticketCode='" + ticketCode + '\'' +
-                ", seatNumber=" + seatNumber ;
+                 ticketCode +
+                 seatNumber ;
 
     }
 }

@@ -7,10 +7,12 @@
 
 <AnchorPane prefHeight="692.0" prefWidth="765.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gui.AjouterReservation">
    <children>
-      <TextField id="status" fx:id="status" layoutX="57.0" layoutY="38.0" />
-      <TextField id="prix" fx:id="prix" layoutX="58.0" layoutY="95.0" />
+      <TextField id="status" fx:id="status" layoutX="134.0" layoutY="42.0" />
+      <TextField id="prix" fx:id="prix" layoutX="134.0" layoutY="157.0" />
       <Label layoutX="14.0" layoutY="42.0" text="Etat" />
-      <Label layoutX="10.0" layoutY="99.0" text="Prix" />
+      <Label layoutX="14.0" layoutY="166.0" text="Prix" />
       <Button fx:id="ajouter" layoutX="644.0" layoutY="265.0" mnemonicParsing="false" onAction="#ajouter" text="Submit" />
+      <TextField id="status" fx:id="Nbp" layoutX="134.0" layoutY="103.0" />
+      <Label layoutX="14.0" layoutY="112.0" text="Nombre de places" />
    </children>
 </AnchorPane>
