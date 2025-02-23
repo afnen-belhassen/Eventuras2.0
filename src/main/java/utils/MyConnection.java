@@ -2,31 +2,35 @@ package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 
 public class MyConnection {
-    private final String URL = "jdbc:mysql://localhost:3306/eventuras";
-    private final String USER = "root";
-    private final String PASS = "";
-    private Connection connection;
-    private static MyConnection instance;
+    private static MyConnection connection;
+    private Connection cnx;
 
-    private MyConnection(){
+    public Connection getCnx() {
+        return cnx;
+
+    }
+
+    private MyConnection() {
+        String url = "jdbc:mysql://localhost:3306/eventuras";
+        String user = "root";
+        String password = "";
         try {
-            connection = DriverManager.getConnection(URL, USER, PASS);
-            System.out.println("Connection established");
-        } catch (SQLException e) {
-            System.err.println(e.getMessage());
+            cnx = DriverManager.getConnection(url, user, password);
+            System.out.println("Connexion établie !");
         }
-    }
+        catch (Exception e) {
+            System.out.println(e.getMessage());
+        }
 
+    }
     public static MyConnection getInstance(){
-        if(instance == null)
-            instance = new MyConnection();
-        return instance;
+        if(connection == null){
+            connection= new MyConnection();
+        }
+        return connection;
+
     }
 
-    public Connection getConnection() {
-        return connection;
-    }
 }
