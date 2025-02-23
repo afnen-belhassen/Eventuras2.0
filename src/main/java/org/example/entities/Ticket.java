@@ -54,8 +54,8 @@ public class Ticket {
     @Override
     public String toString() {
         return
-                 ticketCode +
-                 seatNumber ;
+                ticketCode +
+                        seatNumber ;
 
     }
 }

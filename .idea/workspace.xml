@@ -4,7 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="Reservation 4.0" />
+    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="Reservation 5.0">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MyConnection.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MyConnection.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Reservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Reservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Ticket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/entities/Ticket.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/AfficherReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gui/AfficherReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/AjouterReservation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/gui/AjouterReservation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/main/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/main/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/main/mainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/main/mainGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/Service.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/services/Service.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherReservation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterReservation.fxml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -48,24 +61,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.mainGUI.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;GestionReservation&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nassir/IdeaProjects/javafxGDGC24-25&quot;,
-    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.mainGUI.executor": "Debug",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "GestionReservation",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Nassir/IdeaProjects/javafxGDGC24-25",
+    "list.type.of.created.stylesheet": "CSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Application.mainGUI">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.main.Main" />
@@ -131,7 +144,9 @@
       <workItem from="1740034553971" duration="237000" />
       <workItem from="1740075045612" duration="20682000" />
       <workItem from="1740146705524" duration="99000" />
-      <workItem from="1740146839734" duration="1354000" />
+      <workItem from="1740146839734" duration="1417000" />
+      <workItem from="1740213129785" duration="16435000" />
+      <workItem from="1740342508835" duration="3736000" />
     </task>
     <task id="LOCAL-00001" summary="Reservation 2.0">
       <option name="closed" value="true" />
@@ -157,16 +172,36 @@
       <option name="project" value="LOCAL" />
       <updated>1740148194269</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Reservation 4.0">
+      <option name="closed" value="true" />
+      <created>1740148218503</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1740148218503</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
   </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Reservation 2.0" />
     <MESSAGE value="Reservation 3.0" />
     <MESSAGE value="Reservation 4.0" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reservation 4.0" />
+    <MESSAGE value="Reservation 5.0" />
+    <option name="LAST_COMMIT_MESSAGE" value="Reservation 5.0" />
   </component>
 </project>

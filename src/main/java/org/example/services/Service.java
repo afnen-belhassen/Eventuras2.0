@@ -134,10 +134,10 @@ public class Service implements IService<Reservation> {
 
             while (rs.next()) {
                 Reservation reservation = new Reservation(
-                         rs.getString("status"),
-                 rs.getInt("NbPlaces"),
-                 rs.getDouble("prix"),
-                 rs.getInt("ticket_id")
+                        rs.getString("status"),
+                        rs.getInt("NbPlaces"),
+                        rs.getDouble("prix"),
+                        rs.getInt("ticket_id")
 
                 );
                 reservations.add(reservation);
@@ -267,6 +267,3 @@ public class Service implements IService<Reservation> {
 
 
 }
-
-
-

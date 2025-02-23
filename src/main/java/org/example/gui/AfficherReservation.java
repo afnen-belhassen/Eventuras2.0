@@ -1,6 +1,9 @@
 package org.example.gui;
 
 import javafx.application.Platform;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -16,8 +19,8 @@ import org.example.services.Service;
 
 import java.io.IOException;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.util.Comparator;
 import java.util.List;
 
 public class AfficherReservation {
@@ -41,6 +44,8 @@ public class AfficherReservation {
     @FXML
     private TextField seatLabel;
 
+    private ObservableList<Reservation> allReservations = FXCollections.observableArrayList();
+
     private Service service = new Service();
 
     public void initialize() {
@@ -51,6 +56,7 @@ public class AfficherReservation {
             showErrorAlert("Erreur de base de données", e.getMessage());
         }
     }
+
 
     private void loadReservationsAndTickets() throws SQLException {
         List<Reservation> reservations = service.getAllReservations();

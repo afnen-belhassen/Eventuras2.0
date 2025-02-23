@@ -4,7 +4,6 @@ import org.example.entities.Reservation;
 import org.example.entities.Ticket;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.Map;
 
 public interface IService<T> {

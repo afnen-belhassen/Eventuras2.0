@@ -146,9 +146,9 @@ public class Reservation {
     @Override
     public String toString() {
         return
-                 status +
-                 NbPlaces +
-                 prix
+                status +
+                        NbPlaces +
+                        prix
                 ;
     }
 }
