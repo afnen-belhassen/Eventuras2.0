@@ -1,6 +1,4 @@
-package eqprit.tn.class3a17.titans;
-
-import org.w3c.dom.ls.LSOutput;
+package utils;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -11,10 +9,11 @@ public class MyConnection {
 
     public Connection getCnx() {
         return cnx;
+
     }
 
     private MyConnection() {
-        String url = "jdbc:mysql://localhost:3306/pi";
+        String url = "jdbc:mysql://localhost:3306/eventuras";
         String user = "root";
         String password = "";
         try {
@@ -33,4 +32,5 @@ public class MyConnection {
         return connection;
 
     }
+
 }
