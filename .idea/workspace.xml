@@ -4,11 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="changes idk">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/test/Main.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/test/mainGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-    </list>
+    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="changes idk" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -173,7 +169,7 @@
       <workItem from="1740213129785" duration="16435000" />
       <workItem from="1740342508835" duration="5327000" />
       <workItem from="1740384778577" duration="4249000" />
-      <workItem from="1740398453914" duration="374000" />
+      <workItem from="1740398453914" duration="663000" />
     </task>
     <task id="LOCAL-00001" summary="Reservation 2.0">
       <option name="closed" value="true" />
