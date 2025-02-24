@@ -1,5 +1,7 @@
 package entities;
 
+import utils.Session;
+
 public class user {
     private int id;
     private String username;
@@ -16,7 +18,7 @@ public class user {
     private int id_role;
 
     //Getters & Setters
-    public int getId() { return id; }
+    public int getId() { return id ;}
     public void setId(int id) { this.id = id; }
     public String getUsername() { return username; }
     public void setUsername(String username) { this.username = username; }
@@ -40,6 +42,7 @@ public class user {
     public void setLevel(int level) { this.level = level; }
     public String getRole() { return role; }
     public void setRole(String role) { this.role = role; }
+
 
     public user() {}
     //Add Constructor
@@ -88,7 +91,7 @@ public class user {
     //Constructor for the update
     public user(int id,String username, String email, String password, String firstname, String lastname, String birthday, String gender
             , String picture, String phonenumber) {
-        this.id = id;
+        this.id =id;
         this.username = username;
         this.email = email;
         this.password = password;
@@ -103,7 +106,7 @@ public class user {
     //Login Constructor
     public user(int id,String username, String email, String password, String firstname, String lastname, String birthday, String gender
             , String picture, String phonenumber, int level, String role) {
-        this.id = id;
+        this.id =id;
         this.username = username;
         this.email = email;
         this.password = password;

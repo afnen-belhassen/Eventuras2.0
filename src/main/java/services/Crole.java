@@ -11,7 +11,7 @@ public class Crole{
     private Connection connection;
 
     public Crole() {
-        this.connection = MyConnection.getInstance().getCnx();
+        this.connection = MyConnection.getInstance().getConnection();
     }
 
 

@@ -14,7 +14,7 @@ public class userService implements Iuser<user> {
 
     private Connection cnx;
     public userService() {
-        cnx=MyConnection.getInstance().getCnx();
+        cnx=MyConnection.getInstance().getConnection();
     }
     //Add user methode
     @Override
@@ -61,7 +61,7 @@ public class userService implements Iuser<user> {
 
     public boolean isEmailTaken(String email) throws SQLException {
         String query = "SELECT COUNT(*) FROM users WHERE user_email = ?";
-        try (Connection connection = MyConnection.getInstance().getCnx();
+        try (Connection connection = MyConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, email);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -73,7 +73,7 @@ public class userService implements Iuser<user> {
     }
     public boolean isUsernameTaken(String username) throws SQLException {
         String query = "SELECT COUNT(*) FROM users WHERE user_username = ?";
-        try (Connection connection = MyConnection.getInstance().getCnx();
+        try (Connection connection = MyConnection.getInstance().getConnection();
              PreparedStatement preparedStatement = connection.prepareStatement(query)) {
             preparedStatement.setString(1, username);
             ResultSet resultSet = preparedStatement.executeQuery();
@@ -87,7 +87,7 @@ public class userService implements Iuser<user> {
     public Map<String, Integer> getRoles() throws SQLException {
         Map<String, Integer> roles = new HashMap<>();
         String query = "SELECT id_role, user_role FROM role";
-        try (Connection connection = MyConnection.getInstance().getCnx();
+        try (Connection connection = MyConnection.getInstance().getConnection();
              PreparedStatement statement = connection.prepareStatement(query)) {
             ResultSet resultSet = statement.executeQuery();
             while (resultSet.next()) {
@@ -110,7 +110,7 @@ public class userService implements Iuser<user> {
                 "user_gender = ?, user_picture = ? , user_phonenumber = ?" +
                 "WHERE user_id = ?";
         try {
-            PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query);
+            PreparedStatement preparedStatement = MyConnection.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getEmail());
             preparedStatement.setString(3, passwordencrypted);
@@ -136,7 +136,7 @@ public class userService implements Iuser<user> {
     public void deleteUser(int id) {
         String query = "DELETE FROM users WHERE user_id = ?";
         try {
-            PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query);
+            PreparedStatement preparedStatement = MyConnection.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setInt(1, id);
             preparedStatement.executeUpdate();
             System.out.println("User with the id = "+ id+" is deleted!");
@@ -151,7 +151,7 @@ public class userService implements Iuser<user> {
         List<user> list = new ArrayList<>();
         String query = "SELECT * FROM users";
         try {
-            Statement srt = MyConnection.getInstance().getCnx().createStatement();
+            Statement srt = MyConnection.getInstance().getConnection().createStatement();
             ResultSet rs = srt.executeQuery(query);
             while(rs.next()){
                 user user = new user();
@@ -182,7 +182,7 @@ public class userService implements Iuser<user> {
         String query = "SELECT * FROM users WHERE user_username = ? AND user_password = ?";
         String encryptedPassword = encrypt(password);
 
-        try (PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query)) {
+        try (PreparedStatement preparedStatement = MyConnection.getInstance().getConnection().prepareStatement(query)) {
             preparedStatement.setString(1, Username);
             preparedStatement.setString(2, encryptedPassword);
 
@@ -237,7 +237,7 @@ public class userService implements Iuser<user> {
         String query = "UPDATE users " +
                 "SET user_password = ? WHERE user_email = ?";
         try {
-            PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query);
+            PreparedStatement preparedStatement = MyConnection.getInstance().getConnection().prepareStatement(query);
             preparedStatement.setString(1, passwordencrypted);
             preparedStatement.setString(2, email);
             preparedStatement.executeUpdate();
@@ -254,7 +254,7 @@ public class userService implements Iuser<user> {
         String query = "SELECT user_gender, COUNT(*) as count FROM users GROUP BY user_gender";
 
         try {
-            Statement statement = MyConnection.getInstance().getCnx().createStatement();
+            Statement statement = MyConnection.getInstance().getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {
@@ -280,7 +280,7 @@ public class userService implements Iuser<user> {
                 "GROUP BY age_group";
 
         try {
-            Statement statement = MyConnection.getInstance().getCnx().createStatement();
+            Statement statement = MyConnection.getInstance().getConnection().createStatement();
             ResultSet resultSet = statement.executeQuery(query);
 
             while (resultSet.next()) {

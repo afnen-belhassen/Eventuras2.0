@@ -2,6 +2,7 @@ package gui;
 
 import entities.Categorie;
 import entities.Event;
+import entities.user;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -21,6 +22,8 @@ import javafx.stage.Stage;
 import services.ServiceCategorie;
 import services.ServiceEvent;
 import utils.MyConnection;
+import utils.Session;
+
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
@@ -79,6 +82,7 @@ public class AjouterEvent implements Initializable {
     }
     private List<String> activities = new ArrayList<>();
     private final ServiceEvent ServiceEvent = new ServiceEvent();
+    user currentUser = Session.getInstance().getCurrentUser();
 
     //Fonction d'ajout nécessite changement de controle de saisie sous forme de labels(instead of pop-ups)
     @FXML
@@ -167,7 +171,7 @@ public class AjouterEvent implements Initializable {
             }
         }
 
-        Event eve = new Event(title, desc, date, loc, 01, categoryId, imagePath, prix);
+        Event eve = new Event(title, desc, date, loc, currentUser.getId(), categoryId, imagePath, prix);
         eve.setActivities(activities);
         /*public Event(String title, String description, Date date_event, String location,int user_id, int category_id*/
         try {
@@ -180,7 +184,6 @@ public class AjouterEvent implements Initializable {
         }
 
     }
-
     //Fonction d'ouverture du dropdown list (nécessite ajout personnalisé de catégorie)
     public void Opened(ActionEvent actionEvent) {
         if (isInitialized) {
