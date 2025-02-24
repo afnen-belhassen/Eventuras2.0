@@ -69,7 +69,7 @@ public class registerUser {
 
     private Connection cnx;
     public registerUser() {
-        cnx=MyConnection.getInstance().getCnx();
+        cnx=MyConnection.getInstance().getConnection();
     }
 
     @FXML

@@ -16,7 +16,7 @@
       <TextField id="locEve" fx:id="locEve" layoutX="387.0" layoutY="351.0" prefHeight="45.0" prefWidth="353.0" promptText="Localisation" />
       <ComboBox id="categEve" fx:id="categEve" layoutX="784.0" layoutY="289.0" onAction="#Opened" prefHeight="45.0" prefWidth="353.0" promptText="Catégorie" visibleRowCount="4" />
       <DatePicker id="dateEve" fx:id="dateEve" layoutX="387.0" layoutY="289.0" prefHeight="45.0" prefWidth="353.0" promptText="Date " />
-      <Button fx:id="Valider" layoutX="385.0" layoutY="665.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="758.0" text="Valider" />
+      <Button fx:id="Next" layoutX="385.0" layoutY="665.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="758.0" text="Next" />
       <ImageView id="imageEve" fx:id="imageEve" fitHeight="145.0" fitWidth="239.0" layoutX="437.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true" />
       <Button fx:id="nextButton" layoutX="564.0" layoutY="557.0" mnemonicParsing="false" onAction="#showNextImage" prefHeight="40.0" prefWidth="66.0" text="-&gt;">
          <font>

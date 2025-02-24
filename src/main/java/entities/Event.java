@@ -1,6 +1,9 @@
 package entities;
 
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
+import utils.Session;
 
 import java.sql.Timestamp;
 import java.util.ArrayList;
@@ -24,7 +27,7 @@ public class Event  {
     public Event(){
     this.activiteList = new ArrayList<>();
     }
-
+    user currentUser = Session.getInstance().getCurrentUser();
     public Event(String title, String description, Date date_event, String location, int user_id, String category_name, Double price) {
         this.title = title;
         this.description = description;
@@ -46,7 +49,7 @@ public class Event  {
         this.description = description;
         this.date_event = date_event;
         this.location = location;
-        this.user_id = 01;
+        this.user_id = user_id;
         this.category_id = category_id;
         this.category_name = category_name;
         this.image = image;
@@ -60,7 +63,7 @@ public class Event  {
         this.description = description;
         this.date_event = date_event;
         this.location = location;
-        this.user_id = 01;
+        this.user_id = user_id;
         this.category_id = category_id;
         this.image = image;
         this.price = price;
@@ -73,7 +76,7 @@ public class Event  {
         this.description = description;
         this.date_event = date_event;
         this.location = location;
-        this.user_id = 01;
+        this.user_id = user_id;
         this.category_id = category_id;
         this.category_name = category_name;
         this.image = image;
@@ -86,7 +89,7 @@ public class Event  {
         this.description = description;
         this.date_event = date_event;
         this.location = location;
-        this.user_id = 01;
+        this.user_id = user_id;
         this.category_id = category_id;
         this.image = image;
         this.price = price;
@@ -131,7 +134,7 @@ public class Event  {
         this.description = desc;
         this.location = loc;
         this.date_event = java.sql.Date.valueOf(String.valueOf(date));
-        this.user_id = userId;
+        this.user_id = user_id;
         this.category_id = categoryId;
         this.price = price;
         this.activiteList = activiteList;
@@ -166,12 +169,24 @@ public class Event  {
         this.description=description;
         this.date_event=dateEvent;
         this.location=location;
-        this.user_id=userId;
+        this.user_id = user_id;
         this.category_id=categoryId;
         this.category_name=categoryName;
         this.price=price;
         this.activiteList=activiteList;
     }
+
+  /*  public Event(String titleEvent, String descEve, Date dateEve, String locEve, int id,String category_name, String imagePath, Double prixEve, String activities) {
+        this.title = titleEvent;
+        this.description = descEve;
+        this.date_event = dateEve;
+        this.location = locEve;
+        this.user_id=currentUser.getId();
+        this.category_id=id;
+        this.category_name=category_name;
+        this.image=imagePath;
+        this.price=prixEve;
+    }*/
 
     public int getId_event() {
         return id_event;

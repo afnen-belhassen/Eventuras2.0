@@ -1,6 +1,6 @@
 /* Root style (applies to the entire scene) */
 .root {
-    -fx-background-image: url("Images/bakc6.png");
+    -fx-background-image: url("Images/final.png");
     -fx-background-size: cover;  /* Makes the image cover the entire scene */
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;

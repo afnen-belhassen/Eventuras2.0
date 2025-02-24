@@ -1,9 +1,12 @@
 package gui;
 
 import entities.Event;
+import entities.user;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
 import javafx.geometry.Pos;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -18,6 +21,7 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import services.ServiceEvent;
 import utils.MyConnection;
+import utils.Session;
 
 import java.io.File;
 import java.io.IOException;
@@ -26,9 +30,10 @@ import java.net.URL;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.ResourceBundle;
 
 //AFFICHAGE POUR PARTICIPANT ET ORGANISATEUR
-public class AfficherEventHOME  {
+public class AfficherEventHOME implements Initializable {
 
 
     public Button GoToEvents;
@@ -40,11 +45,23 @@ public class AfficherEventHOME  {
     public VBox eventContainer;
     public HBox sliderBox;
     private final Connection cnx;
+    public Button create;
+
     public AfficherEventHOME() {
         cnx = MyConnection.getInstance().getConnection();
     }
     public final ServiceEvent sE=new ServiceEvent();
-    public void showLastThreeEvents() {
+    user CurrenUser = Session.getInstance().getCurrentUser();
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+    setButtonVisibilty();
+    }
+    public void setButtonVisibilty() {
+        if (CurrenUser.getRole() == "organisateur") {
+            create.setVisible(true);
+        } else if (CurrenUser.getRole() == "participant") {
+            create.setVisible(false);
+        }
+    }    public void showLastThreeEvents() {
         // Hide the ScrollPane and show the Slider with the last 3 events
         scrollablePane.setVisible(false);
         sliderBox.setVisible(true);
@@ -302,6 +319,26 @@ public class AfficherEventHOME  {
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
+    }
+
+    public void GoToCollab3(ActionEvent event) {
+    }
+
+    public void GoTotickets3(ActionEvent event) {
+    }
+
+    public void GoToReclam3(ActionEvent event) {
+    }
+
+    public void createEvent(ActionEvent event) throws IOException {
+        // Load the AfficherEvent interface
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterEvent.fxml"));
+        Parent root = loader.load();
+
+        // Switch to the AjouterEvet scene
+        Stage stage = (Stage) create.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 }
 

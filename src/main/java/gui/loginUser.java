@@ -13,6 +13,7 @@ import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import utils.Session;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -47,6 +48,8 @@ public class loginUser {
             user user = userService.authenticateUser(email, password);
 
             if (user != null) {
+                Session.getInstance().startSession(user);
+                System.out.println("User logged in");
                 // Store user session
                 UserSession.getInstance(
                         user.getId(),

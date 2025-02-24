@@ -17,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.control.ProgressBar;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
@@ -102,6 +103,10 @@ public class adminDashboard {
         ageDistribution.entrySet().forEach(entry -> series.getData().add(new XYChart.Data<>(entry.getKey(), entry.getValue())));
 
         age_barchart.getData().add(series);
+    }
+
+    public void editProf(MouseEvent mouseEvent) {
+
     }
 
     static class RankingListCell extends ListCell<user> {
