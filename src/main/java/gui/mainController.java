@@ -17,9 +17,7 @@ public class mainController extends Application {
     @Override
     public void start(Stage primaryStage) throws IOException{
         mainController.primaryStage = primaryStage;
-        Image favicon = new Image(Objects.requireNonNull(getClass().getResourceAsStream("/images/favicon.png")));
-        primaryStage.setTitle("TechTerra Portal");
-        primaryStage.getIcons().add(favicon);
+        primaryStage.setTitle("Eventuras");
         loadFXML("/login.fxml");
     }
     public static FXMLLoader loadFXML(String fxmlFileName) throws IOException {

@@ -340,6 +340,17 @@ public class AfficherEventHOME implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+
+    public void goHome(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEventHome.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        Stage stage = (Stage) Acceuil.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
 }
 
 

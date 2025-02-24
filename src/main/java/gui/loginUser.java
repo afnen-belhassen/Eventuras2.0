@@ -1,16 +1,13 @@
 package gui;
 
 import entities.user;
+import javafx.scene.control.*;
 import services.userService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import utils.Session;
@@ -20,6 +17,7 @@ import java.sql.SQLException;
 
 public class loginUser {
 
+    public Hyperlink register;
     @FXML
     private TextField email_input;
 
@@ -91,7 +89,14 @@ public class loginUser {
 
     @FXML
     void register_page(ActionEvent event) throws IOException {
-        loadPage("/registerUser.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/registerUser.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        Stage stage = (Stage) register.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     @FXML

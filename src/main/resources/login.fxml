@@ -5,60 +5,38 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="700" prefWidth="1200" style="-fx-background-color: black;" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.loginUser">
+<AnchorPane prefHeight="731.0" prefWidth="1305.0" style="-fx-background-color: ;" stylesheets="@entry.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.loginUser">
     <children>
-        <TextField fx:id="email_input" layoutX="116.0" layoutY="299.0" prefHeight="29.0" prefWidth="264.0" style="-fx-border-color: white; -fx-background-color: black; -fx-border-radius: 100; -fx-background-color: black; -fx-border-width: 2; -fx-text-fill: white;" />
-      <PasswordField fx:id="password_input" layoutX="116.0" layoutY="364.0" prefHeight="29.0" prefWidth="264.0" style="-fx-background-color: black; -fx-border-color: white; -fx-border-radius: 100; -fx-border-width: 2; -fx-text-fill: white;" />
-        <Text fill="WHITE" layoutX="115.0" layoutY="293.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Username:">
+        <TextField fx:id="email_input" layoutX="91.0" layoutY="301.0" prefHeight="29.0" prefWidth="264.0" promptText="E-mail" />
+      <PasswordField fx:id="password_input" layoutX="91.0" layoutY="350.0" prefHeight="29.0" prefWidth="264.0" promptText="Mot de passe" />
+        <Text fill="#e07564" layoutX="56.0" layoutY="270.0" strokeType="OUTSIDE" strokeWidth="0.0" text="&quot;Reconnectez-vous !&quot;">
             <font>
-                <Font name="Montserrat Regular" size="25.0" />
+                <Font name="Dubai Bold" size="37.0" />
             </font>
         </Text>
-        <Text fill="WHITE" layoutX="116.0" layoutY="358.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Password:" wrappingWidth="171.0">
-            <font>
-                <Font name="Montserrat Regular" size="25.0" />
-            </font>
-        </Text>
-        <Text fill="WHITE" layoutX="115.0" layoutY="237.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Log back in!">
-            <font>
-                <Font name="Dubai Bold" size="50.0" />
-            </font>
-        </Text>
-        <CheckBox layoutX="116.0" layoutY="400.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="171.0" style="-fx-background-color: black;" text="Stay Connected" textFill="WHITE" />
-      <Hyperlink layoutX="115.0" layoutY="419.0" onAction="#redirect_passwordpage" text="Forgot your password?">
+        <CheckBox layoutX="150.0" layoutY="643.0" mnemonicParsing="false" prefHeight="19.0" prefWidth="171.0" text="Restez connecté" textFill="#2a004e">
+         <font>
+            <Font name="Arial Black" size="12.0" />
+         </font></CheckBox>
+      <Hyperlink layoutX="152.0" layoutY="448.0" onAction="#redirect_passwordpage" text="Mot de passe oublié?">
          <font>
             <Font size="14.0" />
          </font>
       </Hyperlink>
-        <Button fx:id="submitButton" layoutX="116.0" layoutY="453.0" mnemonicParsing="false" onAction="#login" prefHeight="29.0" prefWidth="107.0" style="-fx-border-color: white; -fx-border-radius: 100; -fx-background-color: black; -fx-border-width: 2;" text="Log in" textFill="WHITE">
+        <Button fx:id="submitButton" layoutX="91.0" layoutY="394.0" mnemonicParsing="false" onAction="#login" prefHeight="43.0" prefWidth="264.0" text="Se connecter" textFill="WHITE">
             <font>
                 <Font name="Montserrat SemiBold" size="15.0" />
             </font>
         </Button>
-        <Text fill="WHITE" layoutX="236.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="or" wrappingWidth="14.490234375">
-         <font>
-            <Font size="14.0" />
-         </font></Text>
-        <Hyperlink layoutX="250.0" layoutY="458.0" onAction="#register_page" text="register">
+        <Hyperlink fx:id="register" layoutX="137.0" layoutY="475.0" onAction="#register_page" prefHeight="27.0" prefWidth="171.0" text="Créer un nouveau compte">
          <font>
             <Font size="14.0" />
          </font></Hyperlink>
-        <Text fill="WHITE" layoutX="307.0" layoutY="477.0" strokeType="OUTSIDE" strokeWidth="0.0" text="if you're new here." wrappingWidth="134.0">
-         <font>
-            <Font size="14.0" />
-         </font></Text>
-      <ImageView fitHeight="700.0" fitWidth="600.0" layoutX="600.0">
-         <image>
-            <Image url="@images/login_bg.png" />
-         </image>
-      </ImageView>
-      <Text fx:id="error" fill="RED" layoutX="117.0" layoutY="503.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text">
+      <Text fx:id="error" fill="#000eff" layoutX="204.0" layoutY="546.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" wrappingWidth="91.15951538085938">
          <font>
             <Font size="14.0" />
          </font>

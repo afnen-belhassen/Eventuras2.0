@@ -19,6 +19,10 @@ import java.util.regex.Pattern;
 
 import entities.Role;
 import entities.user;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
 import services.Crole;
 import utils.MyConnection;
 import javafx.collections.FXCollections;
@@ -36,6 +40,8 @@ public class registerUser {
     public Text error;
     @FXML
     public ComboBox<String> role_input;
+    public Button login;
+    public Button submit;
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -111,7 +117,14 @@ public class registerUser {
 
     @FXML
     void back_to_login(ActionEvent event) throws IOException {
-        mainController.loadFXML("/login.fxml");
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        Stage stage = (Stage) login.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     @FXML
@@ -128,7 +141,7 @@ public class registerUser {
     }
 
     @FXML
-    public void user_Submit(ActionEvent event) {
+    public void user_Submit(ActionEvent event) throws IOException {
         Alert alert = new Alert(Alert.AlertType.ERROR);
 
         // Validate form inputs
@@ -229,6 +242,14 @@ public class registerUser {
         confirmationAlert.setTitle("Confirmation");
         confirmationAlert.setContentText("User added successfully. Please log in.");
         confirmationAlert.show();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        Stage stage = (Stage) submit.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     // Profile picture upload method

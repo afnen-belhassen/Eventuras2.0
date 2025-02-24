@@ -179,6 +179,28 @@ public class Crudrole {
             e.printStackTrace();
         }
     }
+
+    public void goto_user(ActionEvent event) {
+    }
+
+    public void goto_event(ActionEvent event) {
+    }
+
+    public void goto_forum(ActionEvent event) {
+    }
+
+    public void goto_shop(ActionEvent event) {
+    }
+
+    public void goto_blog(ActionEvent event) {
+    }
+
+    public void goto_edit(ActionEvent event) {
+    }
+
+    public void disconnect(ActionEvent event) {
+
+    }
 }
 
 
