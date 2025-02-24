@@ -1,6 +1,6 @@
 /* Root style (applies to the entire scene) */
 .root {
-    -fx-background-image: url("Images/bakc6.png");
+    -fx-background-image: url("Images/final.png");
     -fx-background-size: cover;  /* Makes the image cover the entire scene */
     -fx-background-repeat: no-repeat;
     -fx-background-position: center;
@@ -57,7 +57,7 @@ AnchorPane {
     /* Button styling */
 
     Button {
-        -fx-background-color: transparent; /* Gradient from bright yellow to darker yellow */
+        -fx-background-color: white; /* Gradient from bright yellow to darker yellow */
         -fx-text-fill: #E07564; /* Dark blue text */
         -fx-font-weight: bold;
         -fx-font-size: 14px;
@@ -110,4 +110,7 @@ TableView{
     font-family: 'Poppins', sans-serif;
     -fx-text-fill: #1A237E;
 
+}
+SearchField{
+    -fx-background-color:white;
 }
