@@ -251,4 +251,29 @@ public class listUser {
     void display_charts(ActionEvent event) throws IOException {
         mainController.loadFXML("/Crudrole.fxml");
     }
+
+    public void goto_dashboard(ActionEvent event) {
+    }
+
+    public void goto_user(ActionEvent event) {
+    }
+
+    public void goto_event(ActionEvent event) {
+    }
+
+    public void goto_forum(ActionEvent event) {
+    }
+
+    public void goto_shop(ActionEvent event) {
+    }
+
+    public void goto_blog(ActionEvent event) {
+    }
+
+    public void goto_edit(ActionEvent event) {
+    }
+
+    public void disconnect(ActionEvent event) {
+
+    }
 }

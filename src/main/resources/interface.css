@@ -57,7 +57,7 @@ AnchorPane {
     /* Button styling */
 
     Button {
-        -fx-background-color: transparent; /* Gradient from bright yellow to darker yellow */
+        -fx-background-color: white; /* Gradient from bright yellow to darker yellow */
         -fx-text-fill: #E07564; /* Dark blue text */
         -fx-font-weight: bold;
         -fx-font-size: 14px;
@@ -110,4 +110,7 @@ TableView{
     font-family: 'Poppins', sans-serif;
     -fx-text-fill: #1A237E;
 
+}
+SearchField{
+    -fx-background-color:white;
 }

@@ -1,5 +1,6 @@
 package gui;
 
+import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
 import java.time.LocalTime;
@@ -11,17 +12,21 @@ import entities.user;
 import javafx.animation.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ProgressBar;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import javafx.util.Duration;
+import main.MainGUI;
 import services.userService;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -29,6 +34,16 @@ import javafx.scene.chart.NumberAxis;
 import javafx.scene.chart.XYChart;
 import javafx.scene.chart.PieChart;
 public class adminDashboard {
+    public Label welcome;
+    public Button Dashboard;
+    public Button userMan;
+    public Button colisMan;
+    public Button ForMan;
+    public Button FactMan;
+    public Button editProf;
+    public Button disco;
+    public ImageView picture;
+    public Button events;
     @FXML
     private Text totalReclamation;
 
@@ -37,7 +52,7 @@ public class adminDashboard {
 
     @FXML
     private Text totalfacture;
-
+    private Stage stage;
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -105,8 +120,61 @@ public class adminDashboard {
         age_barchart.getData().add(series);
     }
 
-    public void editProf(MouseEvent mouseEvent) {
+    public void goto_dashboard(ActionEvent event) throws IOException {
 
+    }
+//
+    public void goto_user(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/listUser.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) userMan.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+//events(listEVENTS)
+    public void goto_event(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEvent.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) events.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+//Reclamations
+    public void goto_forum(ActionEvent event) throws IOException {
+        mainController.loadFXML("/login.fxml");
+    }
+//Forum
+    public void goto_blog(ActionEvent event) throws IOException {
+        mainController.loadFXML("/login.fxml");
+    }
+
+    public void goto_edit(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/editCurrentuser.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) editProf.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+    }
+//
+    public void disconnect(ActionEvent event) throws IOException {
+        userSession.cleanUserSession();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) disco.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     static class RankingListCell extends ListCell<user> {
@@ -149,7 +217,7 @@ public class adminDashboard {
     }
 
     private void animateScrollingText() {
-        String newsText = "° Welcome back Mr: " + userSession.getFirstname() + " " + userSession.getLastname() + " hetheka houwa °";
+        String newsText = "° Welcome back!: " + userSession.getFirstname() + " " + userSession.getLastname() ;
         scrolling_text.setText(newsText);
         Rectangle clip = new Rectangle(1027, 60);
         news_pane.setClip(clip);
