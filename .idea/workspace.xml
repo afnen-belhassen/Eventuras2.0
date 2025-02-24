@@ -4,7 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="Reservation">
+    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="changes idk">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/test/Main.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/test/mainGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -53,25 +55,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.mainGUI.executor": "Debug",
-    "Application.org.example.test.mainGUI.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "GestionRes",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Nassir/IdeaProjects/javafxGDGC24-25",
-    "list.type.of.created.stylesheet": "CSS",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.mainGUI.executor&quot;: &quot;Debug&quot;,
+    &quot;Application.org.example.test.mainGUI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;GestionRes&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/Nassir/IdeaProjects/javafxGDGC24-25&quot;,
+    &quot;list.type.of.created.stylesheet&quot;: &quot;CSS&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Application.org.example.test.mainGUI">
     <configuration name="mainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="org.example.main.mainGUI" />
@@ -129,6 +131,7 @@
       </method>
     </configuration>
     <list>
+      <item itemvalue="Application.mainGUI" />
       <item itemvalue="Application.org.example.test.Main" />
       <item itemvalue="Application.org.example.test.mainGUI" />
     </list>
@@ -170,6 +173,7 @@
       <workItem from="1740213129785" duration="16435000" />
       <workItem from="1740342508835" duration="5327000" />
       <workItem from="1740384778577" duration="4249000" />
+      <workItem from="1740398453914" duration="374000" />
     </task>
     <task id="LOCAL-00001" summary="Reservation 2.0">
       <option name="closed" value="true" />
@@ -219,7 +223,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740351763601</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="changes idk">
+      <option name="closed" value="true" />
+      <created>1740398827231</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1740398827231</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -242,6 +254,7 @@
     <MESSAGE value="Reservation 4.0" />
     <MESSAGE value="Reservation 5.0" />
     <MESSAGE value="Reservation" />
-    <option name="LAST_COMMIT_MESSAGE" value="Reservation" />
+    <MESSAGE value="changes idk" />
+    <option name="LAST_COMMIT_MESSAGE" value="changes idk" />
   </component>
 </project>
