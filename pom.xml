@@ -51,6 +51,23 @@
             <version>4.9.0</version> <!-- Use the latest version available -->
         </dependency>
 
+        <dependency>
+            <groupId>org.openjfx</groupId>
+            <artifactId>javafx-media</artifactId>
+            <version>17</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.apache.pdfbox</groupId>
+            <artifactId>pdfbox</artifactId>
+            <version>2.0.27</version>
+        </dependency>
+
+
+
+        <!-- Add the library for loading 3D models -->
+
+
 
     </dependencies>
     <build>
