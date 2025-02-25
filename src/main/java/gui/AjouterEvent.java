@@ -86,7 +86,7 @@ public class AjouterEvent implements Initializable {
 
     //Fonction d'ajout nécessite changement de controle de saisie sous forme de labels(instead of pop-ups)
     @FXML
-    public void Ajouter(ActionEvent actionEvent) {
+    public void Ajouter(ActionEvent event) throws IOException {
         Alert alert1 = new Alert(Alert.AlertType.ERROR);
         String title = titleEvent.getText().trim();
         String desc = descEve.getText().trim();

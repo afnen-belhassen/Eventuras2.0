@@ -4,31 +4,40 @@ import entities.Event;
 import entities.Participation;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.CheckBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 import services.ServiceParticipation;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class AjouterParticipation {
 
     public Button confirmer;
     public VBox activityContainer;
 
-    public void confirmButton(ActionEvent event) {
+    public void confirmButton(ActionEvent event) throws IOException {
         if (selectedActivities.isEmpty()) {
             Alert alert = new Alert(Alert.AlertType.WARNING);
             alert.setTitle("Aucune activité sélectionnée");
             alert.setHeaderText("Veuillez sélectionner au moins une activité.");
             alert.showAndWait();
         } else {
-            // Save the selected activities to the participation table
             saveParticipation();
         }
+
     }
+
     private Event event;
     private List<String> selectedActivities = new ArrayList<>(); // Stores selected activities
 
@@ -93,5 +102,10 @@ public class AjouterParticipation {
         return 1;
     }
 
+
+
+
+
 }
+
 

@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<AnchorPane prefHeight="731.0" prefWidth="1305.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherEventHOME">
+<AnchorPane prefHeight="731.0" prefWidth="1305.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/17.0.14" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherEventHOME">
    <children>
       <Button fx:id="GoToEvents" layoutX="24.0" layoutY="291.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Evenements" />
       <Button fx:id="Collaborations" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onAction="#GoToCollab3" prefHeight="40.0" prefWidth="177.0" text="Collaborations" />
