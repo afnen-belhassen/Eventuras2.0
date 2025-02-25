@@ -5,32 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="changes idk">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MyConnection.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Reservation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/entities/Ticket.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/AfficherReservation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/gui/AjouterReservation.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/IService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/services/Service.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/test/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/test/mainGUI.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherReservation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterReservation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterReservation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/back.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/back2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/back3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/back4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/back5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interface.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interface.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +69,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
+    "settings.editor.selected.configurable": "vcs.Git",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -215,7 +190,7 @@
       <workItem from="1740384778577" duration="4249000" />
       <workItem from="1740398453914" duration="2328000" />
       <workItem from="1740406948518" duration="2011000" />
-      <workItem from="1740430837827" duration="8019000" />
+      <workItem from="1740430837827" duration="9677000" />
     </task>
     <task id="LOCAL-00001" summary="Reservation 2.0">
       <option name="closed" value="true" />
@@ -281,7 +256,15 @@
       <option name="project" value="LOCAL" />
       <updated>1740399192899</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="changes idk">
+      <option name="closed" value="true" />
+      <created>1740440777414</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1740440777414</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -306,5 +289,9 @@
     <MESSAGE value="Reservation" />
     <MESSAGE value="changes idk" />
     <option name="LAST_COMMIT_MESSAGE" value="changes idk" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>
