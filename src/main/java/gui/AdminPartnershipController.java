@@ -57,7 +57,7 @@ public class AdminPartnershipController {
         try {
             partnerships.addAll(partnershipService.readAll());
         } catch (SQLException e) {
-            showAlert("Error", "Failed to load partnerships", Alert.AlertType.ERROR);
+            showAlert("Erreur", "Échec du chargement des partenariats", Alert.AlertType.ERROR);
         }
     }
 
@@ -80,7 +80,7 @@ public class AdminPartnershipController {
         // Create a ComboBox for contract type
         ComboBox<ContractType> contractTypeComboBox = new ComboBox<>();
         contractTypeComboBox.getItems().addAll(ContractType.values()); // Add all ContractType values to the ComboBox
-        contractTypeComboBox.setPromptText("Select Contract Type");
+        contractTypeComboBox.setPromptText("Selectionner type de contrat");
 
         TextField descriptionField = new TextField();
         CheckBox isSignedCheckbox = new CheckBox("Is Signed"); // Checkbox for boolean value
@@ -95,7 +95,7 @@ public class AdminPartnershipController {
         dialog.getDialogPane().setContent(grid);
 
         // Add buttons
-        ButtonType saveButtonType = new ButtonType("Save", ButtonBar.ButtonData.OK_DONE);
+        ButtonType saveButtonType = new ButtonType("Sauvegarder", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
 
         // Convert the result to a Partnership object when the Save button is clicked
@@ -109,7 +109,7 @@ public class AdminPartnershipController {
                     // Get selected contract type from ComboBox
                     ContractType contractType = contractTypeComboBox.getValue();
                     if (contractType == null) {
-                        showAlert("Error", "Please select a contract type.", Alert.AlertType.ERROR);
+                        showAlert("Erreur", "Veuillez selectionner un type de contrat", Alert.AlertType.ERROR);
                         return null; // Don't proceed if no contract type is selected
                     }
 
@@ -120,7 +120,7 @@ public class AdminPartnershipController {
                     Partnership newPartnership = new Partnership(0, organizerId, partnerId, contractType, description, isSigned);
                     return newPartnership;
                 } catch (NumberFormatException e) {
-                    showAlert("Error", "Invalid input format for IDs.", Alert.AlertType.ERROR);
+                    showAlert("Erreur", "Input Invalid", Alert.AlertType.ERROR);
                 }
             }
             return null;
@@ -132,7 +132,7 @@ public class AdminPartnershipController {
                 partnershipService.create(newPartnership);
                 loadPartnerships();
             } catch (SQLException e) {
-                showAlert("Error", "Failed to add partnership", Alert.AlertType.ERROR);
+                showAlert("Erreur", "Echec d'ajout de Partnership", Alert.AlertType.ERROR);
             }
         });
     }
@@ -144,8 +144,8 @@ public class AdminPartnershipController {
         if (selected != null) {
             Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
             confirmationAlert.setTitle("Confirm Deletion");
-            confirmationAlert.setHeaderText("Are you sure you want to delete this partnership?");
-            confirmationAlert.setContentText("This action cannot be undone.");
+            confirmationAlert.setHeaderText("Etes Vous sur ?");
+            confirmationAlert.setContentText("Cette Action est definitive");
 
             Optional<ButtonType> result = confirmationAlert.showAndWait();
             if (result.isPresent() && result.get() == ButtonType.OK) {
@@ -153,11 +153,11 @@ public class AdminPartnershipController {
                     partnershipService.delete(selected);
                     loadPartnerships();
                 } catch (SQLException e) {
-                    showAlert("Error", "Failed to delete partnership", Alert.AlertType.ERROR);
+                    showAlert("Erreur", "Echec de suppression de Partnership", Alert.AlertType.ERROR);
                 }
             }
         } else {
-            showAlert("Warning", "Please select a partnership to delete", Alert.AlertType.WARNING);
+            showAlert("Alert", "Veuillez selectionner un partenaire", Alert.AlertType.WARNING);
         }
     }
 

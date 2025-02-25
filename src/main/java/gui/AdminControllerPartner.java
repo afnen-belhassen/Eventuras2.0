@@ -41,12 +41,12 @@ public class AdminControllerPartner {
     @FXML
     void initialize() {
         try {
-            // Fetch data from the database
+            // Récupérer les données depuis la base de données
             List<Partner> partners = ps.readAll();
             ObservableList<Partner> observableList = FXCollections.observableArrayList(partners);
             partnersList.setItems(observableList);
 
-            // Set custom cell factory to display multiple columns
+            // Définir une cellule personnalisée pour afficher plusieurs colonnes
             partnersList.setCellFactory(listView -> new UserControllerPartner.PartnerCell());
             partnersList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Partner>(){
 
@@ -58,7 +58,7 @@ public class AdminControllerPartner {
             });
         } catch (SQLException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Error");
+            alert.setTitle("Erreur");
             alert.setContentText(e.getMessage());
             alert.showAndWait();
         }
@@ -66,23 +66,18 @@ public class AdminControllerPartner {
 
     public void addPartner(MouseEvent mouseEvent) {
         try {
-            // Load the FXML for AddPartner
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/AddPartner.fxml"));
             Parent root = loader.load();
 
-            // Create a new Stage for the AddPartner window
             Stage stage = new Stage();
-            stage.setTitle("Add Partner");
+            stage.setTitle("Ajouter un Partenaire");
             stage.setScene(new Scene(root));
             stage.show();
 
-            // Optionally, close the current stage if you want to prevent going back
-            //((Stage) Ajouter.getScene().getWindow()).close(); // Uncomment this if you want to close the current window
-
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Loading Error");
-            alert.setContentText("Error while loading AddPartner: " + e.getMessage());
+            alert.setTitle("Erreur de chargement");
+            alert.setContentText("Erreur lors du chargement de la fenêtre d'ajout : " + e.getMessage());
             alert.showAndWait();
         }
     }
@@ -90,49 +85,35 @@ public class AdminControllerPartner {
     public void delPartner(MouseEvent mouseEvent) {
         Partner selectedPartner = partnersList.getSelectionModel().getSelectedItem();
 
-        // Check if a partner is selected
         if (selectedPartner == null) {
-            Alert alert = new Alert(Alert.AlertType.WARNING);
-            alert.setTitle("Selection Error");
-            alert.setContentText("Please select a partner to delete.");
-            alert.showAndWait();
+            showAlert(Alert.AlertType.WARNING, "Erreur de sélection", "Veuillez sélectionner un partenaire à supprimer.");
             return;
         }
 
-        // Confirmation dialog before deletion
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
         confirmationAlert.setTitle("Confirmation");
-        confirmationAlert.setHeaderText("Are you sure you want to delete this partner?");
-        confirmationAlert.setContentText("Partner: " + selectedPartner.getName());
+        confirmationAlert.setHeaderText("Êtes-vous sûr de vouloir supprimer ce partenaire ?");
+        confirmationAlert.setContentText("Partenaire : " + selectedPartner.getName());
 
         confirmationAlert.showAndWait().ifPresent(response -> {
             if (response == ButtonType.OK) {
                 try {
-                    // Delete the partner from the database
-                    ps.delete(selectedPartner); // Ensure the delete method takes partner ID or Partner object
+                    ps.delete(selectedPartner);
 
-                    // Show success message
-                    Alert successAlert = new Alert(Alert.AlertType.INFORMATION);
-                    successAlert.setTitle("Success");
-                    successAlert.setContentText("Partner deleted successfully!");
-                    successAlert.showAndWait();
-
-                    // Refresh the partners list
-                    initialize(); // Refresh the list after deletion
+                    showAlert(Alert.AlertType.INFORMATION, "Succès", "Partenaire supprimé avec succès !");
+                    initialize(); // Rafraîchir la liste après suppression
                 } catch (SQLException e) {
-                    Alert errorAlert = new Alert(Alert.AlertType.ERROR);
-                    errorAlert.setTitle("Database Error");
-                    errorAlert.setContentText("Error while deleting partner: " + e.getMessage());
-                    errorAlert.showAndWait();
+                    showAlert(Alert.AlertType.ERROR, "Erreur de base de données", "Erreur lors de la suppression : " + e.getMessage());
                 }
             }
         });
     }
+
     public void setPartner(MouseEvent mouseEvent) {
         Partner selectedPartner = partnersList.getSelectionModel().getSelectedItem();
 
         if (selectedPartner == null) {
-            showAlert(Alert.AlertType.WARNING, "Selection Error", "Please select a partner to modify.");
+            showAlert(Alert.AlertType.WARNING, "Erreur de sélection", "Veuillez sélectionner un partenaire à modifier.");
             return;
         }
 
@@ -140,20 +121,18 @@ public class AdminControllerPartner {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/ModifyPartner.fxml"));
             Parent root = loader.load();
 
-            // Get the controller of the modification window
             ModifyPartnerController modifyController = loader.getController();
-            modifyController.setPartner(selectedPartner); // Pass the selected partner to the controller
+            modifyController.setPartner(selectedPartner);
 
             Stage stage = new Stage();
-            stage.setTitle("Modify Partner");
+            stage.setTitle("Modifier le Partenaire");
             stage.setScene(new Scene(root));
             stage.show();
 
         } catch (IOException e) {
-            showAlert(Alert.AlertType.ERROR, "Loading Error", "Error while loading ModifyPartner: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Erreur de chargement", "Erreur lors du chargement de la fenêtre de modification : " + e.getMessage());
         }
     }
-
 
     private void showAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);
@@ -164,23 +143,19 @@ public class AdminControllerPartner {
 
     public void Refresh(MouseEvent mouseEvent) {
         try {
-            // Fetch the latest data from the database
             List<Partner> partners = ps.readAll();
             ObservableList<Partner> observableList = FXCollections.observableArrayList(partners);
-            partnersList.setItems(observableList); // Update the ListView with the new data
-
-            // Optionally clear the selection
+            partnersList.setItems(observableList);
             partnersList.getSelectionModel().clearSelection();
 
-            showAlert(Alert.AlertType.INFORMATION, "Refresh Success", "Partner list updated successfully!");
+            showAlert(Alert.AlertType.INFORMATION, "Mise à jour réussie", "Liste des partenaires actualisée avec succès !");
 
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR, "Database Error", "Error while refreshing partners: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Erreur de base de données", "Erreur lors de l'actualisation : " + e.getMessage());
         }
     }
 
-
-    // Custom ListCell Class to Display Multiple Columns
+    // Classe personnalisée pour afficher plusieurs colonnes
     static class PartnerCell extends ListCell<Partner> {
         @FXML
         private HBox Hbox;
@@ -189,16 +164,15 @@ public class AdminControllerPartner {
         @FXML
         private Label TypeLabel;
         @FXML
-        private Label ContactInfoLAbel;
+        private Label ContactInfoLabel;
 
         public PartnerCell() {
-            // Create HBox and Labels manually
-            Hbox = new HBox(20); // 20px spacing between columns
+            Hbox = new HBox(20); // Espacement de 20px entre les colonnes
             NameLabel = new Label();
             TypeLabel = new Label();
-            ContactInfoLAbel = new Label();
+            ContactInfoLabel = new Label();
 
-            Hbox.getChildren().addAll(NameLabel, TypeLabel, ContactInfoLAbel);
+            Hbox.getChildren().addAll(NameLabel, TypeLabel, ContactInfoLabel);
         }
 
         @Override
@@ -208,16 +182,12 @@ public class AdminControllerPartner {
                 setText(null);
                 setGraphic(null);
             } else {
-                // Set text values for each column
                 NameLabel.setText(partner.getName());
                 TypeLabel.setText(partner.getType().toString());
-                ContactInfoLAbel.setText(partner.getContactInfo());
+                ContactInfoLabel.setText(partner.getContactInfo());
 
                 setGraphic(Hbox);
             }
         }
-
-
     }
-
 }

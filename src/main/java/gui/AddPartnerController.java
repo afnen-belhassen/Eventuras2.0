@@ -35,44 +35,46 @@ public class AddPartnerController {
 
     @FXML
     public void initialize() {
-        // Populate ChoiceBox with PartnerType values
+        // Remplir le ChoiceBox avec les valeurs de PartnerType
         typeField.setItems(FXCollections.observableArrayList(PartnerType.values()));
 
-        // Set button action
+        // Définir l'action du bouton
         btnSubmit.setOnAction(event -> addPartner());
     }
+
     @FXML
     private void addPartner() {
         try {
-            // Get values from form
+            // Récupérer les valeurs du formulaire
             String name = nameField.getText().trim();
             PartnerType type = typeField.getValue();
             String contactInfo = contactField.getText().trim();
             String videoPath = videoField.getText().trim();
 
-            // Validate inputs
+            // Vérifier que tous les champs sont remplis
             if (name.isEmpty() || type == null || contactInfo.isEmpty() || videoPath.isEmpty()) {
-                showAlert(Alert.AlertType.WARNING, "Input Error", "Please fill in all fields.");
+                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "Veuillez remplir tous les champs.");
                 return;
             }
 
-            // Create a new Partner object
+            // Créer un nouvel objet Partner
             Partner newPartner = new Partner(0, name, type, contactInfo, videoPath);
 
-            // Save to database
+            // Enregistrer dans la base de données
             PartnerService pa = new PartnerService();
             partnerService.create(newPartner);
 
-            // Show success message
-            showAlert(Alert.AlertType.INFORMATION, "Success", "Partner added successfully!");
+            // Afficher un message de succès
+            showAlert(Alert.AlertType.INFORMATION, "Succès", "Partenaire ajouté avec succès !");
 
-            // Clear fields after adding
+            // Effacer les champs après l'ajout
             clearForm();
 
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR, "Database Error", "Error while saving partner: " + e.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Erreur de base de données", "Erreur lors de l'enregistrement du partenaire : " + e.getMessage());
         }
     }
+
     public void setPartner(Partner partner) {
         this.currentPartner = partner;
         nameField.setText(partner.getName());
@@ -80,8 +82,6 @@ public class AddPartnerController {
         contactField.setText(partner.getContactInfo());
         videoField.setText(partner.getImagePath());
     }
-
-
 
     private void clearForm() {
         nameField.clear();
