@@ -4,24 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="changes idk">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Reservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterReservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/IService1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherReservation.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AjouterReservation.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/plus.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/rafraichir.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/read.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterParticipation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterParticipation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherEventHOME.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherEventHOME.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="changes idk" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -75,7 +58,7 @@
     "Application.mainGUI.executor": "Run",
     "Application.org.example.test.mainGUI.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Nassir/IdeaProjects/javafxGDGC24-25",
     "list.type.of.created.stylesheet": "CSS",
@@ -303,7 +286,8 @@
     <MESSAGE value="Reservation 5.0" />
     <MESSAGE value="Reservation" />
     <MESSAGE value="changes idk" />
-    <option name="LAST_COMMIT_MESSAGE" value="changes idk" />
+    <MESSAGE value="reclamation work" />
+    <option name="LAST_COMMIT_MESSAGE" value="reclamation work" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
