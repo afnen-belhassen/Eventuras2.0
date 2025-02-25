@@ -111,6 +111,57 @@ TableView{
     -fx-text-fill: #1A237E;
 
 }
-SearchField{
-    -fx-background-color:white;
+
+
+
+
+
+
+.grid-pane {
+    -fx-padding: 20px;
+}
+
+/* Card Styling */
+.card {
+    -fx-background-color: white;
+    -fx-border-color: black;
+    -fx-border-width: 2px;
+    -fx-border-radius: 5px;
+    -fx-padding: 10px;
+    -fx-spacing: 5px;
+    -fx-alignment: center;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.2), 5, 0, 2, 2);
+}
+
+/* Ticket Number */
+.ticket-number {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+}
+
+/* Ticket Date */
+.ticket-date {
+    -fx-font-size: 12px;
+}
+
+/* Ticket Description */
+.ticket-description {
+    -fx-font-size: 12px;
+    -fx-font-weight: bold;
+}
+
+/* Delete Button */
+.delete-btn {
+    -fx-background-color: red;
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-border-radius: 3px;
+}
+
+/* Details Button */
+.details-btn {
+    -fx-background-color: blue;
+    -fx-text-fill: white;
+    -fx-padding: 5px 10px;
+    -fx-border-radius: 3px;
 }
