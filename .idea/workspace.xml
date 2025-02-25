@@ -4,7 +4,41 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="changes idk" />
+    <list default="true" id="0a079215-67e3-4338-a41c-c6d6bef791d9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/ContractType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/ContractType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/PDFGenerator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Partner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Partner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/PartnerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/PartnerType.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Partnership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Partnership.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Person.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AddPartnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AddPartnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AdminControllerPartner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AdminControllerPartner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AdminPartnershipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AdminPartnershipController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/ModifyPartnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ModifyPartnerController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/PartnershipCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/PartnershipCellController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/PersonCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/PersonCellController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartner.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartnership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartnership.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/IService2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IService2.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/PartnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PartnerService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/PartnershipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PartnershipService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/AdminPartnerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/AdminPartnerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/AdminPartnership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/AdminPartnership.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/UserPartnerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/UserPartnerMain.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AddPartner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddPartner.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AdminPartner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AdminPartner.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AdminPartnership.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AdminPartnership.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Delice.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Delice.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/back2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/back2.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/bakc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/bakc6.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/impressive.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/impressive.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifyPartner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifyPartner.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Partnershipcell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Partnershipcell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PersonCell.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/UserParnter.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UserParnter.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,36 +47,31 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="Interface" />
         <option value="JavaFXApplication" />
-        <option value="CSS File" />
         <option value="FxmlFile" />
         <option value="Class" />
-        <option value="Interface" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="main" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory">{
-  &quot;lastFilter&quot;: {
-    &quot;state&quot;: &quot;OPEN&quot;,
-    &quot;assignee&quot;: &quot;NBlol&quot;
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/afnen-belhassen/Eventuras2.0.git",
+    "accountId": "4692c210-6760-40af-9b61-2186a85cdaab"
   }
-}</component>
-  <component name="GithubPullRequestsUISettings">{
-  &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/afnen-belhassen/Eventuras2.0&quot;,
-    &quot;accountId&quot;: &quot;5a6da14e-9caf-4764-947d-9f0fa8b74f6d&quot;
-  }
-}</component>
-  <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
-  </component>
+}]]></component>
   <component name="ProjectColorInfo">{
-  &quot;associatedIndex&quot;: 0
+  &quot;associatedIndex&quot;: 5
 }</component>
-  <component name="ProjectId" id="2sla4B84QE7k86J45kJZmTfuchd" />
+  <component name="ProjectId" id="2scP2G2AeB0ObkE59DHZozZtSVv" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="false" id="Update" />
     <ConfirmationsSetting value="1" id="Add" />
@@ -55,27 +84,78 @@
   "keyToString": {
     "Application.Main.executor": "Run",
     "Application.MainGUI.executor": "Run",
-    "Application.mainGUI.executor": "Run",
-    "Application.org.example.test.mainGUI.executor": "Run",
+    "Application.main.MainGUI.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "git-widget-placeholder": "main",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "#5 on Merging GestionForum",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/Nassir/IdeaProjects/javafxGDGC24-25",
-    "list.type.of.created.stylesheet": "CSS",
+    "last_directory_selection": "C:/Users/chebaane.1/Documents/pidev/src/main/java",
+    "last_opened_file_path": "C:/Users/chebaane.1/Documents/Eventuras2.0",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "vcs.Git",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
     "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\chebaane.1\Documents\Eventuras\src\main\java\org\example\Services" />
+      <recent name="C:\Users\chebaane.1\Documents\Eventuras\src\main\java\org\example\utils" />
+      <recent name="C:\Users\chebaane.1\Documents\Eventuras\src\main\java\org\example\Entities" />
+      <recent name="C:\Users\chebaane.1\Documents\Eventuras\src\main\resources" />
+      <recent name="C:\Users\chebaane.1\Documents\pidev\src\main\resources" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\resources" />
+      <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\java\services" />
+      <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\java\main" />
+      <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\java\gui" />
+      <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\java\entities" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="org.example.Controllers" />
+      <recent name="org.example.Services" />
+      <recent name="org.example.Entities" />
+    </key>
+  </component>
   <component name="RunManager" selected="Application.MainGUI">
-    <configuration name="MainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.gui.Main" />
+      <module name="pidev" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.Services.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainGUI" type="Application" factoryName="Application">
+      <option name="ALTERNATIVE_JRE_PATH" value="jbr-17" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="main.MainGUI" />
-      <module name="Reservation_Eventura" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Nassir\Downloads\openjfx-17.0.14_windows-x64_bin-sdk\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <module name="pidev" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\chebaane.1\Downloads\openjfx-17.0.14_windows-x64_bin-sdk\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="main.MainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="main.MainGUI" />
+      <module name="pidev" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="main.*" />
@@ -86,211 +166,34 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="org.example.test.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.test.Main" />
-      <module name="Reservation_Eventura" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="org.example.test.mainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.test.mainGUI" />
-      <module name="Reservation_Eventura" />
-      <option name="VM_PARAMETERS" value="-module-path &quot;C:\Users\Nassir\Downloads\openjfx-17.0.14_windows-x64_bin-sdk\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.test.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="org.example.test.mainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.test.mainGUI" />
-      <module name="Reservation_Eventura" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Nassir\Downloads\openjfx-17.0.14_windows-x64_bin-sdk\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="org.example.test.mainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.test.mainGUI" />
-      <module name="Reservation_Eventura" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Nassir\Downloads\openjfx-17.0.14_windows-x64_bin-sdk\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.main.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
       <item itemvalue="Application.MainGUI" />
-      <item itemvalue="Application.org.example.test.mainGUI" />
-      <item itemvalue="Application.org.example.test.Main" />
+      <item itemvalue="Application.main.MainGUI" />
+      <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.MainGUI" />
-        <item itemvalue="Application.org.example.test.mainGUI" />
-        <item itemvalue="Application.org.example.test.mainGUI" />
-        <item itemvalue="Application.org.example.test.mainGUI" />
-        <item itemvalue="Application.org.example.test.Main" />
+        <item itemvalue="Application.main.MainGUI" />
+        <item itemvalue="Application.Main" />
       </list>
     </recent_temporary>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="fbecd5bc-1b38-45ad-92b2-8f805af2a4d9" name="Changes" comment="" />
-      <created>1739032426700</created>
+      <changelist id="0a079215-67e3-4338-a41c-c6d6bef791d9" name="Changes" comment="" />
+      <created>1738751682269</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1739032426700</updated>
-      <workItem from="1739032428028" duration="3770000" />
-      <workItem from="1739174268062" duration="10047000" />
-      <workItem from="1739261278952" duration="3564000" />
-      <workItem from="1739387909521" duration="537000" />
-      <workItem from="1739617637635" duration="15564000" />
-      <workItem from="1739866224949" duration="4802000" />
-      <workItem from="1739970922271" duration="6501000" />
-      <workItem from="1740034553971" duration="237000" />
-      <workItem from="1740075045612" duration="20682000" />
-      <workItem from="1740146705524" duration="99000" />
-      <workItem from="1740146839734" duration="1417000" />
-      <workItem from="1740213129785" duration="16435000" />
-      <workItem from="1740342508835" duration="5327000" />
-      <workItem from="1740384778577" duration="4249000" />
-      <workItem from="1740398453914" duration="2328000" />
-      <workItem from="1740406948518" duration="2011000" />
-      <workItem from="1740430837827" duration="9677000" />
+      <updated>1738751682269</updated>
+      <workItem from="1738751683201" duration="6000" />
+      <workItem from="1738751721159" duration="56000" />
+      <workItem from="1739027187012" duration="16755000" />
+      <workItem from="1739100009123" duration="20028000" />
     </task>
-    <task id="LOCAL-00001" summary="Reservation 2.0">
-      <option name="closed" value="true" />
-      <created>1740034739651</created>
-      <option name="number" value="00001" />
-      <option name="presentableId" value="LOCAL-00001" />
-      <option name="project" value="LOCAL" />
-      <updated>1740034739651</updated>
-    </task>
-    <task id="LOCAL-00002" summary="Reservation 3.0">
-      <option name="closed" value="true" />
-      <created>1740095272813</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1740095272813</updated>
-    </task>
-    <task id="LOCAL-00003" summary="Reservation 4.0">
-      <option name="closed" value="true" />
-      <created>1740148194269</created>
-      <option name="number" value="00003" />
-      <option name="presentableId" value="LOCAL-00003" />
-      <option name="project" value="LOCAL" />
-      <updated>1740148194269</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Reservation 4.0">
-      <option name="closed" value="true" />
-      <created>1740148218503</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1740148218503</updated>
-    </task>
-    <task id="LOCAL-00005" summary="Reservation 5.0">
-      <option name="closed" value="true" />
-      <created>1740347805736</created>
-      <option name="number" value="00005" />
-      <option name="presentableId" value="LOCAL-00005" />
-      <option name="project" value="LOCAL" />
-      <updated>1740347805736</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Reservation">
-      <option name="closed" value="true" />
-      <created>1740351763601</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1740351763601</updated>
-    </task>
-    <task id="LOCAL-00007" summary="changes idk">
-      <option name="closed" value="true" />
-      <created>1740398827231</created>
-      <option name="number" value="00007" />
-      <option name="presentableId" value="LOCAL-00007" />
-      <option name="project" value="LOCAL" />
-      <updated>1740398827231</updated>
-    </task>
-    <task id="LOCAL-00008" summary="changes idk">
-      <option name="closed" value="true" />
-      <created>1740399192899</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1740399192899</updated>
-    </task>
-    <task id="LOCAL-00009" summary="changes idk">
-      <option name="closed" value="true" />
-      <created>1740440777414</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1740440777414</updated>
-    </task>
-    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="Vcs.Log.Tabs.Properties">
-    <option name="TAB_STATES">
-      <map>
-        <entry key="MAIN">
-          <value>
-            <State />
-          </value>
-        </entry>
-      </map>
-    </option>
-  </component>
-  <component name="VcsManagerConfiguration">
-    <MESSAGE value="Reservation 2.0" />
-    <MESSAGE value="Reservation 3.0" />
-    <MESSAGE value="Reservation 4.0" />
-    <MESSAGE value="Reservation 5.0" />
-    <MESSAGE value="Reservation" />
-    <MESSAGE value="changes idk" />
-    <MESSAGE value="reclamation work" />
-    <option name="LAST_COMMIT_MESSAGE" value="reclamation work" />
-  </component>
-  <component name="XSLT-Support.FileAssociations.UIState">
-    <expand />
-    <select />
   </component>
 </project>
