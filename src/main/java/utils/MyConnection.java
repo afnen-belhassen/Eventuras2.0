@@ -7,7 +7,7 @@ import java.sql.SQLException;
 public class MyConnection {
     private final String URL = "jdbc:mysql://localhost:3306/eventuras";
     private final String USER = "root";
-    private final String PASS = "";
+    private final String PASS = "Ningen@2023";
     private Connection connection;
     private static MyConnection instance;
 

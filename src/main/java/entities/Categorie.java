@@ -4,8 +4,8 @@ package entities;
 public class Categorie {
     private int category_id;
     private String name;
-    public Categorie(int category_id) {
-        this.category_id = category_id;
+    public Categorie() {
+
     }
     public Categorie(int category_id, String name) {
         this.category_id = category_id;
