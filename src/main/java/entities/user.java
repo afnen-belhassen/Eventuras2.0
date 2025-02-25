@@ -1,5 +1,7 @@
 package entities;
 
+import utils.Session;
+
 public class user {
     private int id;
     private String username;

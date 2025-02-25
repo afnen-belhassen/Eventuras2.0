@@ -104,40 +104,78 @@ Text {
 imageEve{
     -fx-border-radius: 25px;
 }
-
-/* styles.css */
-
-/* Style général pour la "card" */
-.card {
-    -fx-background-color: white;         /* Fond blanc */
-    -fx-background-radius: 8;             /* Coins arrondis */
-    -fx-padding: 15;                      /* Espacement interne */
-    -fx-border-radius: 8;                 /* Coins arrondis pour la bordure */
-    -fx-border-color: #ddd;               /* Bordure grise claire */
-    -fx-border-width: 1;                  /* Épaisseur de la bordure */
-    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 4); /* Ombre portée */
-    -fx-background-insets: 0;
-    -fx-alignment: top-left;
+ListView {
+    -fx-background-color: #FFFFFF; /* White background for the ListView */
+    -fx-border-color: #E07564; /* Dark blue border */
+    -fx-border-radius: 5px;
+    -fx-padding: 10px; /* Padding inside the ListView */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 2); /* Subtle shadow */
 }
 
-/* Style pour le titre dans la card */
-.card-title {
-    -fx-font-size: 17px;
-    -fx-font-weight: bold;
-    -fx-text-fill: #333;
+ListView .list-view .list-cell {
+    -fx-background-color: transparent; /* Transparent background for list items */
+    -fx-padding: 10px; /* Padding for each item */
+    -fx-font-size: 14px; /* Font size for items */
+    -fx-font-family: "Arial Rounded MT Bold"; /* Consistent font */
+    -fx-text-fill: #2C3E50; /* Dark text color */
+}
+ListView .list-view .list-cell:hover {
+    -fx-background-color: #E3F2FD; /* Light blue on hover */
 }
 
-/* Style pour le contenu du post */
-.card-content {
-    -fx-font-size: 16px;
-    -fx-text-fill: #555;
-    -fx-wrap-text: true;
+/* ComboBox arrow button styling */
+ComboBox .arrow-button {
+    -fx-background-color: #E07564; /* Dark blue for the arrow button */
+    -fx-background-radius: 0 5px 5px 0; /* Rounded corners on the right side */
 }
 
-.scroll-pane {
-    -fx-background-color: transparent;
+ComboBox .arrow {
+    -fx-background-color: white; /* White arrow */
 }
 
-.scroll-pane .viewport {
-    -fx-background-color: transparent;
+TextField, ComboBox {
+    -fx-background-color: #FFFFFF; /* White background */
+    -fx-border-color: #E07564; /* Dark blue border */
+    -fx-border-radius: 5px;
+    -fx-padding: 8px;
+    -fx-font-size: 14px;
+    -fx-font-family: "Arial Rounded MT Bold";
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 2); /* Subtle shadow */
+    -fx-prompt-text-fill: #9E9E9E; /* Gray placeholder text */
+}
+
+Label {
+    -fx-text-fill: #2C3E50; /* Dark text color */
+    -fx-font-family: "Arial Rounded MT Bold"; /* Font style */
+    -fx-font-size: 16px; /* Font size */
+    -fx-padding: 5px; /* Padding around the text */
+}
+/* Style for GridPane */
+.grid-pane {
+    -fx-background-color: transparent; /* Keep background transparent to see the root background */
+    -fx-padding: 20px; /* Padding around the GridPane */
+    -fx-hgap: 15px; /* Horizontal gap between columns */
+    -fx-vgap: 15px; /* Vertical gap between rows */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.1), 5, 0, 0, 2); /* Subtle shadow */
+    -fx-border-color: #E07564; /* Light border color */
+    -fx-border-width: 1px; /* Border width */
+    -fx-border-radius: 10px; /* Rounded corners */
+}
+
+/* Style for GridPane cells (optional) */
+.grid-pane .grid-cell {
+    -fx-background-color: #FFFFFF; /* White background for cells */
+    -fx-border-color: #E07564; /* Cell border color */
+    -fx-border-width: 1px; /* Border width for cells */
+    -fx-border-radius: 5px; /* Rounded corners for cells */
+    -fx-padding: 10px; /* Padding inside each cell */
+    -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.05), 3, 0, 0, 2); /* Subtle shadow */
+}
+
+/* Style for GridPane labels inside the grid */
+.grid-pane .grid-label {
+    -fx-text-fill: #2C3E50; /* Dark text color */
+    -fx-font-family: "Arial Rounded MT Bold"; /* Font style */
+    -fx-font-size: 16px; /* Font size */
+    -fx-padding: 5px; /* Padding around the text */
 }
