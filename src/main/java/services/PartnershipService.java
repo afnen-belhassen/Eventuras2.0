@@ -1,14 +1,14 @@
 package services;
 
-import entities.Partnership;
 import entities.ContractType;
+import entities.Partnership;
 import utils.MyConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PartnershipService implements IService<Partnership> {
+public class PartnershipService implements IService2<Partnership> {
 
     private Connection cnx;
 

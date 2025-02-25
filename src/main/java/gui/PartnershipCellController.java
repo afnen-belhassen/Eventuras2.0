@@ -1,7 +1,7 @@
 package gui;
 
-import entities.Partnership;
 import entities.Partner;
+import entities.Partnership;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;

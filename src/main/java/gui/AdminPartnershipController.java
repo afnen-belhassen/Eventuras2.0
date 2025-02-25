@@ -1,22 +1,21 @@
 package gui;
-import entities.ContractType;
-import javafx.scene.Group;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.Label;
-import javafx.scene.layout.*;
 
+import entities.ContractType;
 import entities.Partnership;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.Group;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
 import services.PartnershipService;
+
 import java.sql.SQLException;
 import java.util.Optional;
 

@@ -8,7 +8,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class PartnerService implements IService<Partner> {
+public class PartnerService implements IService2<Partner> {
 
     private Connection cnx;
 
