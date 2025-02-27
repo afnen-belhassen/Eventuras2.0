@@ -8,11 +8,11 @@
 
 <AnchorPane prefHeight="731.0" prefWidth="1305.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherEvent">
    <children>
-      <Button fx:id="GoToEvents" layoutX="24.0" layoutY="291.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Evenements" />
-      <Button fx:id="Collaborations" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Collaborations" />
-      <Button fx:id="tickets" layoutX="24.0" layoutY="475.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Tickets" />
-      <Button fx:id="Acceuil" layoutX="24.0" layoutY="233.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Acceuil" />
-      <Button fx:id="reclam" layoutX="24.0" layoutY="414.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Réclamations" />
+      <Button fx:id="GoToEvents" layoutX="24.0" layoutY="291.0" mnemonicParsing="false" onAction="#showEvents" prefHeight="40.0" prefWidth="177.0" text="Evenements" />
+      <Button fx:id="Collaborations" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onAction="#goToCollabs" prefHeight="40.0" prefWidth="177.0" text="Collaborations" />
+      <Button fx:id="tickets" layoutX="24.0" layoutY="475.0" mnemonicParsing="false" onAction="#goToTickets" prefHeight="40.0" prefWidth="177.0" text="Tickets" />
+      <Button fx:id="Acceuil" layoutX="24.0" layoutY="233.0" mnemonicParsing="false" onAction="#showAcceuil" prefHeight="40.0" prefWidth="177.0" text="Acceuil" />
+      <Button fx:id="reclam" layoutX="24.0" layoutY="414.0" mnemonicParsing="false" onAction="#goToReclams" prefHeight="40.0" prefWidth="177.0" text="Réclamations" />
       <VBox layoutX="281.0" layoutY="173.0" prefHeight="466.0" prefWidth="829.0">
          <children>
             <HBox fx:id="headerBox" prefHeight="100.0" prefWidth="200.0" spacing="25" />

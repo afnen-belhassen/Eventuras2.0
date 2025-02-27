@@ -13,7 +13,7 @@
 
 
 <?import javafx.scene.layout.BorderPane?>
-<AnchorPane prefHeight="700" prefWidth="1500" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.userCharts">
+<AnchorPane prefHeight="731.0" prefWidth="1305.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.userCharts">
    <children>
       <ImageView fitHeight="700.0" fitWidth="600.0" layoutX="900.0">
          <image>

@@ -1,16 +1,21 @@
-package org.example.gui;
+package gui;
 
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import org.example.models.Reclamation;
-import org.example.services.ReclamationService;
+import entities.Reclamation;
+import javafx.stage.Stage;
+import services.ReclamationService;
 
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -18,6 +23,11 @@ import java.util.ResourceBundle;
 
 public class AfficherReclamationsAdmin implements Initializable {
 
+    public Button GoToEvents;
+    public Button Collaborations;
+    public Button tickets;
+    public Button Acceuil;
+    public Button reclam;
     @FXML private GridPane reclamationsGrid;
     @FXML private ComboBox<String> cbFilterStatus;
     @FXML private VBox detailsPanel;
@@ -163,5 +173,67 @@ public class AfficherReclamationsAdmin implements Initializable {
         lblResolved.setText("✅ Résolu: " + resolved);
         lblRejected.setText("❌ Rejeté: " + rejected);
         lblCurrent.setText("⌛ En cours: " + EnCours);
+    }
+    Scene scene;
+    Stage stage;
+
+    public void showEvents(ActionEvent event) throws IOException {
+        // Load the AfficherEvent interface
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEventHOME.fxml"));
+        Parent root = loader.load();
+
+        AfficherEventHOME afficherEventController = loader.getController();
+        afficherEventController.showAllEvents(); // Call the method to display all events
+
+        // Switch to the AfficherEvent scene
+        Stage stage = (Stage) GoToEvents.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    //display last 3 events in the home section
+    public void showAcceuil(ActionEvent event) throws IOException {
+        // Load the AfficherEvent interface
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEventHOME.fxml"));
+        Parent root = loader.load();
+
+        AfficherEventHOME afficherEventController = loader.getController();
+        afficherEventController.showLastThreeEvents(); // Call the method to display last 3 events
+
+        // Switch to the AfficherEvent scene
+        Stage stage = (Stage) Acceuil.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void goToCollabs(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParticipPartner.fxml"));
+        Parent root = loader.load();
+
+        AfficherEventHOME afficherEventController = loader.getController();
+        afficherEventController.showLastThreeEvents(); // Call the method to display last 3 events
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) Collaborations.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    public void goToTickets(ActionEvent event) throws IOException {
+
+    }
+
+    public void goToReclams(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamations.fxml"));
+        Parent root = loader.load();
+
+        AfficherEventHOME afficherEventController = loader.getController();
+        afficherEventController.showLastThreeEvents(); // Call the method to display last 3 events
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) reclam.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
     }
 }

@@ -3,6 +3,7 @@ package gui;
 import entities.Partner;
 import entities.PartnerType;
 import javafx.collections.FXCollections;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
@@ -95,5 +96,12 @@ public class AddPartnerController {
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void showEvents(ActionEvent event) {
+    }
+
+    public void showAcceuil(ActionEvent event) {
+
     }
 }

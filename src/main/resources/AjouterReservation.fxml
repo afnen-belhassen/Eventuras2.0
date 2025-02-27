@@ -6,7 +6,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="692.0" prefWidth="765.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReservation">
+<AnchorPane prefHeight="731.0" prefWidth="1305.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReservation">
    <children>
       <TextField id="status" fx:id="status" layoutX="173.0" layoutY="206.0" />
       <TextField id="prix" fx:id="prix" layoutX="173.0" layoutY="341.0" />
@@ -25,5 +25,10 @@
             <Font size="20.0" />
          </font></Label>
       <Button fx:id="X" layoutX="727.0" layoutY="14.0" mnemonicParsing="false" onAction="#goToAfficherReservation" text="X" />
+      <Button fx:id="GoToEvents" layoutX="24.0" layoutY="291.0" mnemonicParsing="false" onAction="#showEvents" prefHeight="40.0" prefWidth="177.0" text="Evenements" />
+      <Button fx:id="Collaborations" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onAction="#goToCollabs" prefHeight="40.0" prefWidth="177.0" text="Collaborations" />
+      <Button fx:id="tickets" layoutX="24.0" layoutY="475.0" mnemonicParsing="false" onAction="#goToTickets" prefHeight="40.0" prefWidth="177.0" text="Tickets" />
+      <Button fx:id="Acceuil" layoutX="24.0" layoutY="233.0" mnemonicParsing="false" onAction="#showAcceuil" prefHeight="40.0" prefWidth="177.0" text="Acceuil" />
+      <Button fx:id="reclam" layoutX="24.0" layoutY="414.0" mnemonicParsing="false" onAction="#goToReclams" prefHeight="40.0" prefWidth="177.0" text="Réclamations" />
    </children>
 </AnchorPane>

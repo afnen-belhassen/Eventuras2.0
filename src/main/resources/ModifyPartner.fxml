@@ -5,8 +5,13 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane prefHeight="300" prefWidth="400" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="gui.ModifyPartnerController">
+<AnchorPane prefHeight="731.0" prefWidth="1305.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="gui.ModifyPartnerController">
    <children>
+       <Button fx:id="GoToEvents" layoutX="24.0" layoutY="291.0" mnemonicParsing="false" onAction="#showEvents" prefHeight="40.0" prefWidth="177.0" text="Evenements" />
+       <Button fx:id="Collaborations" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onAction="#goToCollabs" prefHeight="40.0" prefWidth="177.0" text="Collaborations" />
+       <Button fx:id="tickets" layoutX="24.0" layoutY="475.0" mnemonicParsing="false" onAction="#goToTickets" prefHeight="40.0" prefWidth="177.0" text="Tickets" />
+       <Button fx:id="Acceuil" layoutX="24.0" layoutY="233.0" mnemonicParsing="false" onAction="#showAcceuil" prefHeight="40.0" prefWidth="177.0" text="Acceuil" />
+       <Button fx:id="reclam" layoutX="24.0" layoutY="414.0" mnemonicParsing="false" onAction="#goToReclams" prefHeight="40.0" prefWidth="177.0" text="Réclamations" />
    
        <VBox alignment="CENTER" layoutX="20" layoutY="20" prefWidth="360" spacing="10">
       <children>

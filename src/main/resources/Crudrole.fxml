@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="700" prefWidth="300.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Crudrole">
+<AnchorPane prefHeight="731.0" prefWidth="1305.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.Crudrole">
    <children>
       <TableView fx:id="tableview" layoutX="313.0" layoutY="14.0" onMouseClicked="#getdata" prefHeight="200.0" prefWidth="667.0">
         <columns>
@@ -27,6 +27,7 @@
       <TextField fx:id="tfrole_id" layoutX="329.0" layoutY="236.0" prefHeight="41.0" prefWidth="190.0" promptText="role_id" />
       <TextField fx:id="tfrole_name" layoutX="329.0" layoutY="310.0" prefHeight="41.0" prefWidth="190.0" promptText="role_name" />
       <AnchorPane prefHeight="700" prefWidth="300.0" style="-fx-background-color: #2A004E;">
+
          <children>
             <Pane layoutX="12.0" layoutY="18.0" prefHeight="667.0" prefWidth="275.0" style="-fx-background-color: #862341; -fx-border-radius: 10; -fx-border-color: #FFFFF; -fx-background-radius: 10;">
                <children>

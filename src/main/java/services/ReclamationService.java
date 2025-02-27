@@ -1,14 +1,14 @@
-package org.example.services;
+package services;
 
-import org.example.models.Reclamation;
-import org.example.models.ReclamationAttachment;
-import org.example.utils.MyConnection;
+import entities.Reclamation;
+import entities.ReclamationAttachment;
+import utils.MyConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ReclamationService implements IService<Reclamation>{
+public class ReclamationService implements IService4<Reclamation> {
 
     private Connection cnx;
 

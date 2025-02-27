@@ -78,43 +78,72 @@ public class AfficherEventHOME implements Initializable {
     //Acceuil
     private int currentIndex = 0; // To track the current event index
 
+    // ... existing code ...
+
     private void loadLastThreeEvents() {
         try {
             ArrayList<Event> lastThreeEvents = sE.afficherLastEve();
             ObservableList<Event> observableList = FXCollections.observableList(lastThreeEvents);
             sliderBox.getChildren().clear();
 
-            HBox eventContainer = new HBox(20);  // Container for the event cards
+            HBox eventContainer = new HBox(30);  // Increased spacing between cards
             eventContainer.setAlignment(Pos.CENTER);
+            eventContainer.setStyle("-fx-padding: 20px;"); // Add padding around the container
 
             for (Event event : observableList) {
                 HBox eventBox = createEventCard(event);
+                // Set a fixed size for each event card to prevent overflow
+                eventBox.setPrefSize(400, 300); // Adjusted size to be more compact
+                eventBox.setMaxSize(400, 300);
                 eventContainer.getChildren().add(eventBox);
             }
 
             ScrollPane scrollPane = new ScrollPane();
             scrollPane.setContent(eventContainer);
             scrollPane.setFitToHeight(true);
+            scrollPane.setPrefViewportWidth(1200); // Increased viewport width
+            scrollPane.setPrefViewportHeight(350); // Set fixed height
             scrollPane.setHbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
             scrollPane.setVbarPolicy(ScrollPane.ScrollBarPolicy.NEVER);
-            scrollPane.setPrefViewportWidth(350); // Adjust based on layout
+            scrollPane.setStyle("-fx-background-color: transparent;"); // Make background transparent
 
-            // Navigation buttons
+            // Style the navigation buttons
             Button prevButton = new Button("◀");
             Button nextButton = new Button("▶");
 
-            prevButton.setOnAction(e -> scrollPane.setHvalue(Math.max(0, scrollPane.getHvalue() - 0.5)));
-            nextButton.setOnAction(e -> scrollPane.setHvalue(Math.min(1, scrollPane.getHvalue() + 0.5)));
+            String buttonStyle =
+                    "-fx-background-color: #072571; " +
+                            "-fx-text-fill: white; " +
+                            "-fx-font-size: 18px; " +
+                            "-fx-padding: 10px 15px; " +
+                            "-fx-cursor: hand;";
 
-            HBox navigationBox = new HBox(10, prevButton, scrollPane, nextButton);
+            prevButton.setStyle(buttonStyle);
+            nextButton.setStyle(buttonStyle);
+
+            // Smooth scrolling for navigation buttons
+            prevButton.setOnAction(e -> {
+                double newValue = scrollPane.getHvalue() - 0.33; // Scroll by one card
+                scrollPane.setHvalue(Math.max(0, newValue));
+            });
+
+            nextButton.setOnAction(e -> {
+                double newValue = scrollPane.getHvalue() + 0.33; // Scroll by one card
+                scrollPane.setHvalue(Math.min(1, newValue));
+            });
+
+            HBox navigationBox = new HBox(20, prevButton, scrollPane, nextButton);
             navigationBox.setAlignment(Pos.CENTER);
+            navigationBox.setStyle("-fx-padding: 20px;");
 
             sliderBox.getChildren().add(navigationBox);
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
+    // ... existing code ...
     private HBox createEventCard(Event event) {
         // Create the main container for the event card
         HBox eventBox = new HBox(20); // Increased spacing between elements
@@ -184,7 +213,7 @@ public class AfficherEventHOME implements Initializable {
         // Add a "Participer" button
         Button participerButton = new Button("Participer");
         participerButton.setStyle(
-                "-fx-background-color: #4CAF50; " + // Green background
+                "-fx-background-color: #072571; " + // Green background
                         "-fx-text-fill: white; " + // White text
                         "-fx-font-size: 16px; " + // Larger font size
                         "-fx-padding: 10px 20px;" // Padding
@@ -277,7 +306,7 @@ public class AfficherEventHOME implements Initializable {
 
                 // Add a "Participer" button
                 Button participerButton = new Button("Participer");
-                participerButton.setStyle("-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;");
+                participerButton.setStyle("-fx-background-color: #072571; -fx-text-fill: white; -fx-font-weight: bold;");
                 participerButton.setOnAction(e -> {
                     // Navigate to AjouterParticipation and pass the selected event
                     navigateToAjouterParticipation(event);
@@ -322,12 +351,39 @@ public class AfficherEventHOME implements Initializable {
     }
 
     public void GoToCollab3(ActionEvent event) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/gui/ParticipantPartnerController.fxml")); //
+            Parent root = loader.load();
+
+            // Get the current stage
+            Stage stage = (Stage) Collaborations.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     public void GoTotickets3(ActionEvent event) {
+
     }
 
     public void GoToReclam3(ActionEvent event) {
+
+            try {
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/DetailsReclamation.fxml")); //
+                Parent root = loader.load();
+
+                // Get the current stage
+                Stage stage = (Stage) Collaborations.getScene().getWindow();
+                stage.setScene(new Scene(root));
+                stage.show();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
     }
 
     public void createEvent(ActionEvent event) throws IOException {
@@ -351,6 +407,66 @@ public class AfficherEventHOME implements Initializable {
         Scene scene = new Scene(root);
         stage.setScene(scene);
     }
+    /*
+    public void showEvents(ActionEvent event) throws IOException {
+        // Load the AfficherEvent interface
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEventHOME.fxml"));
+        Parent root = loader.load();
+
+        AfficherEventHOME afficherEventController = loader.getController();
+        afficherEventController.showAllEvents(); // Call the method to display all events
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) GoToEvents.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    //display last 3 events in the home section
+    public void showAcceuil(ActionEvent event) throws IOException {
+        // Load the AfficherEvent interface
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEventHOME.fxml"));
+        Parent root = loader.load();
+
+        AfficherEventHOME afficherEventController = loader.getController();
+        afficherEventController.showLastThreeEvents(); // Call the method to display last 3 events
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) Acceuil.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+
+    }
+
+    public void goToCollabs(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParticipPartner.fxml"));
+        Parent root = loader.load();
+
+        AfficherEventHOME afficherEventController = loader.getController();
+        afficherEventController.showLastThreeEvents(); // Call the method to display last 3 events
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) Collaborations.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }
+
+    public void goToTickets(ActionEvent event) throws IOException {
+
+    }
+
+    public void goToReclams(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamations.fxml"));
+        Parent root = loader.load();
+
+        AfficherEventHOME afficherEventController = loader.getController();
+        afficherEventController.showLastThreeEvents(); // Call the method to display last 3 events
+
+        // Switch to the AfficherEvent scene
+        stage = (Stage) reclam.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+    }*/
 }
 
 

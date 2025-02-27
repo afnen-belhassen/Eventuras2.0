@@ -31,4 +31,5 @@ public class PersonCellController {
             VideoLabel.setText(partner.getImagePath());
         }
     }
+
 }

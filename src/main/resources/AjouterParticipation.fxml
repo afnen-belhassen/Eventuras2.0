@@ -16,5 +16,10 @@
       </Text>
       <VBox fx:id="activityContainer" layoutX="486.0" layoutY="266.0" prefHeight="247.0" prefWidth="415.0" />
       <Button fx:id="confirmer" layoutX="640.0" layoutY="528.0" mnemonicParsing="false" onAction="#confirmButton" text="Participer" />
+      <Button fx:id="GoToEvents" layoutX="24.0" layoutY="291.0" mnemonicParsing="false" onAction="#showEvents" prefHeight="40.0" prefWidth="177.0" text="Evenements" />
+      <Button fx:id="Collaborations" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" onAction="#goToCollabs" prefHeight="40.0" prefWidth="177.0" text="Collaborations" />
+      <Button fx:id="tickets" layoutX="24.0" layoutY="475.0" mnemonicParsing="false" onAction="#goToTickets" prefHeight="40.0" prefWidth="177.0" text="Tickets" />
+      <Button fx:id="Acceuil" layoutX="24.0" layoutY="233.0" mnemonicParsing="false" onAction="#showAcceuil" prefHeight="40.0" prefWidth="177.0" text="Acceuil" />
+      <Button fx:id="reclam" layoutX="24.0" layoutY="414.0" mnemonicParsing="false" onAction="#goToReclams" prefHeight="40.0" prefWidth="177.0" text="Réclamations" />
    </children>
 </AnchorPane>
