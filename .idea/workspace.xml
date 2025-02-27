@@ -5,39 +5,122 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0a079215-67e3-4338-a41c-c6d6bef791d9" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/ContractType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/ContractType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/PDFGenerator.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/PDFGenerator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Partner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Partner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/PartnerType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/PartnerType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Partnership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Partnership.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AddPartnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AddPartnerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AdminControllerPartner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AdminControllerPartner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AdminPartnershipController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AdminPartnershipController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/ModifyPartnerController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ModifyPartnerController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/PartnershipCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/PartnershipCellController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/PersonCellController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/PersonCellController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartner.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartner.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartnership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartnership.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/IService2.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IService2.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/PartnerService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PartnerService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/PartnershipService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/PartnershipService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/AdminPartnerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/AdminPartnerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/AdminPartnership.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/AdminPartnership.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/UserPartnerMain.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/test/UserPartnerMain.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AddPartner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AddPartner.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AdminPartner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AdminPartner.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AdminPartnership.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AdminPartnership.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/Delice.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/Delice.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/back2.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/back2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Comment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/ContractType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Like.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/PDFGenerator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Partner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/PartnerType.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Partnership.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Person.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Post.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Reclamation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/ReclamationAttachment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Reservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AddPartnerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AdminControllerPartner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AdminPartnershipController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReclamations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReclamationsAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterReclamation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterReservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/DetailsReclamation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/DetailsReclamationAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/ModifyPartnerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/ParticipantPartnerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/PartnershipCellController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/PersonCellController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/PostsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartnership.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/IService1.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/IService2.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/IService4.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/PartnerService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/PartnershipService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ReclamationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/Service.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceComment.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceLike.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServicePost.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AddPartner.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AdminPartner.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AdminPartnership.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherReclamation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherReclamations.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherReclamationsAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherReservation.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AjouterReclamation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AjouterReclamation.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/AjouterReservation.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/DetailsReclamation.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/DetailsReclamation.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/DetailsReclamationAdmin.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/AID.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/API.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/Delice.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/back2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/impressive.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/premium_photo-1683121366070-5ceb7e007a97.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ModifyPartner.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ParticipPartner.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/Partnershipcell.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/PersonCell.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/117981_w1024h768c1cx2652cy2652cxt0cyt0cxb5304cyb5304.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/16-220816-PAMU-PESCADO_EMBARAZADO-018-scaled.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/Capuccino.jpg.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/Jus-de-carotte-orange-et-curcuma.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/Mashed-Potato-Soup-Square.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/NodeJSNotesForProfessionals.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/One to Many Many to Many JAVA.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/Sprint-Backlog.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/broccoli-cheese-soup-recipe-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/cropped-Orange-Juice-1-1.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/download.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/eat-pray-love-39581-3.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/greek-style-spaghetti-3-df162146.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/i76109-salade-de-roquette-aux-figues-et-aux-poires.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/image.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/l-intro-1691424874.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/st,small,507x507-pad,600x600,f8f8f8.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/tradition-vin-rouge-2017-bouteille-personnalisable.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/unnamed.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/updated-lava-cakes7.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/vin-rouge-aoc (1).jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/vin-rouge-aoc.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/zarla-le-jardin-toil-1x1-2400x2400-20220425-vy6fyg394htmd47kd8f9.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/UserParnter.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/posts.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/styles2.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/ReclamAttachments/117981_w1024h768c1cx2652cy2652cxt0cyt0cxb5304cyb5304.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/ReclamAttachments/16-220816-PAMU-PESCADO_EMBARAZADO-018-scaled.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/ReclamAttachments/Capuccino.jpg.jpeg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/ReclamAttachments/broccoli-cheese-soup-recipe-3.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ProfilController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ProfilController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterParticipation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterParticipation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/ParticipantDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ParticipantDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/loginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/loginUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/main/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/MainGUI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/userService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/userService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFx.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/test/testJDBC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherEventHOME.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherEventHOME.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterEvent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Images/bakc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/bakc6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/impressive.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/impressive.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ModifyPartner.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ModifyPartner.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Partnershipcell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Partnershipcell.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/PersonCell.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/PersonCell.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/UserParnter.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/UserParnter.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ProfilController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProfilController.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/plus.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/rafraichir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/rafraichir.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/images/read.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/read.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/interface.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interface.css" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -62,12 +145,15 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/afnen-belhassen/Eventuras2.0.git",
-    "accountId": "4692c210-6760-40af-9b61-2186a85cdaab"
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/afnen-belhassen/Eventuras2.0.git&quot;,
+    &quot;accountId&quot;: &quot;4692c210-6760-40af-9b61-2186a85cdaab&quot;
   }
-}]]></component>
+}</component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/pom.xml" root0="SKIP_HIGHLIGHTING" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 5
 }</component>
@@ -87,9 +173,9 @@
     "Application.main.MainGUI.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "#5 on Merging GestionForum",
+    "git-widget-placeholder": "Merging GestionEve",
     "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/chebaane.1/Documents/pidev/src/main/java",
+    "last_directory_selection": "C:/Users/belha/Desktop/3rdYear/pidev/pidev/src/main/java",
     "last_opened_file_path": "C:/Users/chebaane.1/Documents/Eventuras2.0",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
@@ -144,11 +230,11 @@
       </method>
     </configuration>
     <configuration name="MainGUI" type="Application" factoryName="Application">
-      <option name="ALTERNATIVE_JRE_PATH" value="jbr-17" />
+      <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="main.MainGUI" />
       <module name="pidev" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\chebaane.1\Downloads\openjfx-17.0.14_windows-x64_bin-sdk\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\belha\Downloads\openjfx-17.0.14_windows-x64_bin-sdk(1)\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

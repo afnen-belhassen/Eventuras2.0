@@ -1,4 +1,4 @@
-package org.example.gui;
+package gui;
 
 public class DetailsReclamationAdmin {
 }

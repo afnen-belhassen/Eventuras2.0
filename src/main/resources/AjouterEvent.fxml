@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,37 +12,43 @@
 
 <AnchorPane prefHeight="731.0" prefWidth="1305.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterEvent">
    <children>
-      <TextField id="titleEvent" fx:id="titleEvent" layoutX="387.0" layoutY="231.0" prefHeight="45.0" prefWidth="353.0" promptText="Titre de l'évenement" />
-      <TextField id="descEve" fx:id="descEve" layoutX="784.0" layoutY="231.0" prefHeight="45.0" prefWidth="353.0" promptText="Description" />
-      <TextField id="locEve" fx:id="locEve" layoutX="387.0" layoutY="351.0" prefHeight="45.0" prefWidth="353.0" promptText="Localisation" />
-      <ComboBox id="categEve" fx:id="categEve" layoutX="784.0" layoutY="289.0" onAction="#Opened" prefHeight="45.0" prefWidth="353.0" promptText="Catégorie" visibleRowCount="4" />
-      <DatePicker id="dateEve" fx:id="dateEve" layoutX="387.0" layoutY="289.0" prefHeight="45.0" prefWidth="353.0" promptText="Date " />
+      <TextField id="titleEvent" fx:id="titleEvent" layoutX="387.0" layoutY="210.0" prefHeight="45.0" prefWidth="353.0" promptText="Titre de l'évenement" />
+      <TextField id="descEve" fx:id="descEve" layoutX="784.0" layoutY="210.0" prefHeight="45.0" prefWidth="353.0" promptText="Description" />
+      <TextField id="locEve" fx:id="locEve" layoutX="387.0" layoutY="343.0" prefHeight="45.0" prefWidth="353.0" promptText="Localisation" />
+      <ComboBox id="categEve" fx:id="categEve" layoutX="784.0" layoutY="275.0" onAction="#Opened" prefHeight="45.0" prefWidth="353.0" promptText="Catégorie" visibleRowCount="4" />
+      <DatePicker id="dateEve" fx:id="dateEve" layoutX="387.0" layoutY="275.0" prefHeight="45.0" prefWidth="353.0" promptText="Date " />
       <Button fx:id="Next" layoutX="385.0" layoutY="665.0" mnemonicParsing="false" onAction="#Ajouter" prefHeight="43.0" prefWidth="758.0" text="Next" />
       <ImageView id="imageEve" fx:id="imageEve" fitHeight="145.0" fitWidth="239.0" layoutX="437.0" layoutY="403.0" pickOnBounds="true" preserveRatio="true" />
-      <Button fx:id="nextButton" layoutX="564.0" layoutY="557.0" mnemonicParsing="false" onAction="#showNextImage" prefHeight="40.0" prefWidth="66.0" text="-&gt;">
+      <Button fx:id="nextButton" layoutX="564.0" layoutY="565.0" mnemonicParsing="false" onAction="#showNextImage" prefHeight="40.0" prefWidth="66.0" text="-&gt;">
          <font>
             <Font size="6.0" />
          </font>
       </Button>
-      <Button fx:id="previousButton" layoutX="478.0" layoutY="557.0" mnemonicParsing="false" onAction="#showPreviousImage" prefHeight="43.0" prefWidth="66.0" text="&lt;-">
+      <Button fx:id="previousButton" layoutX="481.0" layoutY="564.0" mnemonicParsing="false" onAction="#showPreviousImage" prefHeight="43.0" prefWidth="66.0" text="&lt;-">
          <font>
             <Font size="6.0" />
          </font>
       </Button>
-      <Button fx:id="upload" layoutX="459.0" layoutY="607.0" mnemonicParsing="false" onAction="#uploadImage" prefHeight="40.0" prefWidth="209.0" text="Téleverser" />
-      <TextField fx:id="prixEve" layoutX="784.0" layoutY="351.0" prefHeight="45.0" prefWidth="353.0" promptText="Prix" />
-      <Text id="event-text" fill="#1a237e" layoutX="496.0" layoutY="182.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Concevez votre évenement dès maintenant!" wrappingWidth="599.4701232910156">
+      <Button fx:id="upload" layoutX="459.0" layoutY="614.0" mnemonicParsing="false" onAction="#uploadImage" prefHeight="40.0" prefWidth="209.0" text="Téleverser" />
+      <TextField fx:id="prixEve" layoutX="784.0" layoutY="343.0" prefHeight="45.0" prefWidth="353.0" promptText="Prix" />
+      <Text id="event-text" fill="#1a237e" layoutX="498.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Concevez votre évenement dès maintenant!" wrappingWidth="599.4701232910156">
          <font>
             <Font name="Britannic Bold" size="29.0" />
          </font></Text>
       <Button fx:id="GoToEvents" layoutX="24.0" layoutY="291.0" mnemonicParsing="false" onAction="#showEvents" prefHeight="40.0" prefWidth="177.0" text="Evenements" />
       <Button fx:id="Collaborations" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Collaborations" />
       <Button fx:id="tickets" layoutX="24.0" layoutY="475.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Tickets" />
-      <Button fx:id="profil" layoutX="1179.0" layoutY="52.0" mnemonicParsing="false" onAction="#checkEvents" prefHeight="11.0" prefWidth="39.0" text="P" />
+      <Button fx:id="profil" layoutX="1132.0" layoutY="50.0" mnemonicParsing="false" onAction="#checkEvents" prefHeight="11.0" prefWidth="39.0" />
       <Button fx:id="Acceuil" layoutX="24.0" layoutY="233.0" mnemonicParsing="false" onAction="#showAcceuil" prefHeight="40.0" prefWidth="177.0" text="Acceuil" />
       <Button fx:id="reclam" layoutX="24.0" layoutY="414.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Réclamations" />
       <TextField fx:id="activityName" layoutX="784.0" layoutY="412.0" prefHeight="45.0" prefWidth="353.0" promptText="Activités" />
       <Button fx:id="addActivityButton" layoutX="1153.0" layoutY="413.0" mnemonicParsing="false" onAction="#ajouterActivite" prefHeight="43.0" prefWidth="51.0" text="+" />
+      <Label fx:id="errorTtile" layoutX="387.0" layoutY="255.0" style="-fx-text-fill: red;" text="Label" visible="false" />
+      <Label fx:id="errorDate" layoutX="387.0" layoutY="325.0" style="-fx-text-fill: red;" text="Label" visible="false" />
+      <Label fx:id="errorLoc" layoutX="387.0" layoutY="394.0" style="-fx-text-fill: red;" text="Label" visible="false" />
+      <Label fx:id="errorDesc" layoutX="784.0" layoutY="255.0" style="-fx-text-fill: red;" text="Label" visible="false" />
+      <Label fx:id="errorPrix" layoutX="784.0" layoutY="394.0" style="-fx-text-fill: red;" text="Label" visible="false" />
+      <Label fx:id="errorCateg" layoutX="784.0" layoutY="325.0" style="-fx-text-fill: red;" text="Label" visible="false" />
    
    </children>
 </AnchorPane>

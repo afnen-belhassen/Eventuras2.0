@@ -1,4 +1,4 @@
-package org.example.models;
+package entities;
 
 public class ReclamationAttachment {
 

@@ -1,4 +1,4 @@
-package org.example.gui;
+package gui;
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -12,10 +12,9 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-import org.example.models.Reclamation;
-import org.example.services.ReclamationService;
+import entities.Reclamation;
+import services.ReclamationService;
 
-import java.awt.event.ActionEvent;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;

@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.text.Text?>
-<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@AfficherReclamation.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gui.AfficherReclamationsAdmin">
+<AnchorPane prefHeight="800.0" prefWidth="1200.0" stylesheets="@AfficherReclamation.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AfficherReclamationsAdmin">
 
     <Button fx:id="GoToEvents" layoutX="24.0" layoutY="291.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Evenements" />
     <Button fx:id="Collaborations" layoutX="24.0" layoutY="353.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Collaborations" />

@@ -5,7 +5,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<VBox alignment="CENTER" prefHeight="631.0" prefWidth="924.0" spacing="10" stylesheets="@AjouterReclamation.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gui.AjouterReclamation">
+<VBox alignment="CENTER" prefHeight="631.0" prefWidth="924.0" spacing="10" stylesheets="@AjouterReclamation.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AjouterReclamation">
 
     <Label layoutX="76.0" layoutY="41.0" text="id user" />
     <TextField fx:id="TFId_user" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="198.0" promptText="id user" />

@@ -1,7 +1,4 @@
-package org.example.models;
-
-import java.util.Date;
-import java.util.List;
+package entities;
 
 import java.util.List;
 

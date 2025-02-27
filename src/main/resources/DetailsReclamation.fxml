@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="631.0" prefWidth="924.0" spacing="10" stylesheets="@DetailsReclamation.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.gui.DetailsReclamation">
+<VBox alignment="CENTER" prefHeight="631.0" prefWidth="924.0" spacing="10" stylesheets="@DetailsReclamation.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.DetailsReclamation">
 
     <Label layoutX="76.0" layoutY="41.0" text="id reclam:" />
     <TextField fx:id="idField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="198.0" promptText="id reclam" />

@@ -1,15 +1,14 @@
-package org.example.gui;
+package gui;
 
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import org.example.models.Reclamation;
-import org.example.services.ReclamationService;
+import entities.Reclamation;
+import services.ReclamationService;
 
 import java.net.URL;
 import java.sql.SQLException;

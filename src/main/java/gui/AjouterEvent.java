@@ -1,5 +1,6 @@
 package gui;
 
+
 import entities.Categorie;
 import entities.Event;
 import entities.user;
@@ -50,6 +51,13 @@ public class AjouterEvent implements Initializable {
     public Button reclam;
     public TextField activityName;
     public Button addActivityButton;
+    public Label errorDate;
+    public Label errorLoc;
+    public Label errorTtile;
+    public Label errorDesc;
+    public Label errorPrix;
+    public Label errorCateg;
+    public Button Next;
     @FXML
     private TextField titleEvent;
     @FXML
@@ -86,22 +94,92 @@ public class AjouterEvent implements Initializable {
 
     //Fonction d'ajout nécessite changement de controle de saisie sous forme de labels(instead of pop-ups)
     @FXML
-    public void Ajouter(ActionEvent event) throws IOException {
-        Alert alert1 = new Alert(Alert.AlertType.ERROR);
+
+    public void Ajouter(ActionEvent actionEvent) throws IOException {
+        // Hide all error labels initially
+        errorTtile.setVisible(false);
+        errorDesc.setVisible(false);
+        errorLoc.setVisible(false);
+        errorDate.setVisible(false);
+        errorPrix.setVisible(false);
+        errorCateg.setVisible(false);
+
+        // Clear previous error messages
+        errorTtile.setText("");
+        errorDesc.setText("");
+        errorLoc.setText("");
+        errorDate.setText("");
+        errorPrix.setText("");
+        errorCateg.setText("");
+
         String title = titleEvent.getText().trim();
         String desc = descEve.getText().trim();
         String loc = locEve.getText().trim();
         LocalDate localDate = dateEve.getValue();
         String prixText = prixEve.getText().trim();
-        if (localDate == null) {
-            alert1.setTitle("Erreur");
-            alert1.setContentText("Veuillez sélectionner une date !");
-            alert1.showAndWait();
-            return;
+
+        // Vérification des champs vides
+        boolean hasError = false;
+
+        if (title.isEmpty()) {
+            errorTtile.setText("Veuillez entrer un titre.");
+            errorTtile.setVisible(true); // Show the error label
+            hasError = true;
+        } else if (title.length() < 3 || title.length() > 50) {
+            errorTtile.setText("Le titre doit contenir entre 3 et 50 caractères.");
+            errorTtile.setVisible(true); // Show the error label
+            hasError = true;
         }
 
+        if (desc.isEmpty()) {
+            errorDesc.setText("Veuillez entrer une description.");
+            errorDesc.setVisible(true); // Show the error label
+            hasError = true;
+        } else if (desc.length() < 10 || desc.length() > 255) {
+            errorDesc.setText("La description doit contenir entre 10 et 255 caractères.");
+            errorDesc.setVisible(true); // Show the error label
+            hasError = true;
+        }
+
+        if (loc.isEmpty()) {
+            errorLoc.setText("Veuillez entrer une localisation.");
+            errorLoc.setVisible(true); // Show the error label
+            hasError = true;
+        } else if (loc.length() < 3) {
+            errorLoc.setText("La localisation doit contenir au moins 3 caractères.");
+            errorLoc.setVisible(true); // Show the error label
+            hasError = true;
+        }
+
+        if (localDate == null) {
+            errorDate.setText("Veuillez sélectionner une date !");
+            errorDate.setVisible(true); // Show the error label
+            hasError = true;
+        } else if (localDate.isBefore(LocalDate.now())) {
+            errorDate.setText("La date doit être dans le futur.");
+            errorDate.setVisible(true); // Show the error label
+            hasError = true;
+        }
+
+        Double prix = null;
+        if (!prixText.isEmpty()) {
+            try {
+                prix = Double.parseDouble(prixText);
+            } catch (NumberFormatException e) {
+                errorPrix.setText("Le prix doit être un nombre valide.");
+                errorPrix.setVisible(true); // Show the error label
+                hasError = true;
+            }
+        }
+
+        if (hasError) {
+            return; // Stop execution if there are errors
+        }
+
+        // Conversion de la date
         Date date = Date.valueOf(localDate);
 
+        // Récupération de la catégorie
         String categoryName = categEve.getSelectionModel().getSelectedItem();
         int categoryId = -1;
 
@@ -109,81 +187,49 @@ public class AjouterEvent implements Initializable {
             ServiceCategorie serviceCategorie = new ServiceCategorie();
             categoryId = serviceCategorie.getCategoryIdByName(categoryName);
             if (categoryId == -1) {
-                throw new SQLException("Category non trouvée");
+                errorCateg.setText("Catégorie introuvable.");
+                errorCateg.setVisible(true); // Show the error label
+                return; // Stop execution if category is not found
             }
         } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setContentText("Erreur lors de la récupération de l'ID de la catégorie : " + e.getMessage());
-            alert.showAndWait();
-            return;
-        }
-        // Vérification des champs vides
-        if (title.isEmpty() || desc.isEmpty() || loc.isEmpty() || date == null || categoryId == -1) {
-            alert1.setTitle("Erreur");
-            alert1.setContentText("Veuillez remplir tous les champs !");
-            alert1.showAndWait();
-
-            return;
+            errorCateg.setText("Erreur de récupération de la catégorie.");
+            errorCateg.setVisible(true); // Show the error label
+            return; // Stop execution if there's an issue with category retrieval
         }
 
-        // Vérification du titre (min 3 caractères, max 50)
-        if (title.length() < 3 || title.length() > 50) {
-            alert1.setTitle("Erreur");
-            alert1.setContentText("Le titre doit contenir entre 3 et 50 caractères.");
-
-            return;
-        }
-
-        // Vérification de la description (min 10 caractères, max 255)
-        if (desc.length() < 10 || desc.length() > 255) {
-            alert1.setTitle("Erreur");
-            alert1.setContentText("La description doit contenir entre 10 et 255 caractères.");
-            alert1.showAndWait();
-            return;
-        }
-
-        // Vérification de la localisation (min 3 caractères)
-        if (loc.length() < 3) {
-            alert1.setTitle("Erreur");
-            alert1.setContentText("La localisation doit contenir au moins 3 caractères.");
-            alert1.showAndWait();
-            return;
-        }
-
-        if (localDate.isBefore(LocalDate.now())) {
-            alert1.setTitle("Erreur");
-            alert1.setContentText("La date doit être dans le futur.");
-            alert1.showAndWait();
-            return;
-        }
-        Double prix = null;
-        if (prixText.isEmpty()) {
-            title += " (Sur réservation gratuite)";
-        } else {
-            try {
-                prix = Double.parseDouble(prixText);
-            } catch (NumberFormatException e) {
-                alert1.setTitle("Erreur");
-                alert1.setContentText("Le prix doit être un nombre valide.");
-                alert1.showAndWait();
-                return;
-            }
-        }
-
+        // Create Event object
         Event eve = new Event(title, desc, date, loc, currentUser.getId(), categoryId, imagePath, prix);
         eve.setActivities(activities);
-        /*public Event(String title, String description, Date date_event, String location,int user_id, int category_id*/
+
+        // Add event
         try {
             ServiceEvent.ajouter(eve);
         } catch (Exception ex) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setContentText(ex.getMessage());
-            alert.showAndWait();
+            errorCateg.setText("Erreur lors de l'ajout de l'événement.");
+            errorCateg.setVisible(true); // Show the error label
+            return; // Stop execution if adding event fails
         }
 
+        // Confirmation and transition logic
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Confirmation");
+        alert.setHeaderText("Êtes-vous sûr de vouloir réserver ?");
+        alert.setContentText("Cliquez sur 'Oui' pour confirmer ou 'Annuler' pour revenir en arrière.");
+
+        Optional<ButtonType> result = alert.showAndWait();
+
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterReservation.fxml"));
+            Parent root = loader.load();
+
+            Stage stage = (Stage) Next.getScene().getWindow();
+            stage.setScene(new Scene(root));
+            stage.show();
+        } else {
+            System.out.println("Réservation annulée.");
+        }
     }
+
     //Fonction d'ouverture du dropdown list (nécessite ajout personnalisé de catégorie)
     public void Opened(ActionEvent actionEvent) {
         if (isInitialized) {

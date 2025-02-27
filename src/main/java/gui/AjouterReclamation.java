@@ -1,18 +1,15 @@
-package org.example.gui;
+package gui;
 
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.control.*;
-import javafx.scene.image.Image;
 import javafx.scene.layout.HBox;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-import org.example.models.Reclamation;
-import org.example.models.ReclamationAttachment;
-import org.example.services.ReclamationService;
+import entities.Reclamation;
+import entities.ReclamationAttachment;
+import services.ReclamationService;
 
 import java.io.File;
 import java.io.IOException;
