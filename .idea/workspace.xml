@@ -4,140 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0a079215-67e3-4338-a41c-c6d6bef791d9" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Comment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/ContractType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Like.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/PDFGenerator.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Partner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/PartnerType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Partnership.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Person.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Post.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Reclamation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/ReclamationAttachment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Reservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AddPartnerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AdminControllerPartner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AdminPartnershipController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReclamations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReclamationsAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterReclamation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterReservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/DetailsReclamation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/DetailsReclamationAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/ModifyPartnerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/ParticipantPartnerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/PartnershipCellController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/PersonCellController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/PostsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartnership.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/IService1.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/IService2.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/IService4.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/PartnerService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/PartnershipService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ReclamationService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/Service.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceComment.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServiceLike.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/services/ServicePost.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AddPartner.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AdminPartner.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AdminPartnership.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherReclamation.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherReclamations.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherReclamationsAdmin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AfficherReservation.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AjouterReclamation.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AjouterReclamation.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/AjouterReservation.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/DetailsReclamation.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/DetailsReclamation.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/DetailsReclamationAdmin.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/AID.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/API.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/Delice.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/back2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/impressive.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Images/premium_photo-1683121366070-5ceb7e007a97.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ModifyPartner.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ParticipPartner.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/Partnershipcell.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/PersonCell.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/117981_w1024h768c1cx2652cy2652cxt0cyt0cxb5304cyb5304.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/16-220816-PAMU-PESCADO_EMBARAZADO-018-scaled.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/Capuccino.jpg.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/Jus-de-carotte-orange-et-curcuma.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/Mashed-Potato-Soup-Square.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/NodeJSNotesForProfessionals.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/One to Many Many to Many JAVA.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/Sprint-Backlog.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/broccoli-cheese-soup-recipe-3.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/cropped-Orange-Juice-1-1.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/download.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/eat-pray-love-39581-3.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/greek-style-spaghetti-3-df162146.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/i76109-salade-de-roquette-aux-figues-et-aux-poires.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/image.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/l-intro-1691424874.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/st,small,507x507-pad,600x600,f8f8f8.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/tradition-vin-rouge-2017-bouteille-personnalisable.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/unnamed.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/updated-lava-cakes7.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/vin-rouge-aoc (1).jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/vin-rouge-aoc.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ReclamAttachments/zarla-le-jardin-toil-1x1-2400x2400-20220425-vy6fyg394htmd47kd8f9.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/UserParnter.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/posts.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/styles.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/styles2.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/ReclamAttachments/117981_w1024h768c1cx2652cy2652cxt0cyt0cxb5304cyb5304.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/ReclamAttachments/16-220816-PAMU-PESCADO_EMBARAZADO-018-scaled.jpg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/ReclamAttachments/Capuccino.jpg.jpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/uploads/ReclamAttachments/broccoli-cheese-soup-recipe-3.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ProfilController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ProfilController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AfficherEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AfficherEventHOME.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherEventHOME.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterParticipation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterParticipation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/ParticipantDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ParticipantDashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/loginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/loginUser.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/main/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/MainGUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/services/userService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/userService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFx.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/test/testJDBC.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherEvent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherEventHOME.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherEventHOME.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterEvent.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterParticipation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterParticipation.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Crudrole.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Crudrole.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/Images/bakc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/bakc6.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ProfilController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProfilController.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/addUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/addUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/adminDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/adminDashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/deleteUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/deleteUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/editCurrentuser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/editCurrentuser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/forgotPassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/forgotPassword.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/plus.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/rafraichir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/rafraichir.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/images/read.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/read.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/interface.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interface.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/listUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/listUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/login.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/participantDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/participantDashboard.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/registerUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/registerUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/updateUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/updateUser.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/userCharts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/userCharts.fxml" afterDir="false" />
-    </list>
+    <list default="true" id="0a079215-67e3-4338-a41c-c6d6bef791d9" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -156,7 +23,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="main" />
+        <entry key="$PROJECT_DIR$" value="GestionPartnerhip1.0" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -188,34 +55,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
-    &quot;Application.MainGUI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.main.MainGUI.executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;GestionEve&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_directory_selection&quot;: &quot;C:/Users/belha/Desktop/3rdYear/pidev/pidev/src/main/java&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/belha/Documents/New folder/Eventuras2.0&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Application.MainGUI.executor": "Run",
+    "Application.main.MainGUI.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_directory_selection": "C:/Users/belha/Desktop/3rdYear/pidev/pidev/src/main/java",
+    "last_opened_file_path": "C:/Users/belha/Documents/New folder/Eventuras2.0",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\chebaane.1\Documents\Eventuras\src\main\java\org\example\Services" />
@@ -251,12 +118,18 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="MainGUI" type="Application" factoryName="Application">
+    <configuration name="MainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="ALTERNATIVE_JRE_PATH" value="17" />
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="true" />
       <option name="MAIN_CLASS_NAME" value="main.MainGUI" />
       <module name="pidev" />
-      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\belha\Downloads\openjfx-17.0.14_windows-x64_bin-sdk(1)\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <option name="VM_PARAMETERS" value="--module-path &quot;C:\Users\Nassir\Downloads\openjfx-17.0.14_windows-x64_bin-sdk\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -274,13 +147,56 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="org.example.test.Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.test.Main" />
+      <module name="Reservation_Eventura" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.main.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="org.example.test.mainGUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="org.example.test.mainGUI" />
+      <module name="Reservation_Eventura" />
+      <option name="VM_PARAMETERS" value="-module-path &quot;C:\Users\Nassir\Downloads\openjfx-17.0.14_windows-x64_bin-sdk\javafx-sdk-17.0.14\lib&quot; --add-modules javafx.controls,javafx.fxml" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="org.example.test.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="pidev" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="pidev" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
     <list>
+      <item itemvalue="Application.org.example.test.Main" />
+      <item itemvalue="Application.org.example.test.mainGUI" />
       <item itemvalue="Application.MainGUI" />
       <item itemvalue="Application.main.MainGUI" />
       <item itemvalue="Application.Main" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.org.example.test.Main" />
+        <item itemvalue="Application.org.example.test.mainGUI" />
+        <item itemvalue="Application.MainGUI" />
         <item itemvalue="Application.main.MainGUI" />
         <item itemvalue="Application.Main" />
       </list>
