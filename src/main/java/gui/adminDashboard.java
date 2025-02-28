@@ -44,6 +44,9 @@ public class adminDashboard {
     public Button disco;
     public ImageView picture;
     public Button events;
+    public Button Partners;
+    public ComboBox<String> comboBox;
+    public ChoiceBox<String> myChoiceBox;
     @FXML
     private Text totalReclamation;
 
@@ -80,9 +83,13 @@ public class adminDashboard {
 
 
 
+
+
     @FXML
     void initialize() {
         updateTime();
+        myChoiceBox.setValue("Partners/Partnerships");
+        myChoiceBox.getItems().addAll("GestionPartnerships", "GestionPartners");
 
         userService userService = new userService();
         ObservableList<user> userList = FXCollections.observableList(userService.getallUserdata());
@@ -147,11 +154,17 @@ public class adminDashboard {
     }
 //Reclamations
     public void goto_forum(ActionEvent event) throws IOException {
+        /*
         mainController.loadFXML("/login.fxml");
+
+         */
     }
 //Forum
     public void goto_blog(ActionEvent event) throws IOException {
+        /*
+
         mainController.loadFXML("/login.fxml");
+        */
     }
 
     public void goto_edit(ActionEvent event) throws IOException {
@@ -175,6 +188,47 @@ public class adminDashboard {
         stage = (Stage) disco.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+
+
+    public void handleComboBoxAction(ActionEvent actionEvent) {
+        String selectedOption = myChoiceBox.getValue(); // Get selected item
+
+        if (selectedOption != null) {
+            try {
+                FXMLLoader loader;
+                Parent root;
+
+                switch (selectedOption) {
+                    case "GestionPartners":
+                        loader = new FXMLLoader(getClass().getResource("/AdminPartner.fxml"));
+                        root = loader.load();
+                        break;
+                    case "GestionPartnerships":
+                        loader = new FXMLLoader(getClass().getResource("/AdminPartnership.fxml"));
+                        root = loader.load();
+                        break;
+                    default:
+                        System.out.println("No matching FXML found for: " + selectedOption);
+                        return; // Exit if no matching case
+                }
+
+                // Get the current stage from the choiceBox
+                Stage stage = (Stage) myChoiceBox.getScene().getWindow();
+
+                // Set new scene
+                Scene scene = new Scene(root);
+                stage.setScene(scene);
+                stage.show();
+
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("Error loading FXML file: " + e.getMessage());
+            }
+        } else {
+            System.out.println("No selection made.");
+        }
     }
 
     static class RankingListCell extends ListCell<user> {

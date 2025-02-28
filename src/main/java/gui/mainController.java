@@ -16,18 +16,28 @@ public class mainController extends Application {
     }
     @Override
     public void start(Stage primaryStage) throws IOException{
-        mainController.primaryStage = primaryStage;
+        mainController.primaryStage = primaryStage; // Initialize the primaryStage
         primaryStage.setTitle("Eventuras");
-        loadFXML("/login.fxml");
+        loadFXML("/login.fxml"); // Load the initial FXML
+        primaryStage.show();
+
     }
     public static FXMLLoader loadFXML(String fxmlFileName) throws IOException {
         FXMLLoader loader = new FXMLLoader(mainController.class.getResource(fxmlFileName));
         Parent root = loader.load();
-        Scene scene = new Scene(root);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        if (primaryStage != null) {
+            Scene scene = new Scene(root);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        } else {
+            throw new IllegalStateException("Primary stage is not initialized.");
+        }
         return loader;
     }
+    public static void switchScene(String fxmlFileName) throws IOException {
+        loadFXML(fxmlFileName);
+    }
+
 
 
 }

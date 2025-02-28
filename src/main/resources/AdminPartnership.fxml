@@ -35,6 +35,7 @@
               <Button fx:id="Supprimer" mnemonicParsing="false" onMouseClicked="#delPartnership" text="Supprimer" GridPane.columnIndex="1" GridPane.rowIndex="1" />
               <Button fx:id="Modifier" mnemonicParsing="false" onMouseClicked="#setPartnership" text="Modifier" GridPane.columnIndex="2" GridPane.rowIndex="1" />
       </children>
+
          <columnConstraints>
             <ColumnConstraints />
             <ColumnConstraints />
@@ -56,6 +57,7 @@
           <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
         </rowConstraints>
       </GridPane>
+        <Button fx:id="Dashboard" layoutX="352.0" layoutY="562.0" mnemonicParsing="false" onMouseClicked="#DashboardReturn" prefHeight="42.0" prefWidth="130.0" text="Dashboard" />
    </children>
 
 </AnchorPane>

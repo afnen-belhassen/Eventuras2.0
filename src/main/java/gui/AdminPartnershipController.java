@@ -5,7 +5,10 @@ import entities.Partnership;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
@@ -14,8 +17,10 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.PhongMaterial;
 import javafx.scene.shape.Sphere;
+import javafx.stage.Stage;
 import services.PartnershipService;
 
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Optional;
 
@@ -23,6 +28,7 @@ public class AdminPartnershipController {
 
     public GridPane Grid;
     public Sphere modelGroup;
+    public Button Dashboard;
     @FXML
     private ListView<Partnership> partnershipList;
 
@@ -61,6 +67,7 @@ public class AdminPartnershipController {
     }
 
 
+
     @FXML
     private void addPartnership(MouseEvent mouseEvent) {
         Dialog<Partnership> dialog = new Dialog<>();
@@ -78,11 +85,11 @@ public class AdminPartnershipController {
 
         // Create a ComboBox for contract type
         ComboBox<ContractType> contractTypeComboBox = new ComboBox<>();
-        contractTypeComboBox.getItems().addAll(ContractType.values()); // Add all ContractType values to the ComboBox
+        contractTypeComboBox.getItems().addAll(ContractType.values());
         contractTypeComboBox.setPromptText("Selectionner type de contrat");
 
         TextField descriptionField = new TextField();
-        CheckBox isSignedCheckbox = new CheckBox("Is Signed"); // Checkbox for boolean value
+        CheckBox isSignedCheckbox = new CheckBox("Is Signed");
 
         // Add fields to the grid
         grid.addRow(0, new Label("Organizer ID:"), organizerIdField);
@@ -97,44 +104,41 @@ public class AdminPartnershipController {
         ButtonType saveButtonType = new ButtonType("Sauvegarder", ButtonBar.ButtonData.OK_DONE);
         dialog.getDialogPane().getButtonTypes().addAll(saveButtonType, ButtonType.CANCEL);
 
-        // Convert the result to a Partnership object when the Save button is clicked
         dialog.setResultConverter(dialogButton -> {
             if (dialogButton == saveButtonType) {
-                // Parse the input values
                 try {
                     int organizerId = Integer.parseInt(organizerIdField.getText());
                     int partnerId = Integer.parseInt(partnerIdField.getText());
 
-                    // Get selected contract type from ComboBox
                     ContractType contractType = contractTypeComboBox.getValue();
                     if (contractType == null) {
                         showAlert("Erreur", "Veuillez selectionner un type de contrat", Alert.AlertType.ERROR);
-                        return null; // Don't proceed if no contract type is selected
+                        return null;
                     }
 
                     String description = descriptionField.getText();
-                    boolean isSigned = isSignedCheckbox.isSelected(); // Get value from checkbox
+                    boolean isSigned = isSignedCheckbox.isSelected();
 
                     // Create a new partnership object
-                    Partnership newPartnership = new Partnership(0, organizerId, partnerId, contractType, description, isSigned);
-                    return newPartnership;
+                    return new Partnership(0, organizerId, partnerId, contractType, description, isSigned);
                 } catch (NumberFormatException e) {
-                    showAlert("Erreur", "Input Invalid", Alert.AlertType.ERROR);
+                    showAlert("Erreur", "Input Invalid: " + e.getMessage(), Alert.AlertType.ERROR);
                 }
             }
             return null;
         });
 
-        // Show the dialog and handle the result
         dialog.showAndWait().ifPresent(newPartnership -> {
             try {
                 partnershipService.create(newPartnership);
                 loadPartnerships();
             } catch (SQLException e) {
-                showAlert("Erreur", "Echec d'ajout de Partnership", Alert.AlertType.ERROR);
+                e.printStackTrace();
+                showAlert("Erreur", "Echec d'ajout de Partnership: " + e.getMessage(), Alert.AlertType.ERROR);
             }
         });
     }
+
 
 
     @FXML
@@ -229,6 +233,17 @@ public class AdminPartnershipController {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    public void DashboardReturn(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/adminDashboard.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        Stage stage = (Stage) Dashboard.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
     }
 
     // Custom ListCell Class

@@ -1,5 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.chart.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
@@ -14,12 +21,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.collections.FXCollections?>
 
-<AnchorPane prefHeight="600" prefWidth="1500" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.adminDashboard">
+<AnchorPane prefHeight="600" prefWidth="1500" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.adminDashboard">
     <children>
         <Pane fx:id="news_pane" layoutX="375.0" layoutY="98.0" prefHeight="60.0" prefWidth="1027.0" style="-fx-background-color: #e07564; -fx-background-radius: 10;">
 
           <children>
+
             <Text fx:id="scrolling_text" fill="WHITE" layoutX="13.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1000.13671875">
                <font>
                   <Font size="25.0" />
@@ -132,7 +141,7 @@
                         <Font name="System Bold" size="27.0" />
                      </font>
                   </Label>
-                  <Button fx:id="Dashboard" alignment="BASELINE_CENTER" layoutX="50.0" layoutY="124.0" mnemonicParsing="false" onAction="#goto_dashboard" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Dashboard">
+                  <Button fx:id="Dashboard" alignment="BASELINE_CENTER" layoutX="50.0" layoutY="108.0" mnemonicParsing="false" onAction="#goto_dashboard" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Dashboard">
                      <graphic>
                         <ImageView />
                      </graphic>
@@ -140,22 +149,22 @@
                         <Insets />
                      </opaqueInsets>
                   </Button>
-                  <Button fx:id="userMan" alignment="BASELINE_CENTER" layoutX="50.0" layoutY="168.0" mnemonicParsing="false" onAction="#goto_user" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Utilisateurs">
+                  <Button fx:id="userMan" alignment="BASELINE_CENTER" layoutX="50.0" layoutY="157.0" mnemonicParsing="false" onAction="#goto_user" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Utilisateurs">
                      <graphic>
                         <ImageView />
                      </graphic>
                   </Button>
-                  <Button fx:id="events" alignment="BASELINE_CENTER" layoutX="49.0" layoutY="218.0" mnemonicParsing="false" onAction="#goto_event" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Evenements">
+                  <Button fx:id="events" alignment="BASELINE_CENTER" layoutX="49.0" layoutY="205.0" mnemonicParsing="false" onAction="#goto_event" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Evenements">
                      <graphic>
                         <ImageView />
                      </graphic>
                   </Button>
-                  <Button fx:id="ForMan" alignment="BASELINE_CENTER" layoutX="50.0" layoutY="266.0" mnemonicParsing="false" onAction="#goto_forum" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Reclamations">
+                  <Button fx:id="ForMan" alignment="BASELINE_CENTER" layoutX="50.0" layoutY="251.0" mnemonicParsing="false" onAction="#goto_forum" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Reclamations">
                      <graphic>
                         <ImageView />
                      </graphic>
                   </Button>
-                  <Button alignment="BASELINE_CENTER" layoutX="49.0" layoutY="316.0" mnemonicParsing="false" onAction="#goto_blog" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Forum">
+                  <Button alignment="BASELINE_CENTER" layoutX="48.0" layoutY="299.0" mnemonicParsing="false" onAction="#goto_blog" prefHeight="35.0" prefWidth="179.0" style="-fx-background-color: #DFE0E2; -fx-border-color: #DFE0E2; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-radius: 100;" text="Forum">
                      <graphic>
                         <ImageView />
                      </graphic>
@@ -191,6 +200,8 @@
                         <Font name="System Bold" size="12.0" />
                      </font>
                   </Label>
+                  <ChoiceBox fx:id="myChoiceBox" layoutX="50.0" layoutY="352.0" onAction="#handleComboBoxAction" prefHeight="29.0" prefWidth="173.0" />
+
                </children>
             </Pane>
          </children>

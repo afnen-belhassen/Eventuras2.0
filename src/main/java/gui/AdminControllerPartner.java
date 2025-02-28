@@ -23,6 +23,7 @@ public class AdminControllerPartner {
 
     private final PartnerService ps = new PartnerService();
     public Button Actualiser;
+    public Button Dashboard;
 
     @FXML
     private ListView<Partner> partnersList;
@@ -153,6 +154,18 @@ public class AdminControllerPartner {
         } catch (SQLException e) {
             showAlert(Alert.AlertType.ERROR, "Erreur de base de données", "Erreur lors de l'actualisation : " + e.getMessage());
         }
+    }
+
+    public void DashboardReturn(MouseEvent mouseEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/adminDashboard.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        Stage stage = (Stage) Dashboard.getScene().getWindow();
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+
     }
 
     // Classe personnalisée pour afficher plusieurs colonnes

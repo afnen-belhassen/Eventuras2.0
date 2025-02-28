@@ -17,6 +17,7 @@ public class OrganisateurDashboard {
     public Button tickets;
     public Button Acceuil;
     public Button reclam;
+    Scene scene;
 
     public void showAcceuil(ActionEvent event) throws IOException {
         // Load the AfficherEvent interface
@@ -44,5 +45,17 @@ public class OrganisateurDashboard {
         Stage stage = (Stage) GoToEvents.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
+    }
+
+    public void CollabGo(ActionEvent actionEvent) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UserParnter.fxml"));
+        Parent root = loader.load();
+
+
+        // Switch to the AfficherEvent scene
+        Stage stage = (Stage) Collaborations.getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+
     }
 }

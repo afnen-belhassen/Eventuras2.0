@@ -1,16 +1,19 @@
 package entities;
 
+import utils.Session;
+
 public class Partnership {
     private int id;
     private int organizerId;
     private int partnerId;
     private ContractType contractType;
     private String description;
-    private boolean isSigned;          // True if both parties have signed
+    private boolean isSigned;
+    user currentUser = Session.getInstance().getCurrentUser();// True if both parties have signed
 
     public Partnership( int organizerId, int partnerId, ContractType contractType, String description, boolean isSigned ) {
 
-        this.organizerId = organizerId;
+        this.organizerId = currentUser.getId();
         this.partnerId = partnerId;
         this.contractType = contractType;
         this.description = description;
@@ -19,7 +22,7 @@ public class Partnership {
 
     public Partnership(int id, int organizerId, int partnerId, ContractType contractType, String description, boolean isSigned) {
         this.id = id;
-        this.organizerId = organizerId;
+        this.organizerId = currentUser.getId();
         this.partnerId = partnerId;
         this.contractType = contractType;
         this.description = description;
@@ -29,11 +32,11 @@ public class Partnership {
 
     // Getters and Setters
     public int getOrganizerId() {
-        return organizerId;
+        return this.organizerId = currentUser.getId();
     }
 
     public void setOrganizerId(int organizerId) {
-        this.organizerId = organizerId;
+        this.organizerId = currentUser.getId();
     }
 
     public int getPartnerId() {

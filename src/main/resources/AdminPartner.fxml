@@ -29,6 +29,7 @@
        <Button fx:id="Supprimer" layoutX="680.0" layoutY="234.0" mnemonicParsing="false" onMouseClicked="#delPartner" text="Supprimer" />
        <Button fx:id="Modifier" layoutX="808.0" layoutY="234.0" mnemonicParsing="false" onMouseClicked="#setPartner" text="Modifier" />
        <Button fx:id="Actualiser" layoutX="993.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#Refresh" text="Acutaliser" />
+      <Button fx:id="Dashboard" layoutX="341.0" layoutY="656.0" mnemonicParsing="false" onMouseClicked="#DashboardReturn" prefHeight="42.0" prefWidth="130.0" text="Dashboard" />
    </children>
 
 </AnchorPane>
