@@ -14,12 +14,16 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
     <dependencies>
+<<<<<<< HEAD
 
+=======
+>>>>>>> e0e3392 (CRUD)
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
             <version>8.0.33</version>
         </dependency>
+<<<<<<< HEAD
         <dependency>
             <groupId>org.openjfx</groupId>
             <artifactId>javafx-fxml</artifactId>
@@ -84,5 +88,8 @@
             </plugin>
         </plugins>
     </build>
+=======
+    </dependencies>
+>>>>>>> e0e3392 (CRUD)
 
 </project>

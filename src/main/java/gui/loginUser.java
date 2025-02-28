@@ -65,15 +65,15 @@ public class loginUser {
                 );
 
                 // Redirect based on role
-                switch (user.getRole()) {
-                    case "Admin":
+                switch (user.getRole().toLowerCase()) {
+                    case "admin":
                         loadPage("/adminDashboard.fxml");
                         break;
                     case "participant":
-                        loadPage("/AjouterEvent.fxml");
+                        loadPage("/participantDashboard.fxml");
                         break;
                     case "organisateur":
-                        loadPage("/EventORGAN.fxml");
+                        loadPage("/organisateurDashboard.fxml");
                         break;
                     default:
                         showAlert("Error", "Unknown role. Please contact support.");

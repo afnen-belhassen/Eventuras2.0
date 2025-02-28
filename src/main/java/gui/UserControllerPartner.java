@@ -10,7 +10,6 @@ import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 import services.PartnerService;
@@ -23,8 +22,6 @@ import java.util.List;
 public class UserControllerPartner {
 
     private final PartnerService ps = new PartnerService();
-    public Button save;
-    public AnchorPane SelecPartner;
 
     @FXML
     private ListView<Partner> partnersList;

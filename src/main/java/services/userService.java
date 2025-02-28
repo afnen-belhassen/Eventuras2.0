@@ -363,23 +363,4 @@ public class userService implements Iuser<user> {
         return null; // Return null if role_id is not found
     }
 
-    public user getUserById(int id) throws SQLException {
-        String sql = "SELECT * FROM users WHERE user_id = ?";
-        PreparedStatement pst = cnx.prepareStatement(sql);
-        pst.setInt(1, id);
-        ResultSet rs = pst.executeQuery();
-        System.out.println(id);
-        if (rs.next()) {
-            user u = new user();
-            u.setId(rs.getInt("user_id"));
-            u.setUsername(rs.getString("user_username"));
-            u.setEmail(rs.getString("user_email"));
-            u.setFirstname(rs.getString("user_firstname"));
-            u.setLastname(rs.getString("user_lastname"));
-            u.setPicture(rs.getString("user_picture"));
-            // … récupérer les autres champs si besoin
-            return u;
-        }
-        return null;
-    }
 }

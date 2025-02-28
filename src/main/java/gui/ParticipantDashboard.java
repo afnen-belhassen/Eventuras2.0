@@ -75,33 +75,17 @@ public class ParticipantDashboard {
     private void animateScrollingText() {
         String newsText = "° Welcome back!: " + CurrentUser.getFirstname() + " " + CurrentUser.getLastname() + " hetheka houwa °";
         scrolling_text.setText(newsText);
-
-        // Make sure the text is initially positioned off-screen to the right
-        scrolling_text.setTranslateX(news_pane.getWidth());
-
         Rectangle clip = new Rectangle(1027, 60);
-        news_pane.setClip(clip);  // Ensure the clipping area is large enough for the text
-
-        // Make sure the layout is recalculated to get the correct width of the text
+        news_pane.setClip(clip);
         news_pane.layout();
         double textWidth = scrolling_text.getLayoutBounds().getWidth();
-
-        // Calculate animation duration based on text width
         int animationDurationMillis = (int) (textWidth * 20);
-
-        // TranslateTransition for the scrolling effect
         TranslateTransition transitionOut = new TranslateTransition(Duration.millis(animationDurationMillis), scrolling_text);
-        transitionOut.setFromX(news_pane.getWidth()); // Start position (off-screen right)
-        transitionOut.setByX(-textWidth); // Move left by text width
-
-        // Transition to reset the text position to the right after it's off-screen
+        transitionOut.setByX(-textWidth);
         TranslateTransition transitionIn = new TranslateTransition(Duration.ZERO, scrolling_text);
-        transitionIn.setFromX(news_pane.getWidth());  // Reset to right side
-
-        // Sequential transition to repeat the scrolling
+        transitionIn.setByX(1027);
         SequentialTransition sequentialTransition = new SequentialTransition(transitionOut, transitionIn);
         sequentialTransition.setCycleCount(SequentialTransition.INDEFINITE);
         sequentialTransition.play();
     }
-
 }

@@ -1,22 +1,16 @@
 package gui;
 
 import entities.Partner;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
-import javafx.stage.Stage;
 import services.PartnerService;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -100,18 +94,4 @@ public class ParticipantPartnerController {
             e.printStackTrace();
         }
     }
-    Scene scene;
-    Stage stage;
-
-
-
-    //display last 3 events in the home sectio
-
-
-
-    public void goToTickets(ActionEvent event) throws IOException {
-
-    }
-
-
 }

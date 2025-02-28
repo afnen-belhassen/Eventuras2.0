@@ -17,11 +17,14 @@
       <Button fx:id="reclam" layoutX="25.0" layoutY="404.0" mnemonicParsing="false" prefHeight="40.0" prefWidth="177.0" text="Réclamations" />
       <ImageView fitHeight="324.0" fitWidth="703.0" layoutX="413.0" layoutY="242.0" pickOnBounds="true" preserveRatio="true" />
       <TextField id="SearchField" layoutX="280.0" layoutY="57.0" prefHeight="36.0" prefWidth="717.0" />
-      <Pane fx:id="news_pane" layoutX="251.0" layoutY="223.0" prefHeight="60.0" prefWidth="1027.0" style="-fx-background-color: #e07564; -fx-background-radius: 10;" />
-      <Text fx:id="scrolling_text" fill="WHITE" layoutX="231.0" layoutY="309.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="964.13671875">
-         <font>
-            <Font size="25.0" />
-         </font>
-      </Text>
+      <Pane fx:id="news_pane" layoutX="251.0" layoutY="223.0" prefHeight="60.0" prefWidth="1027.0" style="-fx-background-color: #e07564; -fx-background-radius: 10;">
+         <children>
+            <Text fx:id="scrolling_text" fill="WHITE" layoutX="31.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="964.13671875">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Text>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

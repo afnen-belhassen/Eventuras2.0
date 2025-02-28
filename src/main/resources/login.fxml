@@ -9,7 +9,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="731.0" prefWidth="1305.0" style="-fx-background-color: transparent;" stylesheets="@entry.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.loginUser">
+<AnchorPane prefHeight="731.0" prefWidth="1305.0" style="-fx-background-color: ;" stylesheets="@entry.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.loginUser">
     <children>
         <TextField fx:id="email_input" layoutX="91.0" layoutY="301.0" prefHeight="29.0" prefWidth="264.0" promptText="E-mail" />
       <PasswordField fx:id="password_input" layoutX="91.0" layoutY="350.0" prefHeight="29.0" prefWidth="264.0" promptText="Mot de passe" />
