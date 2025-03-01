@@ -229,6 +229,12 @@ public class registerUser {
         confirmationAlert.setTitle("Confirmation");
         confirmationAlert.setContentText("User added successfully. Please log in.");
         confirmationAlert.show();
+        try {
+            mainController.loadFXML("/login.fxml");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
     }
 
     // Profile picture upload method

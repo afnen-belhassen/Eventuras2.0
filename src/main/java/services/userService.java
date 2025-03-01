@@ -25,13 +25,14 @@ public class userService implements Iuser<user> {
             throw new SQLException("ROLE NAME does not exist in the role table.");
         }
 
+        String passwordencrypted = encrypt(user.getPassword());
         // Insert the user into the 'users' table with the role_id
         String query = "INSERT INTO users (user_username, user_email, user_password, user_firstname, user_lastname, user_birthday, user_gender, user_picture, user_phonenumber, user_level, role_id) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getEmail());
-            pstmt.setString(3, user.getPassword());
+            pstmt.setString(3, passwordencrypted);
             pstmt.setString(4, user.getFirstname());
             pstmt.setString(5, user.getLastname());
             pstmt.setString(6, user.getBirthday());

@@ -62,7 +62,9 @@ public class editCurrentUser {
     userService userService = new userService();
 
     @FXML
-    void back_to_list(ActionEvent event) {
+    void back_to_list(ActionEvent event) throws IOException {
+
+        mainController.loadFXML("/listUser.fxml");
 
     }
 
@@ -73,7 +75,7 @@ public class editCurrentUser {
 
     @FXML
     void submit_user(ActionEvent event) {
-        if(validateForm()) {
+        if (validateForm()) {
             String picturePath = picture_input.getText();
 
             Path path = Paths.get(picturePath);
@@ -112,8 +114,9 @@ public class editCurrentUser {
             System.out.println("No file selected");
         }
     }
+
     @FXML
-    void initialize(){
+    void initialize() {
         firstname_input.setText(userSession.getFirstname());
         lastname_input.setText(userSession.getLastname());
         phonenumber_input.setText(userSession.getPhonenumber());
@@ -180,6 +183,7 @@ public class editCurrentUser {
         Matcher matcher = pattern.matcher(email);
         return matcher.matches();
     }
+
     private void showUpdateConfirmation(user user) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Confirmation");

@@ -8,30 +8,26 @@ import java.nio.file.Paths;
 import java.util.Objects;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TableCell;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.scene.control.ListCell;
 import javafx.scene.layout.HBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.Button;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
 import entities.user;
 import services.userService;
 import javafx.event.ActionEvent;
 import javafx.util.Callback;
 
 public class listUser {
+    public TextField searchbar_id;
     @FXML
     private ResourceBundle resources;
     @FXML
@@ -45,7 +41,7 @@ public class listUser {
     @FXML
     private TableColumn<user, String> user_email;
     @FXML
-    private ListView<String> listviewusers;
+    private ListView<user> listviewusers;
     @FXML
     private TableColumn<user, String> user_phonenumber;
     @FXML
@@ -69,96 +65,83 @@ public class listUser {
 
     @FXML
     void initialize() {
-        ObservableList<user> list = FXCollections.observableList(userService.getallUserdata());
+        searchbar_id.textProperty().addListener((observable, oldValue, newValue) -> refreshlist());
 
-        // Existing TableView configuration
-        user_username.setCellValueFactory(new PropertyValueFactory<>("username"));
-        user_email.setCellValueFactory(new PropertyValueFactory<>("email"));
-        user_phonenumber.setCellValueFactory(new PropertyValueFactory<>("phonenumber"));
-        user_firstname.setCellValueFactory(new PropertyValueFactory<>("firstname"));
-        user_lastname.setCellValueFactory(new PropertyValueFactory<>("lastname"));
-        user_birthday.setCellValueFactory(new PropertyValueFactory<>("birthday"));
-        user_gender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        user_level.setCellValueFactory(new PropertyValueFactory<>("level"));
-        user_picture.setCellFactory(column -> new TableCell<>() {
-            private final ImageView imageView = new ImageView();
-            @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setGraphic(null);
-                } else {
-                    try {
-                        URL imageUrl = getClass().getResource("/images/" + getTableView().getItems().get(getIndex()).getPicture());
-                        if (imageUrl != null) {
-                            Image image = new Image(imageUrl.toExternalForm());
-                            imageView.setImage(image);
-                            imageView.setFitWidth(140);
-                            imageView.setFitHeight(140);
-                            setGraphic(imageView);
-                        } else {
-                            System.out.println("Image not found: " + item);
-                        }
-                    } catch (Exception e) {
-                        System.out.println(e.getMessage());
-                    }
-                }
-            }
-        });
-        actions.setCellFactory(createActionsCellFactory());
-        list_user.setItems(list);
-
-        // Set the ListView items and cell factory
-        listviewusers.setItems(FXCollections.observableList(
-                list.stream()
+        // Fetch user data and ensure it's wrapped in an ObservableList
+        ObservableList<user> userList = FXCollections.observableArrayList(
+                userService.getallUserdata().stream()
                         .filter(Objects::nonNull)
-                        .map(user -> {
-                            String username = user.toString();
-                            if (username == null) {
-                                return "Unknown";
-                            }
-                            return username;
-                        })
                         .collect(Collectors.toList())
-        ));
+        );
 
-        // Add delete button to ListView
-        listviewusers.setCellFactory(param -> new ListCell<String>() {
+        // Set the ListView items
+        listviewusers.setItems(userList);
+
+        // Customize the cell factory to display user info with a delete button
+        listviewusers.setCellFactory(param -> new ListCell<user>() {
             private final HBox hbox = new HBox(10);
             private final Label label = new Label();
             private final Button deleteButton = new Button("Delete");
 
             {
+                // Style the delete button
                 deleteButton.setStyle("-fx-background-color: #ff4444; -fx-text-fill: white;");
-                deleteButton.setOnAction(event -> {
-                    String userDetails = getItem();
-                    if (userDetails != null) {
-                        user userToDelete = list.stream()
-                                .filter(u -> u.toString().equals(userDetails))
-                                .findFirst()
-                                .orElse(null);
 
-                        if (userToDelete != null) {
-                            showDeleteConfirmation(userToDelete);
-                        }
+                // Handle delete button action
+                deleteButton.setOnAction(event -> {
+                    user userToDelete = getItem();
+                    if (userToDelete != null) {
+                        showDeleteConfirmation(userToDelete);
                     }
                 });
+
+                // Add components to the HBox
                 hbox.getChildren().addAll(label, deleteButton);
             }
 
             @Override
-            protected void updateItem(String item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty || item == null) {
-                    setText(null);
+            protected void updateItem(user user, boolean empty) {
+                super.updateItem(user, empty);
+
+                if (empty || user == null) {
                     setGraphic(null);
                 } else {
-                    label.setText(item);
+                    // Create a styled HBox to hold user information
+                    HBox hbox = new HBox(20);
+                    hbox.setAlignment(Pos.CENTER_LEFT);
+                    hbox.setPadding(new Insets(5));
+
+                    // Display user information
+                    Label usernameLabel = new Label("Username: " + (user.getUsername() != null ? user.getUsername() : "Unknown"));
+                    Label firstnameLabel = new Label("First Name: " + (user.getFirstname() != null ? user.getFirstname() : "Unknown"));
+                    Label lastnameLabel = new Label("Last Name: " + (user.getLastname() != null ? user.getLastname() : "Unknown"));
+                    Label emailLabel = new Label("Email: " + (user.getEmail() != null ? user.getEmail() : "Unknown"));
+
+                    // Apply some styling
+                    Stream.of(usernameLabel, firstnameLabel, lastnameLabel, emailLabel).forEach(label -> {
+                        label.setStyle("-fx-font-size: 14px; -fx-text-fill: #333;");
+                    });
+
+                    // Create a delete button
+                    Button deleteButton = new Button("Delete");
+                    deleteButton.setStyle("-fx-background-color: #ff4444; -fx-text-fill: white; -fx-font-weight: bold;");
+
+                    // Delete button action
+                    deleteButton.setOnAction(event -> showDeleteConfirmation(user));
+
+                    // Add everything to the HBox
+                    hbox.getChildren().addAll(usernameLabel, firstnameLabel, lastnameLabel, emailLabel, deleteButton);
+
                     setGraphic(hbox);
                 }
             }
+
         });
     }
+
+    // Method to show a delete confirmation dialog
+
+
 
     private Callback<TableColumn<user, Void>, TableCell<user, Void>> createActionsCellFactory() {
         return new Callback<TableColumn<user, Void>, TableCell<user, Void>>() {
@@ -207,21 +190,18 @@ public class listUser {
     }
 
     public void refreshlist() {
+        String searchQuery = searchbar_id.getText().toLowerCase();
+
         ObservableList<user> updatedList = FXCollections.observableList(userService.getallUserdata());
-        list_user.setItems(updatedList);
-        listviewusers.setItems(FXCollections.observableList(
-                updatedList.stream()
-                        .filter(Objects::nonNull)
-                        .map(user -> {
-                            String username = user.toString();
-                            if (username == null) {
-                                return "Unknown";
-                            }
-                            return username;
-                        })
-                        .collect(Collectors.toList())
-        ));
+
+        // Filter users by first name if search query is not empty
+        ObservableList<user> filteredList = updatedList.stream()
+                .filter(user -> user.getFirstname().toLowerCase().contains(searchQuery))
+                .collect(Collectors.toCollection(FXCollections::observableArrayList));
+
+        listviewusers.setItems(filteredList);
     }
+
 
     private void showDeleteConfirmation(user user) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
