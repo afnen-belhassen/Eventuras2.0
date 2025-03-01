@@ -33,14 +33,81 @@ public class PostsController {
     @FXML private TextArea TFContent;
     @FXML private ImageView imageView;
     @FXML private VBox postsContainer;
+    @FXML private TextField searchField;
+    @FXML private ComboBox<String> filterComboBox;
+    @FXML private ComboBox<String> sortComboBox;
+    @FXML private Button btnSearch;
 
     private final ServicePost servicePost = new ServicePost();
     private String imagePath = null;
 
     @FXML
     public void initialize() {
+        filterComboBox.setValue("Tous");
+        sortComboBox.setValue("Plus récents");
         afficherPosts();
         postsContainer.setAlignment(Pos.CENTER);
+    }
+
+    @FXML
+    private void rechercher() {
+        try {
+            // Récupérer tous les posts depuis le service
+            List<Post> allPosts = servicePost.afficherAll();
+            String query = searchField.getText().trim().toLowerCase();
+            String filter = filterComboBox.getValue();
+            String sort = sortComboBox.getValue();
+
+            // Filtrer selon le texte de recherche et le filtre choisi
+            List<Post> filteredPosts = new java.util.ArrayList<>();
+            for (Post post : allPosts) {
+                boolean match = false;
+                if (query.isEmpty()) {
+                    match = true;
+                } else {
+                    switch (filter) {
+                        case "Titre":
+                            if (post.getTitle().toLowerCase().contains(query)) {
+                                match = true;
+                            }
+                            break;
+                        case "Contenu":
+                            if (post.getContent().toLowerCase().contains(query)) {
+                                match = true;
+                            }
+                            break;
+                        case "Tous":
+                        default:
+                            if (post.getTitle().toLowerCase().contains(query) ||
+                                    post.getContent().toLowerCase().contains(query)) {
+                                match = true;
+                            }
+                            break;
+                    }
+                }
+                if (match) {
+                    filteredPosts.add(post);
+                }
+            }
+
+            // Trier la liste selon l'option sélectionnée
+            if (sort != null) {
+                if (sort.equals("Plus récents")) {
+                    filteredPosts.sort((p1, p2) -> p2.getCreated_at().compareTo(p1.getCreated_at()));
+                } else if (sort.equals("Plus anciens")) {
+                    filteredPosts.sort((p1, p2) -> p1.getCreated_at().compareTo(p2.getCreated_at()));
+                }
+            }
+
+            // Mettre à jour l'affichage dans postsContainer
+            postsContainer.getChildren().clear();
+            for (Post post : filteredPosts) {
+                VBox postBox = createPostBox(post);
+                postsContainer.getChildren().add(postBox);
+            }
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
     }
 
     // Affiche tous les posts
@@ -80,7 +147,7 @@ public class PostsController {
             if (!userImage.isError()) {
                 userImageView.setImage(userImage);
                 // Arrondir la photo avec un clip circulaire
-                javafx.scene.shape.Circle clip = new javafx.scene.shape.Circle(20, 20, 20);
+                Circle clip = new Circle(20, 20, 20);
                 userImageView.setClip(clip);
             }
         }
@@ -110,15 +177,14 @@ public class PostsController {
         ImageView postImageView = null;
         if (post.getImage_path() != null && !post.getImage_path().isEmpty()) {
             postImageView = new ImageView();
-            postImageView.setFitWidth(100);
-            postImageView.setFitHeight(100);
+            postImageView.setPreserveRatio(true);
+            postImageView.setFitWidth(250);
             Image img = new Image("file:" + post.getImage_path());
             postImageView.setImage(img);
         }
 
-        // 7. Système de like
+        // 7. Système de like (existant)
         services.ServiceLike serviceLike = new services.ServiceLike();
-        // Récupérer l'utilisateur courant depuis la session
         user currentUser = utils.Session.getInstance().getCurrentUser();
         int currentUserId = (currentUser != null) ? currentUser.getId() : -1;
         int likeCount = serviceLike.getNombreLikes(post.getId());
@@ -143,7 +209,7 @@ public class PostsController {
                 ex.printStackTrace();
             }
         });
-        
+
         // 8. Bouton pour afficher/masquer la zone de commentaires
         Button toggleCommentsBtn = new Button("Afficher commentaires");
         toggleCommentsBtn.setOnAction(e -> {
@@ -157,8 +223,15 @@ public class PostsController {
             if (commentsContainer != null) {
                 postBox.getChildren().remove(commentsContainer);
                 toggleCommentsBtn.setText("Afficher commentaires");
+                // Mettre à jour le nombre de commentaires après réduction
+                try {
+                    int newCount = servicePost.getCommentCount(post.getId());
+                    commentCountLabel.setText("Commentaires: " + newCount);
+                } catch (SQLException ex) {
+                    ex.printStackTrace();
+                }
             } else {
-                VBox newCommentsContainer = createCommentsContainer(post, postBox, toggleCommentsBtn);
+                VBox newCommentsContainer = createCommentsContainer(post, postBox, toggleCommentsBtn, commentCountLabel);
                 postBox.getChildren().add(newCommentsContainer);
                 toggleCommentsBtn.setText("Réduire");
             }
@@ -167,12 +240,21 @@ public class PostsController {
         // Assemblage final de la "card"
         postBox.getChildren().addAll(userInfoBox, titleLabel, postInfoLabel, contentLabel);
         if (postImageView != null) {
-            postBox.getChildren().add(postImageView);
+            HBox imageContainer = new HBox();
+            imageContainer.setAlignment(Pos.CENTER);
+            imageContainer.getChildren().add(postImageView);
+            postBox.getChildren().add(imageContainer);
         }
-        postBox.getChildren().addAll(commentCountLabel, likeCountLabel, likeButton, toggleCommentsBtn);
+
+        HBox likeCommentBox = new HBox();
+        likeCommentBox.setSpacing(10);
+        likeCommentBox.setAlignment(Pos.CENTER_LEFT);
+        likeCommentBox.getChildren().addAll(likeCountLabel, likeButton, commentCountLabel, toggleCommentsBtn);
+        postBox.getChildren().add(likeCommentBox);
 
         return postBox;
     }
+
 
     // Dans votre PostsController.java
 
@@ -209,6 +291,7 @@ public class PostsController {
         commentTextLabel.setStyle("-fx-font-size: 12px;");
 
         String commentRelativeTime = getRelativeTime(c.getCreated_at());
+        System.out.println("comment : datetime "+c.getCreated_at());
         Label timeLabel = new Label("(" + commentRelativeTime + ")");
         timeLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray;");
 
@@ -219,7 +302,7 @@ public class PostsController {
     }
 
     // Modification de la méthode createCommentsContainer pour utiliser createCommentBox
-    private VBox createCommentsContainer(Post post, VBox postBox, Button toggleCommentsBtn) {
+    private VBox createCommentsContainer(Post post, VBox postBox, Button toggleCommentsBtn, Label commentCountLabel) {
         VBox commentsContainer = new VBox();
         commentsContainer.setSpacing(5);
         commentsContainer.setStyle("-fx-padding: 5; -fx-background-color: #e9e9e9; -fx-border-color: #ccc;");
@@ -244,18 +327,27 @@ public class PostsController {
         Button btnAjouterComment = new Button("Ajouter");
         addCommentBox.getChildren().addAll(TFNewComment, btnAjouterComment);
 
-        // Action pour ajouter le commentaire
         btnAjouterComment.setOnAction(e -> {
             String newCommentText = TFNewComment.getText().trim();
             if (!newCommentText.isEmpty()) {
                 try {
-                    // Ici, le user_id est fixé à 1 pour l'exemple
-                    Comment newComment = new Comment(0, post.getId(), 1, newCommentText, new java.util.Date());
-                    serviceComment.ajouter(newComment);
+                    user currentUser = utils.Session.getInstance().getCurrentUser();
+                    if (currentUser == null) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Aucun utilisateur connecté !");
+                        alert.showAndWait();
+                        return;
+                    }
+                    int currentUserId = currentUser.getId();
+                    Comment newComment = new Comment(0, post.getId(), currentUserId, newCommentText, new Date());
+                    ServiceComment serviceComment2 = new ServiceComment();
+                    serviceComment2.ajouter(newComment);
                     // Rafraîchir le conteneur des commentaires
-                    VBox refreshedContainer = createCommentsContainer(post, postBox, toggleCommentsBtn);
+                    VBox refreshedContainer = createCommentsContainer(post, postBox, toggleCommentsBtn, commentCountLabel);
                     int index = postBox.getChildren().indexOf(commentsContainer);
                     postBox.getChildren().set(index, refreshedContainer);
+                    // Mettre à jour le nombre de commentaires dans la carte
+                    int newCount = servicePost.getCommentCount(post.getId());
+                    commentCountLabel.setText("Commentaires: " + newCount);
                 } catch (SQLException ex) {
                     ex.printStackTrace();
                 }
@@ -349,66 +441,5 @@ public class PostsController {
         long diffDays = diffHours / 24;
         return "Il y a " + diffDays + " j";
     }
-    /*
-    public void showEvents(ActionEvent event) throws IOException {
-        // Load the AfficherEvent interface
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEventHOME.fxml"));
-        Parent root = loader.load();
 
-        AfficherEventHOME afficherEventController = loader.getController();
-        afficherEventController.showAllEvents(); // Call the method to display all events
-
-        // Switch to the AfficherEvent scene
-        stage = (Stage) GoToEvents.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-    }
-
-    //display last 3 events in the home section
-    public void showAcceuil(ActionEvent event) throws IOException {
-        // Load the AfficherEvent interface
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEventHOME.fxml"));
-        Parent root = loader.load();
-
-        AfficherEventHOME afficherEventController = loader.getController();
-        afficherEventController.showLastThreeEvents(); // Call the method to display last 3 events
-
-        // Switch to the AfficherEvent scene
-        stage = (Stage) Acceuil.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-
-    }
-
-    public void goToCollabs(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParticipPartner.fxml"));
-        Parent root = loader.load();
-
-        AfficherEventHOME afficherEventController = loader.getController();
-        afficherEventController.showLastThreeEvents(); // Call the method to display last 3 events
-
-        // Switch to the AfficherEvent scene
-        stage = (Stage) Collaborations.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-    }
-
-    public void goToTickets(ActionEvent event) throws IOException {
-
-    }
-
-    public void goToReclams(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherReclamations.fxml"));
-        Parent root = loader.load();
-
-        AfficherEventHOME afficherEventController = loader.getController();
-        afficherEventController.showLastThreeEvents(); // Call the method to display last 3 events
-
-        // Switch to the AfficherEvent scene
-        stage = (Stage) reclam.getScene().getWindow();
-        scene = new Scene(root);
-        stage.setScene(scene);
-    }
-
-*/
 }

@@ -24,7 +24,7 @@ public class ServiceComment implements IService<Comment> {
         pst.setInt(1, comment.getPost_id());
         pst.setInt(2, comment.getUser_id());
         pst.setString(3, comment.getContent());
-        pst.setDate(4, new java.sql.Date(comment.getCreated_at().getTime()));
+        pst.setTimestamp(4, new java.sql.Timestamp(comment.getCreated_at().getTime()));
         try {
             pst.executeUpdate();
             System.out.println("Comment added successfully!");

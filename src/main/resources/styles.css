@@ -179,3 +179,37 @@ Label {
     -fx-font-size: 16px; /* Font size */
     -fx-padding: 5px; /* Padding around the text */
 }
+
+.card {
+    -fx-background-color: white;         /* Fond blanc */
+    -fx-background-radius: 8;             /* Coins arrondis */
+    -fx-padding: 15;                      /* Espacement interne */
+    -fx-border-radius: 8;                 /* Coins arrondis pour la bordure */
+    -fx-border-color: #ddd;               /* Bordure grise claire */
+    -fx-border-width: 1;                  /* Épaisseur de la bordure */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.1), 10, 0, 0, 4); /* Ombre portée */
+    -fx-background-insets: 0;
+    -fx-alignment: top-left;
+}
+
+/* Style pour le titre dans la card */
+.card-title {
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #333;
+}
+
+/* Style pour le contenu du post */
+.card-content {
+    -fx-font-size: 16px;
+    -fx-text-fill: #555;
+    -fx-wrap-text: true;
+}
+
+.scroll-pane {
+    -fx-background-color: transparent;
+}
+
+.scroll-pane .viewport {
+    -fx-background-color: transparent;
+}
