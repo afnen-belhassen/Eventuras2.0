@@ -16,5 +16,6 @@
       <TextField fx:id="priceLabel" layoutX="574.0" layoutY="436.0" />
       <TextField fx:id="seatLabel" layoutX="198.0" layoutY="496.0" />
       <Button fx:id="ajouter" layoutX="187.0" layoutY="122.0" mnemonicParsing="false" onAction="#goToAjouterReservation" text="Ajouter" />
+      <Button fx:id="email" layoutX="306.0" layoutY="122.0" mnemonicParsing="false" onAction="#goToEmailReservation" text="Email" />
    </children>
 </AnchorPane>

@@ -14,7 +14,7 @@ public class MainGUI extends Application {
         launch(args);
     }
     public void start(Stage primaryStage){
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/login.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/EmailReservation.fxml"));
         try{
             Parent root=loader.load();
             Scene scene =new Scene(root);

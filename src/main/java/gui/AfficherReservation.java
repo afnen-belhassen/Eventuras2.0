@@ -34,6 +34,7 @@ public class AfficherReservation {
     private Connection connection;
     @FXML
     private Button updateButton;
+    private Button email;
 
     @FXML
     private TextField etatLabel;
@@ -247,6 +248,15 @@ public class AfficherReservation {
     }
 
     public void goToAjouterReservation(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterReservation.fxml"));
+        Parent root = loader.load();
+
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        stage.setScene(new Scene(root));
+        stage.show();
+    }
+
+    public void goToEmailReservation(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/AjouterReservation.fxml"));
         Parent root = loader.load();
 
