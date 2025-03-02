@@ -73,14 +73,18 @@
             <version>17</version>
         </dependency>
 
+        <dependency>
+            <groupId>org.json</groupId>
+            <artifactId>json</artifactId>
+            <version>20210307</version>
+        </dependency>
+
         <!-- Add the library for loading 3D models -->
 
 
 
     </dependencies>
     <build>
-
-
         <plugins>
             <plugin>
                 <groupId>org.openjfx</groupId>

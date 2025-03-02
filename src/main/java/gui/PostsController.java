@@ -3,6 +3,7 @@ package gui;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
@@ -31,6 +32,15 @@ import javafx.scene.SnapshotParameters;
 import javafx.scene.image.WritableImage;
 import javafx.embed.swing.SwingFXUtils;
 import javax.imageio.ImageIO;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.net.URLEncoder;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+import org.json.JSONArray;
+import org.json.JSONObject;
+import javafx.scene.layout.TilePane;
 
 public class PostsController {
     @FXML private TextField TFTitle;
@@ -114,7 +124,6 @@ public class PostsController {
         }
     }
 
-    // Affiche tous les posts
     private void afficherPosts() {
         postsContainer.getChildren().clear();
         try {
@@ -165,8 +174,9 @@ public class PostsController {
 
         // 3. Informations supplémentaires : temps relatif depuis la création
         String relativeTime = getRelativeTime(post.getCreated_at());
-        Label postInfoLabel = new Label(relativeTime);
+        Label postInfoLabel = new Label("( " + relativeTime + " )");
         postInfoLabel.getStyleClass().add("card-info");
+        postInfoLabel.setStyle("-fx-font-size: 13px; -fx-text-fill: gray;");
 
         // 4. Contenu du post
         Label contentLabel = new Label(post.getContent());
@@ -187,25 +197,23 @@ public class PostsController {
             postImageView.setImage(img);
         }
 
-        // 7. Système de like (existant)
+        // 7. Système de like (affichage du nombre de likes dans le bouton)
         services.ServiceLike serviceLike = new services.ServiceLike();
         user currentUser = utils.Session.getInstance().getCurrentUser();
         int currentUserId = (currentUser != null) ? currentUser.getId() : -1;
         int likeCount = serviceLike.getNombreLikes(post.getId());
         boolean alreadyLiked = (currentUserId != -1) && serviceLike.aDejaLike(currentUserId, post.getId());
-        Label likeCountLabel = new Label("Likes: " + likeCount);
-        Button likeButton = new Button(alreadyLiked ? "Unlike" : "Like");
+        Button likeButton = new Button((alreadyLiked ? "Unlike" : "Like") + " (" + likeCount + ")");
         likeButton.setOnAction(e -> {
             try {
                 if (serviceLike.aDejaLike(currentUserId, post.getId())) {
                     serviceLike.supprimerLike(currentUserId, post.getId());
-                    likeButton.setText("Like");
                 } else {
                     serviceLike.ajouterLike(currentUserId, post.getId());
-                    likeButton.setText("Unlike");
                 }
                 int newLikeCount = serviceLike.getNombreLikes(post.getId());
-                likeCountLabel.setText("Likes: " + newLikeCount);
+                // Met à jour le texte du bouton avec le nouvel état et le nombre de likes
+                likeButton.setText((serviceLike.aDejaLike(currentUserId, post.getId()) ? "Unlike" : "Like") + " (" + newLikeCount + ")");
             } catch (SQLException ex) {
                 ex.printStackTrace();
             }
@@ -318,8 +326,8 @@ public class PostsController {
             File file = fileChooser.showSaveDialog(postBox.getScene().getWindow());
             if (file != null) {
                 try {
-                    javafx.embed.swing.SwingFXUtils.fromFXImage(snapshot, null); // conversion
-                    javax.imageio.ImageIO.write(javafx.embed.swing.SwingFXUtils.fromFXImage(snapshot, null), "png", file);
+                    SwingFXUtils.fromFXImage(snapshot, null); // conversion
+                    ImageIO.write(SwingFXUtils.fromFXImage(snapshot, null), "png", file);
                     Alert alert = new Alert(Alert.AlertType.INFORMATION, "Snapshot enregistré avec succès !");
                     alert.showAndWait();
                 } catch (IOException ex) {
@@ -339,18 +347,18 @@ public class PostsController {
         HBox likeCommentBox = new HBox();
         likeCommentBox.setSpacing(10);
         likeCommentBox.setAlignment(Pos.CENTER_LEFT);
-        likeCommentBox.getChildren().addAll(likeCountLabel, likeButton, commentCountLabel, toggleCommentsBtn, shareButton);
+        likeCommentBox.getChildren().addAll(likeButton, toggleCommentsBtn, shareButton);
+        // Note : Le nombre de likes est désormais affiché dans le bouton lui-même
         postBox.getChildren().add(likeCommentBox);
         if (!editDeleteBox.getChildren().isEmpty()) {
             postBox.getChildren().add(editDeleteBox);
         }
 
+        // Ajout du label de commentaires (affiché séparément)
+        postBox.getChildren().add(commentCountLabel);
+
         return postBox;
     }
-
-
-
-    // Dans votre PostsController.java
 
     private HBox createCommentBox(Comment c) throws SQLException {
         HBox commentBox = new HBox();
@@ -376,7 +384,6 @@ public class PostsController {
             }
         }
 
-        // Contenu du commentaire dans une VBox
         VBox commentContentBox = new VBox();
         commentContentBox.setSpacing(3);
         commentContentBox.setAlignment(Pos.TOP_LEFT);
@@ -384,17 +391,31 @@ public class PostsController {
         Label usernameLabel = new Label(commenter != null ? commenter.getUsername() : "Inconnu");
         usernameLabel.setStyle("-fx-font-weight: bold; -fx-font-size: 12px;");
 
-        Label commentTextLabel = new Label(c.getContent());
-        commentTextLabel.setWrapText(true);
-        commentTextLabel.setStyle("-fx-font-size: 12px;");
+        // Vérifier si le contenu contient un GIF
+        String content = c.getContent();
+        // On suppose que si le contenu commence par "[GIF] ", c'est une URL de GIF
+        Node contentNode;
+        if(content.startsWith("[GIF] ")) {
+            String gifUrl = content.substring(6).trim(); // Extrait l'URL en enlevant le préfixe
+            Image gifImage = new Image(gifUrl);
+            ImageView gifImageView = new ImageView(gifImage);
+            gifImageView.setFitWidth(150);
+            gifImageView.setPreserveRatio(true);
+            contentNode = gifImageView;
+        } else {
+            Label commentTextLabel = new Label(content);
+            commentTextLabel.setWrapText(true);
+            commentTextLabel.setStyle("-fx-font-size: 12px;");
+            contentNode = commentTextLabel;
+        }
 
         String commentRelativeTime = getRelativeTime(c.getCreated_at());
         Label timeLabel = new Label("(" + commentRelativeTime + ")");
         timeLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray;");
 
-        commentContentBox.getChildren().addAll(usernameLabel, commentTextLabel, timeLabel);
+        commentContentBox.getChildren().addAll(usernameLabel, contentNode, timeLabel);
 
-        // Zone d'actions pour modifier/supprimer (affichée uniquement si l'utilisateur connecté est le propriétaire)
+        // Zone d'actions pour modifier/supprimer (si propriétaire)
         HBox actionButtonsBox = new HBox();
         actionButtonsBox.setSpacing(5);
         actionButtonsBox.setAlignment(Pos.CENTER_LEFT);
@@ -410,9 +431,9 @@ public class PostsController {
                 HBox editBox = new HBox(editField, btnValider);
                 editBox.setSpacing(5);
 
-                // Remplacer temporairement la partie texte du commentaire par le champ d'édition
-                int index = commentContentBox.getChildren().indexOf(commentTextLabel);
-                commentContentBox.getChildren().remove(commentTextLabel);
+                // Remplacer temporairement la partie texte par le champ d'édition
+                int index = commentContentBox.getChildren().indexOf(contentNode);
+                commentContentBox.getChildren().remove(contentNode);
                 commentContentBox.getChildren().add(index, editBox);
 
                 btnValider.setOnAction(ev -> {
@@ -422,21 +443,31 @@ public class PostsController {
                         alert.show();
                         return;
                     }
-                    // Mettre à jour le commentaire dans l'objet et en BDD
                     c.setContent(newContent);
                     try {
                         ServiceComment serviceComment = new ServiceComment();
-                        serviceComment.update(c); // Méthode update à implémenter dans ServiceComment
+                        serviceComment.update(c); // Vous devez implémenter update dans ServiceComment
                     } catch (SQLException ex) {
                         ex.printStackTrace();
                     }
-                    // Reconstruire le label mis à jour et remplacer le champ d'édition
-                    Label updatedCommentLabel = new Label(c.getContent());
-                    updatedCommentLabel.setWrapText(true);
-                    updatedCommentLabel.setStyle("-fx-font-size: 12px;");
+                    // Reconstruire le contenu en vérifiant le format GIF
+                    Node updatedContentNode;
+                    if(newContent.startsWith("[GIF] ")) {
+                        String gifUrlUpdated = newContent.substring(6).trim();
+                        Image gifImageUpdated = new Image(gifUrlUpdated);
+                        ImageView gifImageViewUpdated = new ImageView(gifImageUpdated);
+                        gifImageViewUpdated.setFitWidth(150);
+                        gifImageViewUpdated.setPreserveRatio(true);
+                        updatedContentNode = gifImageViewUpdated;
+                    } else {
+                        Label updatedCommentLabel = new Label(newContent);
+                        updatedCommentLabel.setWrapText(true);
+                        updatedCommentLabel.setStyle("-fx-font-size: 12px;");
+                        updatedContentNode = updatedCommentLabel;
+                    }
                     int editIndex = commentContentBox.getChildren().indexOf(editBox);
                     commentContentBox.getChildren().remove(editBox);
-                    commentContentBox.getChildren().add(editIndex, updatedCommentLabel);
+                    commentContentBox.getChildren().add(editIndex, updatedContentNode);
                 });
             });
 
@@ -447,8 +478,7 @@ public class PostsController {
                     if (response == ButtonType.YES) {
                         try {
                             ServiceComment serviceComment = new ServiceComment();
-                            serviceComment.delete(c); // Méthode delete à implémenter dans ServiceComment
-                            // Retirer la box du commentaire de l'UI
+                            serviceComment.delete(c); // Implémentez delete dans ServiceComment
                             ((VBox) commentBox.getParent()).getChildren().remove(commentBox);
                         } catch (SQLException ex) {
                             ex.printStackTrace();
@@ -467,8 +497,6 @@ public class PostsController {
         return commentBox;
     }
 
-
-    // Modification de la méthode createCommentsContainer pour utiliser createCommentBox
     private VBox createCommentsContainer(Post post, VBox postBox, Button toggleCommentsBtn, Label commentCountLabel) {
         VBox commentsContainer = new VBox();
         commentsContainer.setSpacing(5);
@@ -486,13 +514,59 @@ public class PostsController {
             ex.printStackTrace();
         }
 
-        // Zone pour écrire un nouveau commentaire et bouton pour l'ajouter
+        // Zone pour écrire un nouveau commentaire et ajouter un GIF
         HBox addCommentBox = new HBox();
         addCommentBox.setSpacing(5);
         TextField TFNewComment = new TextField();
         TFNewComment.setPromptText("Écrire un commentaire...");
         Button btnAjouterComment = new Button("Ajouter");
-        addCommentBox.getChildren().addAll(TFNewComment, btnAjouterComment);
+        Button btnAjouterGIF = new Button("Ajouter GIF");
+
+        // Action pour rechercher et ajouter un GIF dans le champ de commentaire
+        btnAjouterGIF.setOnAction(e -> {
+            TextInputDialog dialog = new TextInputDialog();
+            dialog.setTitle("Recherche de GIF");
+            dialog.setHeaderText("Entrez un mot-clé pour rechercher des GIFs");
+            dialog.setContentText("Mot-clé:");
+            dialog.showAndWait().ifPresent(keyword -> {
+                List<String> gifs = searchGifs(keyword); // Assurez-vous d'avoir implémenté cette méthode
+                if (!gifs.isEmpty()) {
+                    // Créer une fenêtre pour afficher les GIFs dans une galerie
+                    Stage gifStage = new Stage();
+                    gifStage.setTitle("Sélectionnez un GIF");
+
+                    TilePane tilePane = new TilePane();
+                    tilePane.setHgap(10);
+                    tilePane.setVgap(10);
+                    tilePane.setPrefColumns(3);
+                    tilePane.setAlignment(Pos.CENTER);
+
+                    for (String gifUrl : gifs) {
+                        Image gifImage = new Image(gifUrl);
+                        ImageView gifImageView = new ImageView(gifImage);
+                        gifImageView.setFitWidth(100);
+                        gifImageView.setPreserveRatio(true);
+                        gifImageView.setOnMouseClicked(ev -> {
+                            // Insérer l'URL du GIF dans le champ de commentaire ou, par exemple, formater différemment
+                            TFNewComment.setText("[GIF] " + gifUrl);
+                            gifStage.close();
+                        });
+                        tilePane.getChildren().add(gifImageView);
+                    }
+
+                    ScrollPane sp = new ScrollPane(tilePane);
+                    sp.setFitToWidth(true);
+                    Scene scene = new Scene(sp, 400, 300);
+                    gifStage.setScene(scene);
+                    gifStage.showAndWait();
+                } else {
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Aucun GIF trouvé pour ce mot-clé.");
+                    alert.showAndWait();
+                }
+            });
+        });
+
+        addCommentBox.getChildren().addAll(TFNewComment, btnAjouterComment, btnAjouterGIF);
 
         btnAjouterComment.setOnAction(e -> {
             String newCommentText = TFNewComment.getText().trim();
@@ -525,7 +599,6 @@ public class PostsController {
         return commentsContainer;
     }
 
-    // Ajout d'un nouveau post
     @FXML
     private void ajouter() {
         String title = TFTitle.getText();
@@ -563,7 +636,7 @@ public class PostsController {
         }
     }
 
-    // Upload d'une image pour le post
+
     @FXML
     private void uploadImage() {
         FileChooser fileChooser = new FileChooser();
@@ -576,7 +649,7 @@ public class PostsController {
         }
     }
 
-    // Méthode utilitaire pour convertir une date en temps relatif (ex: "Il y a 2 h", "Il y a 5 m")
+
     private String getRelativeTime(Date date) {
         long diffMillis = System.currentTimeMillis() - date.getTime();
         System.out.println("date "+date);
@@ -609,4 +682,40 @@ public class PostsController {
         return "Il y a " + diffDays + " j";
     }
 
+    private List<String> searchGifs(String query) {
+        List<String> gifUrls = new ArrayList<>();
+        try {
+            String apiKey = "Gsaeg8PQFRMhpwwZQ113uYCZAMi94m8K"; // Remplacez par votre clé API
+            String encodedQuery = URLEncoder.encode(query, "UTF-8");
+            String urlStr = "https://api.giphy.com/v1/gifs/search?api_key=" + apiKey + "&q=" + encodedQuery + "&limit=10";
+            URL url = new URL(urlStr);
+            HttpURLConnection connection = (HttpURLConnection) url.openConnection();
+            connection.setRequestMethod("GET");
+            connection.connect();
+            int responseCode = connection.getResponseCode();
+            if (responseCode != 200) {
+                System.out.println("Erreur de réponse HTTP: " + responseCode);
+                return gifUrls;
+            }
+            StringBuilder inline = new StringBuilder();
+            Scanner scanner = new Scanner(url.openStream());
+            while (scanner.hasNext()) {
+                inline.append(scanner.nextLine());
+            }
+            scanner.close();
+            JSONObject json = new JSONObject(inline.toString());
+            JSONArray data = json.getJSONArray("data");
+            for (int i = 0; i < data.length(); i++) {
+                JSONObject gifObject = data.getJSONObject(i);
+                // On choisit par exemple l'URL du GIF de taille fixe (petite)
+                String gifUrl = gifObject.getJSONObject("images")
+                        .getJSONObject("fixed_height_small")
+                        .getString("url");
+                gifUrls.add(gifUrl);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return gifUrls;
+    }
 }
