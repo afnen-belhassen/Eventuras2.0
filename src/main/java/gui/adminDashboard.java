@@ -9,6 +9,7 @@ import java.util.Comparator;
 import java.util.Map;
 import java.util.ResourceBundle;
 import entities.user;
+import gui.GestionUser.UserSession;
 import javafx.animation.*;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -20,13 +21,11 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 import javafx.util.Duration;
-import main.MainGUI;
 import services.userService;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
@@ -136,7 +135,7 @@ public class adminDashboard {
     }
 //events(listEVENTS)
     public void goto_event(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEvent.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/AfficherEventBACK.fxml"));
         Parent root = loader.load();
 
 
@@ -147,11 +146,11 @@ public class adminDashboard {
     }
 //Reclamations
     public void goto_forum(ActionEvent event) throws IOException {
-        mainController.loadFXML("/login.fxml");
+      /*  mainController.loadFXML("/login.fxml");*/
     }
 //Forum
     public void goto_blog(ActionEvent event) throws IOException {
-        mainController.loadFXML("/login.fxml");
+      /*  mainController.loadFXML("/login.fxml");*/
     }
 
     public void goto_edit(ActionEvent event) throws IOException {

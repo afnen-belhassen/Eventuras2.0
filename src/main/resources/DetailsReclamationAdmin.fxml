@@ -8,8 +8,8 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx"
             xmlns:fx="http://javafx.com/fxml"
-            fx:controller="gui.DetailsReclamationAdmin"
-            prefHeight="400.0" prefWidth="600.0">
+            fx:controller="gui.GestionReclam.DetailsReclamationAdmin"
+            prefHeight="731.0" prefWidth="1305.0">
 
 </AnchorPane>
 

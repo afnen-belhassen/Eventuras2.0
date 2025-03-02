@@ -19,23 +19,23 @@
       <change afterPath="$PROJECT_DIR$/src/main/java/entities/ReclamationAttachment.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/entities/Reservation.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/entities/Ticket.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AddPartnerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AdminControllerPartner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AdminPartnershipController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReclamations.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReclamationsAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AfficherReservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterReclamation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterReservation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/DetailsReclamation.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/DetailsReclamationAdmin.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/ModifyPartnerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/ParticipantPartnerController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/PartnershipCellController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/PersonCellController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/PostsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartner.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/gui/UserControllerPartnership.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionForum/PostsController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionPartner/AddPartnerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionPartner/AdminControllerPartner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionPartner/AdminPartnershipController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionPartner/ModifyPartnerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionPartner/ParticipantPartnerController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionPartner/PartnershipCellController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionPartner/PersonCellController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionPartner/UserControllerPartner.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionPartner/UserControllerPartnership.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionReclam/AfficherReclamations.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionReclam/AfficherReclamationsAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionReclam/AjouterReclamation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionReclam/DetailsReclamation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionReclam/DetailsReclamationAdmin.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionReserv/AfficherReservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/gui/GestionReserv/AjouterReservation.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/services/IService1.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/services/IService2.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/src/main/java/services/IService4.java" afterDir="false" />
@@ -103,24 +103,55 @@
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ProfilController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ProfilController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterEvent.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterParticipation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/AjouterParticipation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/ParticipantDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/ParticipantDashboard.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/gui/loginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/loginUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/entities/Event.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/entities/Event.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AfficherEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionEvents/AfficherEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AfficherEventHOME.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionEvents/AfficherEventHOME.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionEvents/AjouterEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/AjouterParticipation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionEvents/AjouterParticipation.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/Crudrole.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/Crudrole.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/OrganisateurDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionEvents/OrganisateurDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/ParticipantDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionEvents/ParticipantDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/UserSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/UserSession.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/addUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/addUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/adminDashboard.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/adminDashboard.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/adminSideBar.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/editCurrentUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/editCurrentUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/forgotPassword.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/forgotPassword.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/listUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/listUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/loginUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/loginUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/registerUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/registerUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/updateUser.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/updateUser.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/gui/userCharts.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/gui/GestionUser/userCharts.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/main/MainGUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/main/MainGUI.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/IService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/IService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/services/ServiceEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/ServiceEvent.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/services/userService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/services/userService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/test/Main.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/test/MainFx.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/test/testJDBC.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherEvent.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/AfficherEventHOME.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AfficherEventHOME.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterEvent.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterEvent.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/AjouterParticipation.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/AjouterParticipation.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/Crudrole.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Crudrole.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/Images/bakc6.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/bakc6.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/ProfilController.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ProfilController.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/addUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/addUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/adminDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/adminDashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/deleteUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/deleteUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/editCurrentuser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/editCurrentuser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/forgotPassword.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/forgotPassword.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/images/plus.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/plus.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/images/rafraichir.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/rafraichir.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/images/read.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/Images/read.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/interface.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/interface.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/listUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/listUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/login.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/login.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/organisateurDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/organisateurDashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/participantDashboard.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/participantDashboard.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/registerUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/registerUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/updateUser.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/updateUser.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/userCharts.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/userCharts.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -145,10 +176,16 @@
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;afnen-belhassen&quot;
+  }
+}</component>
   <component name="GithubPullRequestsUISettings">{
   &quot;selectedUrlAndAccountId&quot;: {
-    &quot;url&quot;: &quot;https://github.com/afnen-belhassen/Eventuras2.0.git&quot;,
-    &quot;accountId&quot;: &quot;4692c210-6760-40af-9b61-2186a85cdaab&quot;
+    &quot;url&quot;: &quot;https://github.com/afnen-belhassen/Eventuras2.0&quot;,
+    &quot;accountId&quot;: &quot;095e5ee2-07f8-43f3-af28-8dc7f41d33c6&quot;
   }
 }</component>
   <component name="HighlightingSettingsPerFile">
@@ -166,34 +203,34 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Application.Main.executor": "Run",
-    "Application.MainGUI.executor": "Run",
-    "Application.main.MainGUI.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "Merging GestionEve",
-    "kotlin-language-version-configured": "true",
-    "last_directory_selection": "C:/Users/belha/Desktop/3rdYear/pidev/pidev/src/main/java",
-    "last_opened_file_path": "C:/Users/chebaane.1/Documents/Eventuras2.0",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Project",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.2",
-    "settings.editor.selected.configurable": "MavenSettings",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Application.Main.executor&quot;: &quot;Run&quot;,
+    &quot;Application.MainGUI.executor&quot;: &quot;Run&quot;,
+    &quot;Application.main.MainGUI.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;GestionEve&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_directory_selection&quot;: &quot;C:/Users/belha/Desktop/3rdYear/pidev/pidev/src/main/java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/belha/Documents/New folder/Eventuras2.0&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;MavenSettings&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "mysql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;mysql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\chebaane.1\Documents\Eventuras\src\main\java\org\example\Services" />
@@ -203,11 +240,11 @@
       <recent name="C:\Users\chebaane.1\Documents\pidev\src\main\resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\belha\Desktop\3rdYear\pidev\pidev\src\main\resources\Assets" />
       <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\resources" />
       <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\java\services" />
       <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\java\main" />
       <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\java\gui" />
-      <recent name="C:\Users\chebaane.1\Documents\Eventuras2.0\src\main\java\entities" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example.Controllers" />
@@ -264,6 +301,14 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
+        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -276,6 +321,14 @@
       <workItem from="1738751721159" duration="56000" />
       <workItem from="1739027187012" duration="16755000" />
       <workItem from="1739100009123" duration="20028000" />
+      <workItem from="1740469593435" duration="4280000" />
+      <workItem from="1740476646803" duration="1073000" />
+      <workItem from="1740588278376" duration="1427000" />
+      <workItem from="1740656737965" duration="1722000" />
+      <workItem from="1740683396456" duration="11933000" />
+      <workItem from="1740753430500" duration="1215000" />
+      <workItem from="1740771540193" duration="1009000" />
+      <workItem from="1740817966365" duration="28100000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,5 @@
 package entities;
 
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import utils.Session;
 
@@ -9,6 +7,7 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+
 
 public class Event  {
     private int id_event;
@@ -20,22 +19,21 @@ public class Event  {
     private int category_id;
     private String category_name;
     private String image;
-    private Double price;
     private Timestamp creation_date;//nzid nchouf aleha
     public List<String> activiteList;
+    public String Status;
 
-    public Event(){
+    public Event(int id, String title, String description, java.sql.Date date_event, String location, int user_id, int category_id, String category_name, List<String> activiteList){
     this.activiteList = new ArrayList<>();
     }
     user currentUser = Session.getInstance().getCurrentUser();
-    public Event(String title, String description, Date date_event, String location, int user_id, String category_name, Double price) {
+    public Event(String title, String description, Date date_event, String location, int user_id, String category_name) {
         this.title = title;
         this.description = description;
         this.date_event = date_event;
         this.location = location;
         this.user_id = user_id;
         this.category_name = category_name;
-        this.price = price;
 
     }
 
@@ -43,7 +41,7 @@ public class Event  {
         this.id_event = id_event;
     }
 
-    public Event(int id_event,String title, String description, Date date_event, String location,int user_id, int category_id ,String category_name,String image,Double price) {
+    public Event(int id_event,String title, String description, Date date_event, String location,int user_id, int category_id ,String category_name,String image) {
         this.id_event = id_event;
         this.title = title;
         this.description = description;
@@ -53,11 +51,10 @@ public class Event  {
         this.category_id = category_id;
         this.category_name = category_name;
         this.image = image;
-        this.price = price;
         this.activiteList = activiteList;
 
     }
-    public Event(int id_event,String title, String description, Date date_event, String location,int user_id, int category_id,String image ,Double price) {
+    public Event(int id_event,String title, String description, Date date_event, String location,int user_id, int category_id,String image) {
         this.id_event = id_event;
         this.title = title;
         this.description = description;
@@ -66,12 +63,11 @@ public class Event  {
         this.user_id = user_id;
         this.category_id = category_id;
         this.image = image;
-        this.price = price;
         this.activiteList = activiteList;
 
     }
 
-    public Event(String title, String description, Date date_event, String location,int user_id, int category_id, String category_name,String image,Double price) {
+    public Event(String title, String description, Date date_event, String location,int user_id, int category_id, String category_name,String image) {
         this.title = title;
         this.description = description;
         this.date_event = date_event;
@@ -80,11 +76,10 @@ public class Event  {
         this.category_id = category_id;
         this.category_name = category_name;
         this.image = image;
-        this.price = price;
         this.activiteList = activiteList;
 
     }
-    public Event(String title, String description, Date date_event, String location,int user_id, int category_id,String image,Double price) {
+    public Event(String title, String description, Date date_event, String location,int user_id, int category_id,String image) {
         this.title = title;
         this.description = description;
         this.date_event = date_event;
@@ -92,29 +87,26 @@ public class Event  {
         this.user_id = user_id;
         this.category_id = category_id;
         this.image = image;
-        this.price = price;
         this.activiteList = activiteList;
     }
 
     /*-------Pour Modification-------*/
-    public Event(int id_event,String title,double price){
+    public Event(int id_event,String title){
         this.id_event = id_event;
         this.title = title;
-        this.price = price;
 
 
     }
     /*Event event = new Event(title,description,date_event,location,price,category_name);*/
-    public Event(String title,String dscription,Date date_event,String location,Double price,String category_name){
+    public Event(String title,String dscription,Date date_event,String location,String category_name){
         this.title = title;
         this.description = dscription;
         this.date_event = date_event;
         this.location = location;
-        this.price = price;
         this.category_name = category_name;
         this.activiteList = activiteList;
     }
-    public Event(String title, String desc, String loc, String date, String categ,Double price) {
+    public Event(String title, String desc, String loc, String date, String categ) {
         this.title = title;
         this.description = desc;
         this.location = loc;
@@ -125,24 +117,21 @@ public class Event  {
             this.date_event = null;
         }
         this.category_name = categ;
-        this.price = price;
         this.activiteList = activiteList;
     }
 
-    public Event(String title, String desc, Date date, String loc, int userId, int categoryId,Double price) {
+    public Event(String title, String desc, Date date, String loc, int userId, int categoryId) {
         this.title = title;
         this.description = desc;
         this.location = loc;
         this.date_event = java.sql.Date.valueOf(String.valueOf(date));
         this.user_id = user_id;
         this.category_id = categoryId;
-        this.price = price;
         this.activiteList = activiteList;
     }
-    public Event(String title,String description,Double price,String image){
+    public Event(String title,String description,String image){
         this.title = title;
         this.description = description;
-        this.price = price;
         this.image = image;
         this.activiteList = activiteList;
 
@@ -153,17 +142,16 @@ public class Event  {
         this.title=titleMod.getText();
     }
 
-    public Event(int id_event,String title, String description, java.sql.Date dateEvent, Double price, String categoryName) {
+    public Event(int id_event,String title, String description, java.sql.Date dateEvent,String categoryName) {
         this.id_event=id_event;
         this.title=title;
         this.description=description;
         this.date_event=dateEvent;
-        this.price = price;
         this.category_name=categoryName;
         this.activiteList = activiteList;
     }
 
-    public Event(int id, String title, String description, java.sql.Date dateEvent, String location, int userId, int categoryId, String categoryName, double price, List<String> activiteList) {
+    public Event(int id, String title, String description, java.sql.Date dateEvent, String location, int userId, int categoryId, String categoryName, List<String> activiteList,String status) {
         this.id_event=id;
         this.title=title;
         this.description=description;
@@ -172,8 +160,8 @@ public class Event  {
         this.user_id = user_id;
         this.category_id=categoryId;
         this.category_name=categoryName;
-        this.price=price;
         this.activiteList=activiteList;
+        this.Status=status;
     }
 
   /*  public Event(String titleEvent, String descEve, Date dateEve, String locEve, int id,String category_name, String imagePath, Double prixEve, String activities) {
@@ -247,8 +235,6 @@ public class Event  {
     public String getImage(){return image;}
 
     public void setImage(String image){this.image = image;}
-    public Double getPrice(){return price;}
-    public void setPrice(Double price){this.price = price;}
 
     public String getCategory_name() {
         return category_name;
@@ -270,6 +256,14 @@ public class Event  {
         this.activiteList.add(activityName);
     }
 
+    public String getStatus() {
+        return Status;
+    }
+
+    public void setStatus(String status) {
+        Status = status;
+    }
+
     @Override
     public String toString() {
         return "Event{" +
@@ -281,7 +275,6 @@ public class Event  {
                 ", category=" + category_id +
                 ", category_name='" + category_name +
                  ", image='" + image +
-                ", price=" + price +
                 ", activiteList=" + activiteList +
                 '}';
     }

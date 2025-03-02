@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane prefHeight="731.0" prefWidth="1305.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.EventORGAN">
+<AnchorPane prefHeight="731.0" prefWidth="1305.0" stylesheets="@interface.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.GestionEvents.EventORGAN">
    <children>
       <Button fx:id="GoToEvents1" layoutX="23.0" layoutY="281.0" mnemonicParsing="false" onAction="#showEvents1" prefHeight="40.0" prefWidth="177.0" text="Evenements" />
       <Button fx:id="Collaborations" layoutX="23.0" layoutY="343.0" mnemonicParsing="false" onAction="#goToCollab" prefHeight="40.0" prefWidth="177.0" text="Collaborations" />
