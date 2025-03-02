@@ -26,6 +26,6 @@
                <fx:include source="adminSidebar.fxml" />
            </left>
        </BorderPane>
-      <Button layoutX="416.0" layoutY="506.0" mnemonicParsing="false" onAction="#back_to_login" text="back to list" />
+      <Button layoutX="387.0" layoutY="615.0" mnemonicParsing="false" onAction="#back_to_login" text="back to list" />
    </children>
 </AnchorPane>

@@ -40,7 +40,7 @@
                 <Font name="Dubai Regular" size="15.0" />
             </font>
         </Text>
-        <Button layoutX="835.0" layoutY="631.0" mnemonicParsing="false" onAction="#display_charts" prefHeight="33.0" prefWidth="150.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-color: white;" text="User">
+        <Button layoutX="835.0" layoutY="631.0" mnemonicParsing="false" onAction="#display_charts" prefHeight="33.0" prefWidth="150.0" style="-fx-border-color: black; -fx-border-radius: 100; -fx-border-width: 2; -fx-background-color: white;" text="Role">
             <font>
                 <Font name="Montserrat SemiBold" size="15.0" />
             </font>
