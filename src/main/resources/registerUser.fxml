@@ -8,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -36,6 +37,7 @@
             <Font name="Montserrat Bold" size="18.0" />
          </font>
       </Text>
+
       <TextField fx:id="lastname_input" layoutX="306.0" layoutY="343.0" prefHeight="27.0" prefWidth="174.0" style="  -fx-text-fill: white; -fx-border-color: black; -fx-background-color: black; -fx-border-color: white; -fx-border-radius: 100; -fx-border-width: 2;" />
       <Text fill="WHITE" layoutX="306.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last Name:" wrappingWidth="195.2989501953125">
          <font>
@@ -56,7 +58,7 @@
             <Font name="Montserrat Bold" size="18.0" />
          </font>
       </Text>
-      <Text fill="WHITE" layoutX="109.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level_PMR:" wrappingWidth="195.2989501953125">
+      <Text fill="WHITE" layoutX="109.0" layoutY="589.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Level:" wrappingWidth="195.2989501953125">
          <font>
             <Font name="Montserrat Bold" size="18.0" />
          </font>
@@ -81,6 +83,8 @@
             <Font name="Montserrat Bold" size="18.0" />
          </font>
       </Text>
+      <Pane fx:id="imagePane" layoutX="800.0" layoutY="142.0" prefHeight="200.0" prefWidth="200.0" style="-fx-border-color: lightgray; -fx-border-width: 1px; -fx-background-radius: 5; -fx-padding: 10; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 10, 0, 0, 0);" />
+
       <TextField fx:id="picture_input" layoutX="634.0" layoutY="539.0" prefHeight="25.0" prefWidth="174.0" style="-fx-border-color: white; -fx-border-width: 2; -fx-border-radius: 100; -fx-background-color: black; -fx-text-fill: white;" />
       <Text fill="WHITE" layoutX="111.0" layoutY="169.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Register Now!">
          <font>
@@ -114,6 +118,6 @@
             <Font name="Montserrat Bold" size="18.0" />
          </font>
       </Text>
-      <ComboBox fx:id="role_input" layoutX="320.0" layoutY="598.0" onAction="#opened" prefWidth="150.0" promptText="select role" />
+      <ComboBox fx:id="role_input" layoutX="320.0" layoutY="598.0" prefWidth="150.0" promptText="select role" />
    </children>
 </AnchorPane>

@@ -1,5 +1,6 @@
 package services;
 import entities.user;
+import org.mindrot.jbcrypt.BCrypt;
 import utils.MyConnection;
 import java.io.IOException;
 import java.security.MessageDigest;
@@ -19,20 +20,20 @@ public class userService implements Iuser<user> {
     //Add user methode
     @Override
     public void addUser(user user) throws SQLException, IOException {
-        // Fetch the role_id from the role table based on role_name
-        int roleId = getRoleIdByName(user.getRole());
-        if (roleId == -1) {
-            throw new SQLException("ROLE NAME does not exist in the role table.");
-        }
+        // The error is happening because we're trying to use user.getRole() but we should be using the id_role directly
+        int roleId = user.getId_role();
 
-        String passwordencrypted = encrypt(user.getPassword());
+        System.out.println("Using role ID: " + roleId);
+
         // Insert the user into the 'users' table with the role_id
-        String query = "INSERT INTO users (user_username, user_email, user_password, user_firstname, user_lastname, user_birthday, user_gender, user_picture, user_phonenumber, user_level, role_id) " +
+        String query = "INSERT INTO users (user_username, user_email, user_password, user_firstname, user_lastname, " +
+                "user_birthday, user_gender, user_picture, user_phonenumber, user_level, role_id) " +
                 "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+
         try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
             pstmt.setString(1, user.getUsername());
             pstmt.setString(2, user.getEmail());
-            pstmt.setString(3, passwordencrypted);
+            pstmt.setString(3, user.getPassword());  // Consider encrypting here
             pstmt.setString(4, user.getFirstname());
             pstmt.setString(5, user.getLastname());
             pstmt.setString(6, user.getBirthday());
@@ -40,20 +41,49 @@ public class userService implements Iuser<user> {
             pstmt.setString(8, user.getPicture());
             pstmt.setString(9, user.getPhonenumber());
             pstmt.setInt(10, user.getLevel());
-            pstmt.setInt(11, roleId);  // Insert role_id here
+            pstmt.setInt(11, roleId);  // Use the role_id directly
 
             pstmt.executeUpdate();
         }
     }
+    public user getUserByEmail(String email) throws SQLException {
+        String query = "SELECT * FROM users WHERE user_email = ?";
+        try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
+            pstmt.setString(1, email);
+            try (ResultSet rs = pstmt.executeQuery()) {
+                if (rs.next()) {
+                    return new user(
+                            rs.getInt("user_id"),
+                            rs.getString("user_username"),
+                            rs.getString("user_email"),
+                            rs.getString("user_password"),
+                            rs.getString("user_firstname"),
+                            rs.getString("user_lastname"),
+                            rs.getString("user_birthday"),
+                            rs.getString("user_gender"),
+                            rs.getString("user_picture"),
+                            rs.getString("user_phonenumber"),
+                            rs.getInt("user_level"),
+                            getRoleNameById(rs.getInt("role_id")) // Fetch role name using role_id
+                    );
+                }
+            }
+        }
+        return null; // Return null if user is not found
+    }
+
 
     // Helper method to fetch the role_id by role_name
+
+    // Update the getRoleIdByName method to match your actual database schema
     private int getRoleIdByName(String roleName) throws SQLException {
-        String query = "SELECT role_id FROM role WHERE role_name = ?";
+        // Check your actual table and column names
+        String query = "SELECT id FROM role WHERE nom = ?";
         try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
             pstmt.setString(1, roleName);
             try (ResultSet rs = pstmt.executeQuery()) {
                 if (rs.next()) {
-                    return rs.getInt("role_id");
+                    return rs.getInt("id");
                 }
             }
         }
@@ -99,31 +129,83 @@ public class userService implements Iuser<user> {
         }
         return roles;
     }
+    public boolean updateUserPasswordByEmail(String email, String newPassword) throws SQLException {
+        Connection cnx = MyConnection.getInstance().getCnx(); // Ensure a valid connection
+        System.out.println("hedhy " + cnx);
+
+        // Check if the connection is open
+        if (cnx == null || cnx.isClosed()) {
+            System.out.println("Database connection is closed or null.");
+            return false; // Prevent executing a query on a closed connection
+        }
+
+        String query = "UPDATE users SET user_password = ? WHERE user_email = ?";
+
+        try (PreparedStatement pstmt = cnx.prepareStatement(query)) {
+            pstmt.setString(1, BCrypt.hashpw(newPassword, BCrypt.gensalt())); // Hash the password
+            pstmt.setString(2, email);
+
+            int affectedRows = pstmt.executeUpdate();
+            return affectedRows > 0;
+        }
+    }
 
 
-    //Update User methode
-    @Override
-    public void updateUser(user user, int id) {
-        String passwordencrypted = encrypt(user.getPassword());
-
+    public void updateUser2(user user, int id) {
         String query = "UPDATE users " +
-                "SET user_username = ?, user_email = ?, user_password = ?, user_firstname = ?, user_lastname = ?, user_birthday = ?, " +
-                "user_gender = ?, user_picture = ? , user_phonenumber = ?" +
+                "SET user_username = ?, user_email = ?, user_firstname = ?, user_lastname = ?, " +
+                "user_birthday = ?, user_gender = ?, user_picture = ?, user_phonenumber = ?, " +
+                "role_id = ? " + // Include role_id in the update
                 "WHERE user_id = ?";
+
         try {
             PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query);
             preparedStatement.setString(1, user.getUsername());
             preparedStatement.setString(2, user.getEmail());
-            preparedStatement.setString(3, passwordencrypted);
+            preparedStatement.setString(3, user.getFirstname());
+            preparedStatement.setString(4, user.getLastname());
+            preparedStatement.setString(5, user.getBirthday());
+            preparedStatement.setString(6, user.getGender());
+            preparedStatement.setString(7, user.getPicture());
+            preparedStatement.setString(8, user.getPhonenumber());
+            preparedStatement.setInt(9, user.getId_role()); // Set the role ID
+            preparedStatement.setInt(10, id);
+
+            // Debug output
+            System.out.println("Executing update with role_id: " + user.getId_role());
+            System.out.println("Updating user ID: " + id);
+
+            int rowsUpdated = preparedStatement.executeUpdate();
+            System.out.println("User updated! Rows affected: " + rowsUpdated);
+        } catch (SQLException e) {
+            System.err.println("SQL Error while updating user: " + e.getMessage());
+            e.printStackTrace();
+            throw new RuntimeException(e);
+        }
+    }
+    //Update User methode
+    @Override
+    public void updateUser(user user, int id) {
+
+        String query = "UPDATE users " +
+                "SET user_username = ?, user_email = ?, user_password = ?, user_firstname = ?, " +
+                "user_lastname = ?, user_birthday = ?, user_gender = ?, user_picture = ?, " +
+                "user_phonenumber = ?, role_id = ? " +  // Added role_id
+                "WHERE user_id = ?";
+
+        try {
+            PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query);
+            preparedStatement.setString(1, user.getUsername());
+            preparedStatement.setString(2, user.getEmail());
+            preparedStatement.setString(3, user.getPassword());
             preparedStatement.setString(4, user.getFirstname());
             preparedStatement.setString(5, user.getLastname());
             preparedStatement.setString(6, user.getBirthday());
             preparedStatement.setString(7, user.getGender());
             preparedStatement.setString(8, user.getPicture());
-            preparedStatement.setString(8, user.getPicture());
             preparedStatement.setString(9, user.getPhonenumber());
-
-            preparedStatement.setInt(10, id);
+            preparedStatement.setInt(10, user.getId_role());  // Set role_id
+            preparedStatement.setInt(11, id);
 
             preparedStatement.executeUpdate();
             System.out.println("User updated!");
@@ -168,6 +250,7 @@ public class userService implements Iuser<user> {
                 user.setPhonenumber(rs.getString("user_phonenumber"));
                 user.setLevel(rs.getInt("user_level"));
                 user.setRole(rs.getString("user_role"));
+                user.setId_role(rs.getInt("role_id"));  // Added role_id to the user object
 
                 list.add(user);
             }
@@ -231,15 +314,18 @@ public class userService implements Iuser<user> {
             throw new RuntimeException(e);
         }
     }
+    private String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
+    }
 
     public void updateforgottenpassword(String email, String password) {
-        String passwordencrypted = encrypt(password);
 
-        String query = "UPDATE users " +
-                "SET user_password = ? WHERE user_email = ?";
+        String query = "UPDATE users SET user_password = ? WHERE user_email = ?";
+
+        String x =hashPassword(password);
         try {
-            PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query);
-            preparedStatement.setString(1, passwordencrypted);
+            PreparedStatement preparedStatement = MyConnection.getInstance().getCnx().prepareStatement(query);;
+            preparedStatement.setString(1, x);
             preparedStatement.setString(2, email);
             preparedStatement.executeUpdate();
             System.out.println("Password updated!");
@@ -312,10 +398,8 @@ public class userService implements Iuser<user> {
 
 
     public user authenticateUser(String email, String password) {
+
         String query = "SELECT * FROM users WHERE user_email = ? AND user_password = ?";
-
-
-
         try (PreparedStatement ps = cnx.prepareStatement(query)) {
             ps.setString(1, email);
             ps.setString(2, password);

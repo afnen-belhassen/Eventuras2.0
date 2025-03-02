@@ -11,6 +11,7 @@ import java.security.SecureRandom;
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.time.LocalDate;
+import java.time.Period;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -19,6 +20,12 @@ import java.util.regex.Pattern;
 
 import entities.Role;
 import entities.user;
+import javafx.scene.Node;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Pane;
+import javafx.stage.Stage;
+import org.mindrot.jbcrypt.BCrypt;
 import services.Crole;
 import utils.MyConnection;
 import javafx.collections.FXCollections;
@@ -62,10 +69,17 @@ public class registerUser {
     private TextField username_input;
     @FXML
     private TextField phonenumber_input;
-
+    @FXML
+    private Pane imagePane; // Changed from ImageView to Pane
+    private boolean imageChanged = false;
+    @FXML
+    private ComboBox<Role> role_combobox; // Added role combobox
     private boolean isInitialized = false;
     private final userService userService = new userService();
     private final Crole croleService = new Crole();
+
+    private ObservableList<Role> rolesList = FXCollections.observableArrayList();
+
 
     private Connection cnx;
     public registerUser() {
@@ -98,8 +112,12 @@ public class registerUser {
             // Fetch roles from the database
             List<Role> roles = croleService.afficherAll();
             ObservableList<String> roleNames = FXCollections.observableArrayList();
+
+            // Add roles to the list, except for "admin"
             for (Role role : roles) {
-                roleNames.add(role.getRoleName());
+                if (!role.getRoleName().equalsIgnoreCase("admin")) {
+                    roleNames.add(role.getRoleName());
+                }
             }
 
             // Set the items in the ComboBox
@@ -141,10 +159,12 @@ public class registerUser {
 
         // Retrieve role ID
         String roleName = role_input.getSelectionModel().getSelectedItem();
+        System.out.println("Selected role: " + roleName);
         int roleId = -1;
 
         try {
             roleId = croleService.getRoleIdByName(roleName);
+            System.out.println("Retrieved role ID: " + roleId);
             if (roleId == -1) {
                 throw new SQLException("Role not found");
             }
@@ -164,8 +184,7 @@ public class registerUser {
             return;
         }
 
-        Path path = Paths.get(picturePath);
-        String fileName = path.getFileName().toString();
+
 
         // Retrieve and validate birthday
         LocalDate selectedDate = birthday_input.getValue();
@@ -182,21 +201,21 @@ public class registerUser {
         String selectedGender = gender_input.getValue();
         int selectedLevel = level_PMR_input.getValue();
 
+
         // Create the user object
         user user = new user(
-                roleId,
                 username_input.getText(),
                 email_input.getText(),
-                password_input.getText(),
+                hashPassword(password_input.getText()),
                 firstname_input.getText(),
                 lastname_input.getText(),
                 formattedBirthday,
                 selectedGender,
-                fileName,
+                picturePath,
                 phonenumber_input.getText(),
-                selectedLevel,
-                roleName
-                );
+                roleId
+        );
+        System.out.println("User object: " + user);
 
         // Add the user to the database
         try {
@@ -213,16 +232,7 @@ public class registerUser {
             return;
         }
 
-        // Save the profile picture
-        Path destinationPath = Paths.get("src/main/resources/images/", fileName);
-        try {
-            Files.copy(path, destinationPath, StandardCopyOption.REPLACE_EXISTING);
-        } catch (IOException e) {
-            alert.setTitle("Error");
-            alert.setContentText("Error saving image: " + e.getMessage());
-            alert.showAndWait();
-            return;
-        }
+
 
         // Show confirmation message
         Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
@@ -235,6 +245,83 @@ public class registerUser {
             throw new RuntimeException(e);
         }
 
+    }
+    @FXML
+    void upload(ActionEvent event) {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Choose Image File");
+        fileChooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Image Files", "*.png", "*.jpg", "*.jpeg", "*.gif")
+        );
+
+        // Get the stage from the event source for better dialog positioning
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        File selectedFile = fileChooser.showOpenDialog(stage);
+
+        if (selectedFile != null) {
+            // Set the image path to the text field
+            picture_input.setText(selectedFile.getAbsolutePath());
+            imageChanged = true;
+
+            // Load and display the selected image
+            try {
+                Image image = new Image(selectedFile.toURI().toString());
+                displayImage(image);
+            } catch (Exception e) {
+                System.err.println("Error loading image: " + e.getMessage());
+                e.printStackTrace();
+            }
+        }
+    }
+
+    /**
+     * Display an image in the imagePane
+     */
+    private void displayImage(Image image) {
+        // Create an ImageView to display the image
+        ImageView imageView = new ImageView(image);
+        imageView.setFitWidth(200);
+        imageView.setFitHeight(200);
+        imageView.setPreserveRatio(true);
+
+        // Clear existing content in imagePane
+        imagePane.getChildren().clear();
+
+        // Add the image view to the pane
+        imagePane.getChildren().add(imageView);
+    }
+
+    /**
+     * Loads all roles from the database and populates the role combobox
+     */
+    private void loadRoles() {
+        try {
+            // Fetch roles from database
+            List<Role> roles = croleService.afficherAll();
+
+            // Update observable list
+            rolesList.clear();
+            rolesList.addAll(roles);
+
+            // Set items in combobox
+            role_combobox.setItems(rolesList);
+
+            // Pre-select "user" role if it exists
+            for (Role role : rolesList) {
+                if (role.getRoleName().equalsIgnoreCase("user")) {
+                    role_combobox.setValue(role);
+                    break;
+                }
+            }
+
+        } catch (Exception e) {
+            System.err.println("Error loading roles: " + e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    private String hashPassword(String password) {
+        return BCrypt.hashpw(password, BCrypt.gensalt());
     }
 
     // Profile picture upload method
@@ -282,6 +369,28 @@ public class registerUser {
             error.setVisible(true);
             return false;
         }
+        // Validate birthday (must be at least 18 years old and not in the future)
+        LocalDate birthday = birthday_input.getValue();
+        LocalDate today = LocalDate.now();
+        if (birthday.isAfter(today)) {
+            error.setText("Birthday cannot be in the future");
+            error.setVisible(true);
+            return false;
+        }
+
+        if (Period.between(birthday, today).getYears() < 18) {
+            error.setText("You must be at least 18 years old");
+            error.setVisible(true);
+            return false;
+        }
+
+        // Validate phone number (must be exactly 8 digits)
+        String phone = phonenumber_input.getText();
+        if (!phone.matches("\\d{8}")) {
+            error.setText("Phone number must be exactly 8 digits");
+            error.setVisible(true);
+            return false;
+        }
         return true;
     }
 
@@ -301,6 +410,7 @@ public class registerUser {
         return matcher.matches();
     }
 
+
     // Method to generate user password
     public static String generatePassword() {
         String uppercaseLetters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -317,37 +427,6 @@ public class registerUser {
             password.append(allCharacters.charAt(random.nextInt(allCharacters.length())));
         }
         return password.toString();
-    }
-    public void opened(ActionEvent actionEvent) {
-        if (isInitialized) {
-            return;
-        }
-
-        try {
-            // Fetch roles from the database
-            List<Role> roles = croleService.afficherAll();
-            ObservableList<String> roleNames = FXCollections.observableArrayList();
-            for (Role role : roles) {
-                roleNames.add(role.getRoleName());
-            }
-
-            // Add a default option (if needed)
-            roleNames.add("Select Role");
-
-            // Set the items in the ComboBox
-            role_input.setItems(roleNames);
-            System.out.println("ComboBox options: " + roleNames);
-
-            // Set the default value (if needed)
-            if (!roleNames.isEmpty()) {
-                role_input.setValue(roleNames.get(0));
-            }
-
-            isInitialized = true;
-
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
     }
 
 

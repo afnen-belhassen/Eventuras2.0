@@ -25,6 +25,7 @@ public class adminSideBar {
     private Label role;
     @FXML
     private Label username;
+
     UserSession userSession = UserSession.getInstance();
     @FXML
     void initialize() {
@@ -42,9 +43,13 @@ public class adminSideBar {
             System.out.println("Image not found");
         }
     }
+
+
+
+
+
     @FXML
     void disconnect(ActionEvent event) throws IOException {
-        userSession.cleanUserSession();
         mainController.loadFXML("/login.fxml");
     }
 

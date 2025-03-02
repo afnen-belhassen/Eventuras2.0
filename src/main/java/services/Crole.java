@@ -5,6 +5,7 @@ import utils.MyConnection;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.NoSuchElementException;
 
 public class Crole{
@@ -23,6 +24,20 @@ public class Crole{
 
 
 
+    public Role getRoleById(int roleId) throws SQLException {
+        String query = "SELECT role_id, role_name FROM role WHERE role_id = ?";
+        try (PreparedStatement pstmt = connection.prepareStatement(query)) {
+            pstmt.setInt(1, roleId);
+            ResultSet rs = pstmt.executeQuery();
+            if (rs.next()) {
+                int id = rs.getInt("role_id");
+                String name = rs.getString("role_name");
+                return new Role(id, name);
+            } else {
+                throw new NoSuchElementException("Role with ID '" + roleId + "' not found.");
+            }
+        }
+    }
     public boolean updateRole(Role updatedRole) throws SQLException {
         String sql = "UPDATE Role SET role_name = ? WHERE role_id = ?";
 
@@ -55,20 +70,28 @@ public class Crole{
 
 
 
-    public ArrayList<Role> afficherAll() throws SQLException {
-        ArrayList<Role> roles = new ArrayList<>();
-        String sql = "SELECT * FROM role WHERE role_name != 'Admin'"; // Exclude the 'Admin' role
-        Statement st = connection.createStatement();
-        st.executeQuery(sql);
-        ResultSet rs = st.getResultSet();
-        while (rs.next()) {
-            int id = rs.getInt("role_id");
-            String fullname = rs.getString("role_name");
-            Role p = new Role(id, fullname);
-            roles.add(p);
+    public List<Role> afficherAll() throws SQLException {
+        List<Role> roles = new ArrayList<>();
+        // Update query to match your actual table and column names
+        String query = "SELECT role_id, role_name FROM role";
+
+        try (PreparedStatement ps = connection.prepareStatement(query);
+             ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                int id = rs.getInt("role_id");
+                String name = rs.getString("role_name");
+                roles.add(new Role(id, name));
+            }
+
+        } catch (SQLException e) {
+            System.err.println("Error fetching roles: " + e.getMessage());
+            e.printStackTrace();
         }
+
         return roles;
     }
+
 
     //////////////////////////////////////////////
 

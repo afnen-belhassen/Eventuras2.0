@@ -15,6 +15,20 @@ public class user {
     private String role;
     private int id_role;
 
+    public user(int id, String text, String text1, String s, String text2, String text3, String formattedBirthday, String selectedGender, String picturePath, String text4, int roleId) {
+        this.id = id;
+        this.username = text;
+        this.email = text1;
+        this.password = s;
+        this.firstname = text2;
+        this.lastname = text3;
+        this.birthday = formattedBirthday;
+        this.gender = selectedGender;
+        this.picture = picturePath;
+        this.phonenumber = text4;
+        this.id_role = roleId;
+    }
+
     //Getters & Setters
     public int getId() { return id; }
     public void setId(int id) { this.id = id; }

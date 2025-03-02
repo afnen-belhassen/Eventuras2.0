@@ -1,6 +1,7 @@
 package gui;
 
 import entities.user;
+import org.mindrot.jbcrypt.BCrypt;
 import services.userService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -32,6 +33,10 @@ public class loginUser {
     private Button submitButton;
 
     private userService userService = new userService();
+    private boolean isValidEmail(String email) {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\.[a-zA-Z0-9_+&*-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,7}$";
+        return email.matches(emailRegex);
+    }
 
     @FXML
     void login() throws SQLException {
@@ -44,10 +49,22 @@ public class loginUser {
                 return;
             }
 
-            user user = userService.authenticateUser(email, password);
+            if (!isValidEmail(email)) {
+                showAlert("Error", "Invalid email format.");
+                return;
+            }
 
-            if (user != null) {
-                // Store user session
+            // Retrieve user from database
+            user user = userService.getUserByEmail(email); // Implement this method in your service
+
+            if (user == null) {
+                showAlert("Error", "Incorrect email or password. Please try again.");
+                return;
+            }
+
+            // Check if the password matches
+            if (BCrypt.checkpw(password, user.getPassword())) {
+                // Password is correct, store user session
                 UserSession.getInstance(
                         user.getId(),
                         user.getUsername(),
@@ -78,6 +95,7 @@ public class loginUser {
                         showAlert("Error", "Unknown role. Please contact support.");
                 }
             } else {
+                // Password is incorrect
                 showAlert("Error", "Incorrect email or password. Please try again.");
             }
         } catch (IOException e) {
@@ -85,6 +103,9 @@ public class loginUser {
             showAlert("Error", "An error occurred. Please try again.");
         }
     }
+
+
+
 
     @FXML
     void register_page(ActionEvent event) throws IOException {
