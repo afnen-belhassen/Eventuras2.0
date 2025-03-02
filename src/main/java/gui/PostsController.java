@@ -27,6 +27,10 @@ import java.util.Date;
 import java.util.List;
 import javafx.geometry.Pos;
 import services.userService;
+import javafx.scene.SnapshotParameters;
+import javafx.scene.image.WritableImage;
+import javafx.embed.swing.SwingFXUtils;
+import javax.imageio.ImageIO;
 
 public class PostsController {
     @FXML private TextField TFTitle;
@@ -173,12 +177,12 @@ public class PostsController {
         int commentCount = servicePost.getCommentCount(post.getId());
         Label commentCountLabel = new Label("Commentaires: " + commentCount);
 
-        // 6. Image du post (ajoutée uniquement si présente)
+        // 6. Image du post (si présente)
         ImageView postImageView = null;
         if (post.getImage_path() != null && !post.getImage_path().isEmpty()) {
             postImageView = new ImageView();
             postImageView.setPreserveRatio(true);
-            postImageView.setFitWidth(250);
+            postImageView.setFitWidth(250); // Image agrandie
             Image img = new Image("file:" + post.getImage_path());
             postImageView.setImage(img);
         }
@@ -188,10 +192,7 @@ public class PostsController {
         user currentUser = utils.Session.getInstance().getCurrentUser();
         int currentUserId = (currentUser != null) ? currentUser.getId() : -1;
         int likeCount = serviceLike.getNombreLikes(post.getId());
-        boolean alreadyLiked = false;
-        if (currentUserId != -1) {
-            alreadyLiked = serviceLike.aDejaLike(currentUserId, post.getId());
-        }
+        boolean alreadyLiked = (currentUserId != -1) && serviceLike.aDejaLike(currentUserId, post.getId());
         Label likeCountLabel = new Label("Likes: " + likeCount);
         Button likeButton = new Button(alreadyLiked ? "Unlike" : "Like");
         likeButton.setOnAction(e -> {
@@ -223,7 +224,6 @@ public class PostsController {
             if (commentsContainer != null) {
                 postBox.getChildren().remove(commentsContainer);
                 toggleCommentsBtn.setText("Afficher commentaires");
-                // Mettre à jour le nombre de commentaires après réduction
                 try {
                     int newCount = servicePost.getCommentCount(post.getId());
                     commentCountLabel.setText("Commentaires: " + newCount);
@@ -237,6 +237,97 @@ public class PostsController {
             }
         });
 
+        // 9. Boutons Modifier et Supprimer pour le propriétaire du post
+        HBox editDeleteBox = new HBox();
+        editDeleteBox.setSpacing(10);
+        editDeleteBox.setAlignment(Pos.CENTER_LEFT);
+        if (currentUser != null && currentUser.getId() == post.getUser_id()) {
+            Button btnModifier = new Button("Modifier");
+            Button btnSupprimer = new Button("Supprimer");
+
+            // Action Modifier : remplacement du titre et du contenu par des champs éditables
+            btnModifier.setOnAction(e -> {
+                TextField titleEditField = new TextField(post.getTitle());
+                TextArea contentEditArea = new TextArea(post.getContent());
+                contentEditArea.setWrapText(true);
+                Button btnValider = new Button("Valider");
+                VBox editBox = new VBox(10, titleEditField, contentEditArea, btnValider);
+                editBox.setAlignment(Pos.CENTER_LEFT);
+
+                int indexTitle = postBox.getChildren().indexOf(titleLabel);
+                int indexContent = postBox.getChildren().indexOf(contentLabel);
+                postBox.getChildren().remove(titleLabel);
+                postBox.getChildren().remove(contentLabel);
+                postBox.getChildren().add(indexTitle, editBox);
+
+                btnValider.setOnAction(ev -> {
+                    String newTitle = titleEditField.getText().trim();
+                    String newContent = contentEditArea.getText().trim();
+                    if (newTitle.isEmpty() || newContent.isEmpty()) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Veuillez remplir tous les champs !");
+                        alert.show();
+                        return;
+                    }
+                    post.setTitle(newTitle);
+                    post.setContent(newContent);
+                    try {
+                        servicePost.update(post);
+                        Label newTitleLabel = new Label(newTitle);
+                        newTitleLabel.getStyleClass().add("card-title");
+                        Label newContentLabel = new Label(newContent);
+                        newContentLabel.getStyleClass().add("card-content");
+                        newContentLabel.setWrapText(true);
+                        int editIndex = postBox.getChildren().indexOf(editBox);
+                        postBox.getChildren().remove(editBox);
+                        postBox.getChildren().add(editIndex, newTitleLabel);
+                        postBox.getChildren().add(editIndex + 1, newContentLabel);
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                });
+            });
+
+            // Action Supprimer : confirmation puis suppression
+            btnSupprimer.setOnAction(e -> {
+                Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous vraiment supprimer ce post ?", ButtonType.YES, ButtonType.NO);
+                confirmation.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.YES) {
+                        try {
+                            servicePost.delete(post);
+                            afficherPosts();
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
+            });
+            editDeleteBox.getChildren().addAll(btnModifier, btnSupprimer);
+        }
+
+        // 10. Bouton Partager : capture un snapshot du post et propose de le sauvegarder
+        Button shareButton = new Button("Enregistrer");
+        shareButton.setOnAction(e -> {
+            // Prendre un snapshot du postBox
+            SnapshotParameters params = new SnapshotParameters();
+            params.setFill(javafx.scene.paint.Color.TRANSPARENT);
+            WritableImage snapshot = postBox.snapshot(params, null);
+            // Ouvrir un FileChooser pour sauvegarder l'image
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Enregistrer le snapshot du post");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("PNG Image", "*.png"));
+            File file = fileChooser.showSaveDialog(postBox.getScene().getWindow());
+            if (file != null) {
+                try {
+                    javafx.embed.swing.SwingFXUtils.fromFXImage(snapshot, null); // conversion
+                    javax.imageio.ImageIO.write(javafx.embed.swing.SwingFXUtils.fromFXImage(snapshot, null), "png", file);
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION, "Snapshot enregistré avec succès !");
+                    alert.showAndWait();
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
+            }
+        });
+
         // Assemblage final de la "card"
         postBox.getChildren().addAll(userInfoBox, titleLabel, postInfoLabel, contentLabel);
         if (postImageView != null) {
@@ -245,15 +336,18 @@ public class PostsController {
             imageContainer.getChildren().add(postImageView);
             postBox.getChildren().add(imageContainer);
         }
-
         HBox likeCommentBox = new HBox();
         likeCommentBox.setSpacing(10);
         likeCommentBox.setAlignment(Pos.CENTER_LEFT);
-        likeCommentBox.getChildren().addAll(likeCountLabel, likeButton, commentCountLabel, toggleCommentsBtn);
+        likeCommentBox.getChildren().addAll(likeCountLabel, likeButton, commentCountLabel, toggleCommentsBtn, shareButton);
         postBox.getChildren().add(likeCommentBox);
+        if (!editDeleteBox.getChildren().isEmpty()) {
+            postBox.getChildren().add(editDeleteBox);
+        }
 
         return postBox;
     }
+
 
 
     // Dans votre PostsController.java
@@ -264,9 +358,11 @@ public class PostsController {
         commentBox.setAlignment(Pos.TOP_LEFT);
         commentBox.getStyleClass().add("comment-box");
 
+        // Récupérer les informations du commentateur
         userService serviceUser = new userService();
         user commenter = serviceUser.getUserById(c.getUser_id());
 
+        // Image du commentateur
         ImageView commenterImageView = new ImageView();
         commenterImageView.setFitWidth(30);
         commenterImageView.setFitHeight(30);
@@ -274,11 +370,13 @@ public class PostsController {
             Image commenterImage = new Image(getClass().getResourceAsStream("/Images/" + commenter.getPicture()));
             if (!commenterImage.isError()) {
                 commenterImageView.setImage(commenterImage);
-                javafx.scene.shape.Circle clip = new javafx.scene.shape.Circle(15, 15, 15);
+                // Arrondir l'image
+                Circle clip = new Circle(15, 15, 15);
                 commenterImageView.setClip(clip);
             }
         }
 
+        // Contenu du commentaire dans une VBox
         VBox commentContentBox = new VBox();
         commentContentBox.setSpacing(3);
         commentContentBox.setAlignment(Pos.TOP_LEFT);
@@ -291,15 +389,84 @@ public class PostsController {
         commentTextLabel.setStyle("-fx-font-size: 12px;");
 
         String commentRelativeTime = getRelativeTime(c.getCreated_at());
-        System.out.println("comment : datetime "+c.getCreated_at());
         Label timeLabel = new Label("(" + commentRelativeTime + ")");
         timeLabel.setStyle("-fx-font-size: 10px; -fx-text-fill: gray;");
 
         commentContentBox.getChildren().addAll(usernameLabel, commentTextLabel, timeLabel);
-        commentBox.getChildren().addAll(commenterImageView, commentContentBox);
 
+        // Zone d'actions pour modifier/supprimer (affichée uniquement si l'utilisateur connecté est le propriétaire)
+        HBox actionButtonsBox = new HBox();
+        actionButtonsBox.setSpacing(5);
+        actionButtonsBox.setAlignment(Pos.CENTER_LEFT);
+        user currentUser = utils.Session.getInstance().getCurrentUser();
+        if (currentUser != null && currentUser.getId() == c.getUser_id()) {
+            Button btnModifier = new Button("Modifier");
+            Button btnSupprimer = new Button("Supprimer");
+
+            // Action Modifier : remplacement du label par un champ éditable et un bouton Valider
+            btnModifier.setOnAction(e -> {
+                TextField editField = new TextField(c.getContent());
+                Button btnValider = new Button("Valider");
+                HBox editBox = new HBox(editField, btnValider);
+                editBox.setSpacing(5);
+
+                // Remplacer temporairement la partie texte du commentaire par le champ d'édition
+                int index = commentContentBox.getChildren().indexOf(commentTextLabel);
+                commentContentBox.getChildren().remove(commentTextLabel);
+                commentContentBox.getChildren().add(index, editBox);
+
+                btnValider.setOnAction(ev -> {
+                    String newContent = editField.getText().trim();
+                    if (newContent.isEmpty()) {
+                        Alert alert = new Alert(Alert.AlertType.WARNING, "Le commentaire ne peut pas être vide !");
+                        alert.show();
+                        return;
+                    }
+                    // Mettre à jour le commentaire dans l'objet et en BDD
+                    c.setContent(newContent);
+                    try {
+                        ServiceComment serviceComment = new ServiceComment();
+                        serviceComment.update(c); // Méthode update à implémenter dans ServiceComment
+                    } catch (SQLException ex) {
+                        ex.printStackTrace();
+                    }
+                    // Reconstruire le label mis à jour et remplacer le champ d'édition
+                    Label updatedCommentLabel = new Label(c.getContent());
+                    updatedCommentLabel.setWrapText(true);
+                    updatedCommentLabel.setStyle("-fx-font-size: 12px;");
+                    int editIndex = commentContentBox.getChildren().indexOf(editBox);
+                    commentContentBox.getChildren().remove(editBox);
+                    commentContentBox.getChildren().add(editIndex, updatedCommentLabel);
+                });
+            });
+
+            // Action Supprimer : confirmation puis suppression
+            btnSupprimer.setOnAction(e -> {
+                Alert confirmation = new Alert(Alert.AlertType.CONFIRMATION, "Voulez-vous vraiment supprimer ce commentaire ?", ButtonType.YES, ButtonType.NO);
+                confirmation.showAndWait().ifPresent(response -> {
+                    if (response == ButtonType.YES) {
+                        try {
+                            ServiceComment serviceComment = new ServiceComment();
+                            serviceComment.delete(c); // Méthode delete à implémenter dans ServiceComment
+                            // Retirer la box du commentaire de l'UI
+                            ((VBox) commentBox.getParent()).getChildren().remove(commentBox);
+                        } catch (SQLException ex) {
+                            ex.printStackTrace();
+                        }
+                    }
+                });
+            });
+            actionButtonsBox.getChildren().addAll(btnModifier, btnSupprimer);
+        }
+
+        if (!actionButtonsBox.getChildren().isEmpty()) {
+            commentContentBox.getChildren().add(actionButtonsBox);
+        }
+
+        commentBox.getChildren().addAll(commenterImageView, commentContentBox);
         return commentBox;
     }
+
 
     // Modification de la méthode createCommentsContainer pour utiliser createCommentBox
     private VBox createCommentsContainer(Post post, VBox postBox, Button toggleCommentsBtn, Label commentCountLabel) {
