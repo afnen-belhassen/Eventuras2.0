@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Slider?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 
@@ -20,6 +21,10 @@
 
             <Label text="Video:" />
             <Label fx:id="VideoLabel" text="Video" />
+
+            <!-- Rating Section -->
+            <Label text="Rating:" />
+            <Slider fx:id="ratingSlider" min="1" max="5" value="3" blockIncrement="1" majorTickUnit="1" minorTickCount="0" snapToTicks="true" showTickMarks="true" showTickLabels="true" prefWidth="150" />
          </children>
       </HBox>
    </children>

@@ -1,41 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import java.lang.*?>
-<?import javafx.collections.*?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<?import java.lang.String?>
-<?import javafx.collections.FXCollections?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.layout.VBox?>
 
-<VBox alignment="CENTER" prefHeight="631.0" prefWidth="924.0" spacing="10" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.AddPartnerController">
-   <children>
-   
-       <Label text="Nom :" />
-       <TextField fx:id="nameField" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="38.0" prefWidth="198.0" />
-   
-       <Label text="Type :" />
+<AnchorPane prefHeight="350" prefWidth="400" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="gui.AddPartnerController">
+    <children>
+        <VBox alignment="CENTER" layoutX="20" layoutY="20" prefWidth="360" spacing="10">
+            <children>
+                <Label style="-fx-font-size: 18px; -fx-font-weight: bold;" text="Add Partner" />
 
-       <ChoiceBox fx:id="typeField" minHeight="-Infinity" minWidth="50.0" prefWidth="100.0">
-           <items>
-               <FXCollections fx:factory="observableArrayList">
-                   <String fx:value="Tech" />
-                   <String fx:value="Finance" />
-                   <String fx:value="Education" />
-               </FXCollections>
-           </items>
-       </ChoiceBox>
-   
-       <Label text="Contact Info :" />
-       <TextField fx:id="contactField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="203.0" />
-   
-       <Label text="Image Path :" />
-       <TextField fx:id="videoField" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="38.0" prefWidth="207.0" />
-   
-       <Button fx:id="btnSubmit" text="Ajouter" />
-   </children>
-</VBox>
+                <HBox spacing="10">
+                    <children>
+                        <Label prefWidth="80" text="Name:" />
+                        <TextField fx:id="nameField" prefWidth="200" />
+                    </children>
+                </HBox>
+
+                <HBox spacing="10">
+                    <children>
+                        <Label prefWidth="80" text="Type:" />
+                        <ChoiceBox fx:id="typeField" prefWidth="200" />
+                    </children>
+                </HBox>
+
+                <HBox spacing="10">
+                    <children>
+                        <Label prefWidth="80" text="Contact:" />
+                        <TextField fx:id="contactField" prefWidth="200" />
+                    </children>
+                </HBox>
+
+                <HBox spacing="10">
+                    <children>
+                        <Label prefWidth="80" text="Image Path:" />
+                        <TextField fx:id="videoField" prefWidth="140" />
+                        <Button fx:id="btnBrowse" text="Browse" />
+                    </children>
+                </HBox>
+
+                <HBox spacing="10">
+                    <children>
+                        <Label prefWidth="80" text="Rating:" />
+                        <Slider fx:id="ratingSlider" min="1" max="5" value="3" blockIncrement="1" majorTickUnit="1" minorTickCount="0" snapToTicks="true" showTickMarks="true" showTickLabels="true" prefWidth="200" />
+                    </children>
+                </HBox>
+
+                <Button fx:id="btnSubmit" onAction="#addPartner" style="-fx-background-color: #4CAF50; -fx-text-fill: white; -fx-font-weight: bold;" text="Add Partner" />
+            </children>
+        </VBox>
+    </children>
+</AnchorPane>

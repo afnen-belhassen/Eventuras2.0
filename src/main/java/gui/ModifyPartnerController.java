@@ -4,10 +4,7 @@ import entities.Partner;
 import entities.PartnerType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.stage.Stage;
 import services.PartnerService;
 
@@ -30,12 +27,23 @@ public class ModifyPartnerController {
     @FXML
     private Button btnUpdate;
 
+    @FXML
+    private Slider ratingSlider;
+
+    @FXML
+    private Label ratingLabel;
+
     private Partner currentPartner;
     private final PartnerService partnerService = new PartnerService();
 
     @FXML
     public void initialize() {
         typeField.setItems(FXCollections.observableArrayList(PartnerType.values()));
+
+        // Update rating label dynamically based on slider value
+        ratingSlider.valueProperty().addListener((observable, oldValue, newValue) -> {
+            ratingLabel.setText(String.format("%.0f", newValue));  // Update the label with the slider value
+        });
 
         btnUpdate.setOnAction(event -> updatePartner());
     }
@@ -46,6 +54,7 @@ public class ModifyPartnerController {
         typeField.setValue(partner.getType());
         contactField.setText(partner.getContactInfo());
         videoField.setText(partner.getImagePath());
+        ratingSlider.setValue(partner.getRating());  // Set the initial value of the rating slider
     }
 
     @FXML
@@ -55,6 +64,7 @@ public class ModifyPartnerController {
             PartnerType type = typeField.getValue();
             String contactInfo = contactField.getText().trim();
             String imagePath = videoField.getText().trim(); // Change variable name to imagePath
+            int rating = (int) ratingSlider.getValue(); // Get rating from the slider
 
             if (name.isEmpty() || type == null || contactInfo.isEmpty() || imagePath.isEmpty()) {
                 showAlert(Alert.AlertType.WARNING, "Input Error", "Please fill in all fields.");
@@ -65,6 +75,7 @@ public class ModifyPartnerController {
             currentPartner.setType(type);
             currentPartner.setContactInfo(contactInfo);
             currentPartner.setImagePath(imagePath); // Set imagePath instead of videoPath
+            currentPartner.setRating(rating); // Update rating value
 
             partnerService.update(currentPartner);
 
@@ -77,7 +88,6 @@ public class ModifyPartnerController {
             showAlert(Alert.AlertType.ERROR, "Database Error", "Error while updating partner: " + e.getMessage());
         }
     }
-
 
     private void showAlert(Alert.AlertType type, String title, String message) {
         Alert alert = new Alert(type);

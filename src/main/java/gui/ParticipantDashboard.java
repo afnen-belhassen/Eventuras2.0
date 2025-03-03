@@ -14,6 +14,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ScrollPane;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
@@ -88,4 +89,31 @@ public class ParticipantDashboard {
         sequentialTransition.setCycleCount(SequentialTransition.INDEFINITE);
         sequentialTransition.play();
     }
+
+    public void ParticipantDashboard1(MouseEvent mouseEvent) throws IOException {
+        // Load the new scene (ParticipPartner.fxml)
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/ParticipPartner.fxml"));
+        Parent root = loader.load();
+
+        // Create a new stage for the new scene
+        Stage newStage = new Stage();
+        Scene newScene = new Scene(root);
+        newStage.setScene(newScene);
+
+        // Set the title for the new window (optional)
+        newStage.setTitle("Collaborations");
+
+        // Show the new stage (window)
+        newStage.show();
+
+        // Add a close request handler to return to the previous scene (ParticipantDashboard.fxml)
+        newStage.setOnCloseRequest(event -> {
+            // When the new stage is closed, you can add logic to handle the closure if needed
+            System.out.println("Collaborations window closed");
+        });
+    }
+
 }
+
+
+

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.layout.VBox?>
 
-<ScrollPane fx:id="scrollPane" xmlns="http://javafx.com/javafx/8" stylesheets="@styles.css" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ParticipantPartnerController">
+<ScrollPane fx:id="scrollPane" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.ParticipantPartnerController">
     <content>
-        <VBox fx:id="partnerContainer" spacing="10" alignment="CENTER" style="-fx-padding: 20px;">
-            <!-- Partner cards will be dynamically added here -->
-        </VBox>
+        <VBox fx:id="partnerContainer" alignment="CENTER" spacing="10" style="-fx-padding: 20px;">
+         <children>
+            <Button mnemonicParsing="false" text="Dashboard" />
+         </children></VBox>
     </content>
 </ScrollPane>

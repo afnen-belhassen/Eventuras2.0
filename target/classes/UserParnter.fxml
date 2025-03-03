@@ -1,5 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
@@ -9,28 +14,33 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import javafx.scene.control.Slider?>
 
-<AnchorPane fx:id="SelecPartner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="1435.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserControllerPartner">
+<AnchorPane fx:id="SelecPartner" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="811.0" prefWidth="1435.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="gui.UserControllerPartner">
+    <children>
 
-    <!-- Title Text -->
-    <Text layoutX="264.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.6015625">
-        <font>
-            <Font size="21.0" />
-        </font>
-    </Text>
+        <!-- Title Text -->
+        <Text layoutX="264.0" layoutY="164.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="310.6015625">
+            <font>
+                <Font size="21.0" />
+            </font>
+        </Text>
 
-    <!-- ListView (will use an HBox for each row) -->
-    <ListView fx:id="partnersList" layoutX="264.0" layoutY="191.0" prefHeight="350.0" prefWidth="765.0" />
-   <Label fx:id="PartnerLabel" layoutX="264.0" layoutY="136.0" prefHeight="39.0" prefWidth="216.0" text="Select a Partner : ">
-      <font>
-         <Font size="27.0" />
-      </font>
-   </Label>
-   <Button fx:id="generateContract" layoutX="1041.0" layoutY="483.0" mnemonicParsing="false" onMouseClicked="#generateContract" prefHeight="48.0" prefWidth="171.0" text="Generate Contract" />
-   <Button fx:id="save" layoutX="1041.0" layoutY="432.0" mnemonicParsing="false" onMouseClicked="#savePartnership" prefHeight="42.0" prefWidth="171.0" text="Save" />
-   <ComboBox fx:id="partnershipTypeComboBox" layoutX="1041.0" layoutY="191.0" prefHeight="48.0" prefWidth="171.0" promptText="ContractType" />
-   <TextField fx:id="descriptionField" layoutX="1041.0" layoutY="246.0" prefHeight="173.0" prefWidth="171.0" promptText="Event Description" />
+        <!-- ListView (will use an HBox for each row) -->
+        <ListView fx:id="partnersList" layoutX="264.0" layoutY="191.0" prefHeight="350.0" prefWidth="765.0" />
+        <Label fx:id="PartnerLabel" layoutX="264.0" layoutY="136.0" prefHeight="39.0" prefWidth="216.0" text="Select a Partner : ">
+            <font>
+                <Font size="27.0" />
+            </font>
+        </Label>
+        <Button fx:id="generateContract" layoutX="1041.0" layoutY="483.0" mnemonicParsing="false" onMouseClicked="#generateContract" prefHeight="48.0" prefWidth="171.0" text="Generate Contract" />
+        <Button fx:id="save" layoutX="1041.0" layoutY="432.0" mnemonicParsing="false" onMouseClicked="#savePartnership" prefHeight="42.0" prefWidth="171.0" text="Save" />
+        <ComboBox fx:id="partnershipTypeComboBox" layoutX="1041.0" layoutY="191.0" prefHeight="48.0" prefWidth="171.0" promptText="ContractType" />
+        <TextField fx:id="descriptionField" layoutX="1041.0" layoutY="246.0" prefHeight="173.0" prefWidth="171.0" promptText="Event Description" />
 
-   <ImageView fx:id="myImage" fitHeight="150.0" fitWidth="450.0" layoutX="419.0" layoutY="572.0" pickOnBounds="true" preserveRatio="true" />
+        <ImageView fx:id="myImage" fitHeight="150.0" fitWidth="450.0" layoutX="419.0" layoutY="572.0" pickOnBounds="true" preserveRatio="true" />
+        <Button fx:id="Dashboard" layoutX="1047.0" layoutY="541.0" mnemonicParsing="false" onMouseClicked="#DashboardLog" prefHeight="42.0" prefWidth="160.0" text="Dashboard" />
+        <ChoiceBox fx:id="TrierPartner" layoutX="879.0" layoutY="546.0" prefWidth="150.0" />
+    </children>
 
 </AnchorPane>

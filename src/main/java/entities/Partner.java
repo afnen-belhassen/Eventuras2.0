@@ -1,5 +1,7 @@
 package entities;
 
+import utils.Session;
+
 import java.util.List;
 
 public class Partner {
@@ -8,16 +10,20 @@ public class Partner {
     private PartnerType type;
     private String contactInfo;
     private String ImagePath;
+    private int rating; // New rating field
     private List<Partnership> partnerships;
 
 
-    public Partner(int id, String name, PartnerType type, String contactInfo, String ImagePath) {
+    // Constructor with rating
+    public Partner(int id, String name, PartnerType type, String contactInfo, String ImagePath, int rating) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.contactInfo = contactInfo;
         this.ImagePath = ImagePath;
+        this.rating = rating; // Initialize rating
     }
+
 
     // Getters and Setters
     public int getId() { return id; }
@@ -32,6 +38,12 @@ public class Partner {
     public String getContactInfo() { return contactInfo; }
     public void setContactInfo(String contactInfo) { this.contactInfo = contactInfo; }
 
+    public String getImagePath() { return ImagePath; }
+    public void setImagePath(String imagePath) { ImagePath = imagePath; }
+
+    public int getRating() { return rating; }  // Getter for rating
+    public void setRating(int rating) { this.rating = rating; }  // Setter for rating
+
     public List<Partnership> getPartnerships() { return partnerships; }
     public void setPartnerships(List<Partnership> partnerships) { this.partnerships = partnerships; }
 
@@ -42,14 +54,7 @@ public class Partner {
                 ", name='" + name + '\'' +
                 ", type=" + type +
                 ", contactInfo='" + contactInfo + '\'' +
+                ", rating=" + rating +
                 '}';
-    }
-
-    public String getImagePath() {
-        return ImagePath;
-    }
-
-    public void setImagePath(String imagePath) {
-        ImagePath = imagePath;
     }
 }

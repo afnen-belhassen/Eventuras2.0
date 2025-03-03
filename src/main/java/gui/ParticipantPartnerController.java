@@ -2,15 +2,20 @@ package gui;
 
 import entities.Partner;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
 import services.PartnerService;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
 import java.util.List;
@@ -93,5 +98,21 @@ public class ParticipantPartnerController {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+    }
+    private void addCloseRequestHandler() throws IOException {
+        Stage stage = (Stage) partnerContainer.getScene().getWindow();
+        stage.setOnCloseRequest(event -> {
+            try {
+                // Load the previous scene (ParticipantDashboard.fxml)
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("/participantDashboard.fxml"));
+                Parent previousRoot = loader.load();
+
+                // Set the previous scene to the same stage
+                Scene previousScene = new Scene(previousRoot);
+                stage.setScene(previousScene);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        });
     }
 }

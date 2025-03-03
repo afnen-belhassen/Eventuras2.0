@@ -4,15 +4,20 @@ import entities.Partner;
 import entities.PartnerType;
 import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import services.PartnerService;
 
+import java.io.File;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class AddPartnerController {
+
+    @FXML
+    private Slider ratingSlider; // Updated to Slider
 
     @FXML
     private TextField nameField;
@@ -29,65 +34,83 @@ public class AddPartnerController {
     @FXML
     private Button btnSubmit;
 
-    private Partner currentPartner;
+    @FXML
+    private Button btnBrowse;
 
     private final PartnerService partnerService = new PartnerService();
+    private static final Logger LOGGER = Logger.getLogger(AddPartnerController.class.getName());
 
     @FXML
     public void initialize() {
-        // Remplir le ChoiceBox avec les valeurs de PartnerType
+        // Populate the choice box with enum values
         typeField.setItems(FXCollections.observableArrayList(PartnerType.values()));
 
-        // Définir l'action du bouton
+        // Initialize rating slider (1 to 5)
+        ratingSlider.setMin(1);
+        ratingSlider.setMax(5);
+        ratingSlider.setValue(3);
+        ratingSlider.setMajorTickUnit(1);
+        ratingSlider.setMinorTickCount(0);
+        ratingSlider.setSnapToTicks(true);
+
+        // Set the button actions
         btnSubmit.setOnAction(event -> addPartner());
+        btnBrowse.setOnAction(event -> openFileChooser());
     }
 
     @FXML
     private void addPartner() {
         try {
-            // Récupérer les valeurs du formulaire
-            String name = nameField.getText().trim();
-            PartnerType type = typeField.getValue();
-            String contactInfo = contactField.getText().trim();
-            String videoPath = videoField.getText().trim();
+            LOGGER.info("Starting addPartner method...");
 
-            // Vérifier que tous les champs sont remplis
-            if (name.isEmpty() || type == null || contactInfo.isEmpty() || videoPath.isEmpty()) {
+            String name = nameField.getText().trim();
+            LOGGER.info("Name: " + name);
+
+            PartnerType type = typeField.getValue();
+            LOGGER.info("Type: " + type);
+
+            String contactInfo = contactField.getText().trim();
+            LOGGER.info("Contact Info: " + contactInfo);
+
+            String imagePath = videoField.getText().trim();
+            LOGGER.info("Image Path: " + imagePath);
+
+            int rating = (int) ratingSlider.getValue(); // Retrieve rating from slider
+            LOGGER.info("Rating: " + rating);
+
+            if (name.isEmpty() || type == null || contactInfo.isEmpty() || imagePath.isEmpty()) {
                 showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "Veuillez remplir tous les champs.");
                 return;
             }
 
-            // Créer un nouvel objet Partner
-            Partner newPartner = new Partner(0, name, type, contactInfo, videoPath);
+            if (!name.matches("^[a-zA-ZÀ-ÿ\\s-]+$")) {
+                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "Le nom ne doit contenir que des lettres.");
+                return;
+            }
 
-            // Enregistrer dans la base de données
-            PartnerService pa = new PartnerService();
+            if (!isValidEmail(contactInfo) && !isValidPhoneNumber(contactInfo)) {
+                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "Le contact doit être une adresse e-mail valide ou un numéro de téléphone.");
+                return;
+            }
+
+            if (!isValidImagePath(imagePath)) {
+                showAlert(Alert.AlertType.WARNING, "Erreur de saisie", "Le fichier doit être au format .jpeg, .png ou .jpg.");
+                return;
+            }
+
+            Partner newPartner = new Partner(0, name, type, contactInfo, imagePath, rating);
+            LOGGER.info("Partner object created: " + newPartner);
+
             partnerService.create(newPartner);
 
-            // Afficher un message de succès
             showAlert(Alert.AlertType.INFORMATION, "Succès", "Partenaire ajouté avec succès !");
 
-            // Effacer les champs après l'ajout
             clearForm();
 
         } catch (SQLException e) {
-            showAlert(Alert.AlertType.ERROR, "Erreur de base de données", "Erreur lors de l'enregistrement du partenaire : " + e.getMessage());
+            LOGGER.log(Level.SEVERE, "Erreur lors de l'enregistrement du partenaire", e);
+            showAlert(Alert.AlertType.ERROR, "Erreur de base de données", "Une erreur est survenue lors de l'enregistrement. Détails : " + e.getMessage());
         }
-    }
-
-    public void setPartner(Partner partner) {
-        this.currentPartner = partner;
-        nameField.setText(partner.getName());
-        typeField.setValue(partner.getType());
-        contactField.setText(partner.getContactInfo());
-        videoField.setText(partner.getImagePath());
-    }
-
-    private void clearForm() {
-        nameField.clear();
-        typeField.setValue(null);
-        contactField.clear();
-        videoField.clear();
     }
 
     private void showAlert(Alert.AlertType type, String title, String message) {
@@ -95,5 +118,43 @@ public class AddPartnerController {
         alert.setTitle(title);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    private boolean isValidEmail(String email) {
+        return email.matches("^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$");
+    }
+
+    private boolean isValidPhoneNumber(String phone) {
+        return phone.matches("^(\\+\\d{1,3}\\s?)?\\d{8,15}$");
+    }
+
+    private boolean isValidImagePath(String path) {
+        return path.toLowerCase().matches(".*\\.(jpeg|png|jpg)$");
+    }
+
+    private void clearForm() {
+        nameField.clear();
+        typeField.setValue(null);
+        contactField.clear();
+        videoField.clear();
+        ratingSlider.setValue(3); // Reset slider to default value
+        Stage stage = (Stage) btnSubmit.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    private void openFileChooser() {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Sélectionner une image");
+        fileChooser.getExtensionFilters().add(
+                new FileChooser.ExtensionFilter("Images (*.jpeg, *.png, *.jpg)", "*.jpeg", "*.png", "*.jpg")
+        );
+
+        Stage stage = (Stage) btnBrowse.getScene().getWindow();
+        File file = fileChooser.showOpenDialog(stage);
+
+        if (file != null) {
+            videoField.setText(file.getAbsolutePath());
+        }
     }
 }

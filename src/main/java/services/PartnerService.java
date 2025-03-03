@@ -18,27 +18,28 @@ public class PartnerService implements IService2<Partner> {
 
     @Override
     public void create(Partner partner) throws SQLException {
-        String query = "INSERT INTO partner (name, type, contactInfo,VideoPath) VALUES (?, ?, ?,?)";
+        String query = "INSERT INTO partner (name, type, contactInfo, VideoPath, rating) VALUES (?, ?, ?, ?, ?)";
         PreparedStatement ps = cnx.prepareStatement(query);
         ps.setString(1, partner.getName());
         ps.setString(2, partner.getType().name()); // Convert Enum to String
         ps.setString(3, partner.getContactInfo());
         ps.setString(4, partner.getImagePath());
+        ps.setInt(5, partner.getRating()); // Set initial rating
         ps.executeUpdate();
     }
 
     @Override
     public void update(Partner partner) throws SQLException {
-        String query = "UPDATE partner SET name = ?, type = ?, contactInfo = ?, videoPath = ? WHERE id = ?";
+        String query = "UPDATE partner SET name = ?, type = ?, contactInfo = ?, videoPath = ?, rating = ? WHERE id = ?";
         PreparedStatement ps = cnx.prepareStatement(query);
         ps.setString(1, partner.getName());
         ps.setString(2, partner.getType().name()); // Convert Enum to String
         ps.setString(3, partner.getContactInfo());
         ps.setString(4, partner.getImagePath()); // Set the imagePath
-        ps.setInt(5, partner.getId());
+        ps.setInt(5, partner.getRating()); // Update rating
+        ps.setInt(6, partner.getId());
         ps.executeUpdate();
     }
-
 
     @Override
     public void delete(Partner partner) throws SQLException {
@@ -61,10 +62,20 @@ public class PartnerService implements IService2<Partner> {
             PartnerType type = PartnerType.valueOf(rs.getString("type")); // Convert String to Enum
             String contactInfo = rs.getString("contactInfo");
             String videoPath = rs.getString("VideoPath");
-            Partner partner = new Partner(id, name, type, contactInfo,videoPath);
+            int rating = rs.getInt("rating"); // Get rating from DB
+            Partner partner = new Partner(id, name, type, contactInfo, videoPath, rating);
             partners.add(partner);
         }
 
         return partners;
     }
+    public void updateRating(int partnerId, int newRating) throws SQLException {
+        String query = "UPDATE partner SET rating = ? WHERE id = ?";
+        try (PreparedStatement pst = cnx.prepareStatement(query)) {
+            pst.setInt(1, newRating);
+            pst.setInt(2, partnerId);
+            pst.executeUpdate();
+        }
+    }
+
 }

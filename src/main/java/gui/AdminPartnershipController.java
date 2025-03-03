@@ -4,6 +4,8 @@ import entities.ContractType;
 import entities.Partnership;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.collections.transformation.FilteredList;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
@@ -29,6 +31,7 @@ public class AdminPartnershipController {
     public GridPane Grid;
     public Sphere modelGroup;
     public Button Dashboard;
+    public TextField searchField;
     @FXML
     private ListView<Partnership> partnershipList;
 
@@ -51,11 +54,39 @@ public class AdminPartnershipController {
         partnerships = FXCollections.observableArrayList();
         partnershipList.setItems(partnerships);
         partnershipList.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-        loadPartnerships();
 
-        // Set custom cell factory
-        partnershipList.setCellFactory(listView -> new PartnershipCell());
+        // Create a filtered list
+        FilteredList<Partnership> filteredPartnerships = new FilteredList<>(partnerships);
+        SortedList<Partnership> sortedList = new SortedList<>(filteredPartnerships);
+
+        // Set default sorting behavior (by name or ID)
+        sortedList.setComparator((p1, p2) -> Integer.compare(p1.getId(), p2.getId())); // Sort by ID
+
+        partnershipList.setItems(sortedList);
+
+        // Listen for changes in the search field
+        searchField.textProperty().addListener((observable, oldValue, newValue) -> {
+            filteredPartnerships.setPredicate(partnership -> {
+                // If the search field is empty, show all partnerships
+                if (newValue == null || newValue.isEmpty()) {
+                    return true;
+                }
+
+                // Check if the ID matches the search query
+                try {
+                    int searchId = Integer.parseInt(newValue); // Assuming ID is an integer
+                    return partnership.getId() == searchId;
+                } catch (NumberFormatException e) {
+                    // If it's not a valid integer, we return false (no match)
+                    return false;
+                }
+            });
+        });
+
+        // Load partnerships from the service
+        loadPartnerships();
     }
+
 
     private void loadPartnerships() {
         partnerships.clear();

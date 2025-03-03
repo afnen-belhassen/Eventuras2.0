@@ -28,7 +28,8 @@ public class AdminControllerPartner {
     @FXML
     private ListView<Partner> partnersList;
 
-    String currentPartner;
+    private String currentPartner;
+
     @FXML
     private Label PartnerLabel;
 
@@ -48,20 +49,18 @@ public class AdminControllerPartner {
             partnersList.setItems(observableList);
 
             // Définir une cellule personnalisée pour afficher plusieurs colonnes
-            partnersList.setCellFactory(listView -> new UserControllerPartner.PartnerCell());
-            partnersList.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<Partner>(){
+            partnersList.setCellFactory(listView -> new PartnerCell());
 
-                @Override
-                public void changed(ObservableValue<? extends Partner> observableValue, Partner partner, Partner t1) {
+            // Adding listener for selection changes
+            partnersList.getSelectionModel().selectedItemProperty().addListener((observableValue, partner, t1) -> {
+                if (partnersList.getSelectionModel().getSelectedItem() != null) {
                     currentPartner = partnersList.getSelectionModel().getSelectedItem().getName();
                     PartnerLabel.setText(currentPartner);
                 }
             });
+
         } catch (SQLException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur");
-            alert.setContentText(e.getMessage());
-            alert.showAndWait();
+            showAlert(Alert.AlertType.ERROR, "Erreur", e.getMessage());
         }
     }
 
@@ -76,10 +75,7 @@ public class AdminControllerPartner {
             stage.show();
 
         } catch (IOException e) {
-            Alert alert = new Alert(Alert.AlertType.ERROR);
-            alert.setTitle("Erreur de chargement");
-            alert.setContentText("Erreur lors du chargement de la fenêtre d'ajout : " + e.getMessage());
-            alert.showAndWait();
+            showAlert(Alert.AlertType.ERROR, "Erreur de chargement", "Erreur lors du chargement de la fenêtre d'ajout : " + e.getMessage());
         }
     }
 
@@ -100,7 +96,6 @@ public class AdminControllerPartner {
             if (response == ButtonType.OK) {
                 try {
                     ps.delete(selectedPartner);
-
                     showAlert(Alert.AlertType.INFORMATION, "Succès", "Partenaire supprimé avec succès !");
                     initialize(); // Rafraîchir la liste après suppression
                 } catch (SQLException e) {
@@ -160,12 +155,10 @@ public class AdminControllerPartner {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/adminDashboard.fxml"));
         Parent root = loader.load();
 
-
         // Switch to the AfficherEvent scene
         Stage stage = (Stage) Dashboard.getScene().getWindow();
         Scene scene = new Scene(root);
         stage.setScene(scene);
-
     }
 
     // Classe personnalisée pour afficher plusieurs colonnes
@@ -178,14 +171,23 @@ public class AdminControllerPartner {
         private Label TypeLabel;
         @FXML
         private Label ContactInfoLabel;
+        @FXML
+        private Slider ratingSlider;
 
         public PartnerCell() {
             Hbox = new HBox(20); // Espacement de 20px entre les colonnes
             NameLabel = new Label();
             TypeLabel = new Label();
             ContactInfoLabel = new Label();
+            ratingSlider = new Slider(1.0, 5.0, 3.0); // Rating range 1 to 5
 
-            Hbox.getChildren().addAll(NameLabel, TypeLabel, ContactInfoLabel);
+            ratingSlider.setShowTickLabels(true);
+            ratingSlider.setShowTickMarks(true);
+            ratingSlider.setBlockIncrement(0.5);
+            ratingSlider.setMajorTickUnit(1.0);
+            ratingSlider.setMinorTickCount(1);
+
+            Hbox.getChildren().addAll(NameLabel, TypeLabel, ContactInfoLabel, ratingSlider);
         }
 
         @Override
@@ -198,9 +200,14 @@ public class AdminControllerPartner {
                 NameLabel.setText(partner.getName());
                 TypeLabel.setText(partner.getType().toString());
                 ContactInfoLabel.setText(partner.getContactInfo());
+                ratingSlider.setValue(partner.getRating());  // Set rating for each partner
 
                 setGraphic(Hbox);
             }
+        }
+
+        public double getRating() {
+            return ratingSlider.getValue();
         }
     }
 }
